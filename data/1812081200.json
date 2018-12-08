@@ -1,0 +1,2332 @@
+{
+    "nodes": [
+        {
+            "id": "함군",
+            "alias": "함군",
+            "averageView": 1453.5010434056762,
+            "subscriberCount": "15553",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 1,
+            "pra_out_score": 32.75
+        },
+        {
+            "id": "김기열",
+            "alias": "김기열",
+            "averageView": 24749.825680933853,
+            "subscriberCount": "108267",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "우왁굳",
+            "alias": "우왁굳",
+            "averageView": 44782.6524321721,
+            "subscriberCount": "498852",
+            "pra_score": 37763.67788507571,
+            "inlink_count": 44,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "와나나",
+            "alias": "와나나",
+            "averageView": 134285.3076923077,
+            "subscriberCount": "65876",
+            "pra_score": 15070.381818181817,
+            "inlink_count": 6,
+            "outlink_count": 28,
+            "pra_out_score": 142937.80498924208
+        },
+        {
+            "id": "김나성",
+            "alias": "김나성",
+            "averageView": 1823.6513826518553,
+            "subscriberCount": "14772",
+            "pra_score": 1663.56,
+            "inlink_count": 1,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "오킹",
+            "alias": "오킹",
+            "averageView": 6895.233333333334,
+            "subscriberCount": "24550",
+            "pra_score": 1395.0909090909092,
+            "inlink_count": 2,
+            "outlink_count": 6,
+            "pra_out_score": 11306.717482517482
+        },
+        {
+            "id": "텔론_",
+            "alias": "텔론",
+            "averageView": 217403.1701357466,
+            "subscriberCount": "516376",
+            "pra_score": 67013.7661088911,
+            "inlink_count": 9,
+            "outlink_count": 77,
+            "pra_out_score": 643970.4132592401
+        },
+        {
+            "id": "테스터훈",
+            "alias": "테스터훈",
+            "averageView": 287074.0512618297,
+            "subscriberCount": "1077868",
+            "pra_score": 400549.386535825,
+            "inlink_count": 46,
+            "outlink_count": 5,
+            "pra_out_score": 86084.6607142857
+        },
+        {
+            "id": "똘킹",
+            "alias": "똘킹",
+            "averageView": 167282.40973111396,
+            "subscriberCount": "478108",
+            "pra_score": 32573.157463405092,
+            "inlink_count": 20,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "왈도쿤",
+            "alias": "왈도쿤",
+            "averageView": 61906.063829787236,
+            "subscriberCount": "142721",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 4,
+            "pra_out_score": 4656.25294117647
+        },
+        {
+            "id": "햇살살",
+            "alias": "햇살살",
+            "averageView": 413.62745098039215,
+            "subscriberCount": "6271",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 148,
+            "pra_out_score": 1004.1426083081453
+        },
+        {
+            "id": "동수칸",
+            "alias": "동수칸",
+            "averageView": 9201.414812942367,
+            "subscriberCount": "99818",
+            "pra_score": 28839.545697145368,
+            "inlink_count": 16,
+            "outlink_count": 7,
+            "pra_out_score": 29407.259615384613
+        },
+        {
+            "id": "뷜랑",
+            "alias": "뷜랑",
+            "averageView": 15400.911262798634,
+            "subscriberCount": "60452",
+            "pra_score": 2953.1555555555556,
+            "inlink_count": 1,
+            "outlink_count": 7,
+            "pra_out_score": 71030.125
+        },
+        {
+            "id": "초승달",
+            "alias": "초승달",
+            "averageView": 18331.124656278644,
+            "subscriberCount": "65471",
+            "pra_score": 28676.753555721974,
+            "inlink_count": 17,
+            "outlink_count": 33,
+            "pra_out_score": 22791.122061007147
+        },
+        {
+            "id": "매도우이헌터",
+            "alias": "매도우이헌터",
+            "averageView": 39957.57342937175,
+            "subscriberCount": "224991",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "다주",
+            "alias": "다주",
+            "averageView": 44013.342806394314,
+            "subscriberCount": "296465",
+            "pra_score": 10938.600530953488,
+            "inlink_count": 30,
+            "outlink_count": 1,
+            "pra_out_score": 438.0909090909091
+        },
+        {
+            "id": "삐부",
+            "alias": "삐부",
+            "averageView": 23822.520634920635,
+            "subscriberCount": "67297",
+            "pra_score": 17265.194388544893,
+            "inlink_count": 10,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "김재원",
+            "alias": "김재원",
+            "averageView": 679264.8745341615,
+            "subscriberCount": "1100431",
+            "pra_score": 299502.1812865329,
+            "inlink_count": 99,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "김진우",
+            "alias": "김진우",
+            "averageView": 13348.931506849314,
+            "subscriberCount": "28572",
+            "pra_score": 31762.4032120743,
+            "inlink_count": 12,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "두칠이",
+            "alias": "두칠이",
+            "averageView": 67410.0810647308,
+            "subscriberCount": "245107",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "피유",
+            "alias": "피유",
+            "averageView": 39564.93922651934,
+            "subscriberCount": "45432",
+            "pra_score": 8278.087058080808,
+            "inlink_count": 8,
+            "outlink_count": 15,
+            "pra_out_score": 27017.03329124579
+        },
+        {
+            "id": "레니아워",
+            "alias": "레니아워",
+            "averageView": 8822.47619047619,
+            "subscriberCount": "7021",
+            "pra_score": 907.2357142857143,
+            "inlink_count": 2,
+            "outlink_count": 1,
+            "pra_out_score": 35.76470588235294
+        },
+        {
+            "id": "기무기훈",
+            "alias": "기무기훈",
+            "averageView": 21557.796565389697,
+            "subscriberCount": "71815",
+            "pra_score": 29857.046858073398,
+            "inlink_count": 51,
+            "outlink_count": 14,
+            "pra_out_score": 2917.4756919071974
+        },
+        {
+            "id": "룩삼",
+            "alias": "룩삼",
+            "averageView": 45087.145440251574,
+            "subscriberCount": "92483",
+            "pra_score": 33828.45018466878,
+            "inlink_count": 63,
+            "outlink_count": 17,
+            "pra_out_score": 46361.98394419908
+        },
+        {
+            "id": "짬타수아",
+            "alias": "짬타수아",
+            "averageView": 26747.130688448076,
+            "subscriberCount": "72978",
+            "pra_score": 6593.50299473202,
+            "inlink_count": 7,
+            "outlink_count": 27,
+            "pra_out_score": 15006.116101551954
+        },
+        {
+            "id": "가이코",
+            "alias": "가이코",
+            "averageView": 51110.51190077104,
+            "subscriberCount": "272077",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "김블루",
+            "alias": "김블루",
+            "averageView": 434250.10297766747,
+            "subscriberCount": "1260126",
+            "pra_score": 27386.66417128055,
+            "inlink_count": 19,
+            "outlink_count": 3,
+            "pra_out_score": 191166.75
+        },
+        {
+            "id": "이선생84",
+            "alias": "이선생",
+            "averageView": 18729.86552901024,
+            "subscriberCount": "92650",
+            "pra_score": 18774.74870272133,
+            "inlink_count": 17,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "철면수심",
+            "alias": "철면수심",
+            "averageView": 14136.12720519963,
+            "subscriberCount": "46761",
+            "pra_score": 7718.613173504337,
+            "inlink_count": 11,
+            "outlink_count": 546,
+            "pra_out_score": 75381.23034468395
+        },
+        {
+            "id": "아빠킹",
+            "alias": "아빠킹",
+            "averageView": 47960.07705779334,
+            "subscriberCount": "168156",
+            "pra_score": 326781.1899629534,
+            "inlink_count": 38,
+            "outlink_count": 1,
+            "pra_out_score": 10981.5
+        },
+        {
+            "id": "빡겜러",
+            "alias": "빡겜러",
+            "averageView": 67184.71951219512,
+            "subscriberCount": "60670",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 1,
+            "pra_out_score": 639.0714285714286
+        },
+        {
+            "id": "소풍왔니",
+            "alias": "소풍왔니",
+            "averageView": 45098.783570300155,
+            "subscriberCount": "108169",
+            "pra_score": 23777.999554167975,
+            "inlink_count": 13,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "태상",
+            "alias": "태상",
+            "averageView": 346.3333333333333,
+            "subscriberCount": "640",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 47,
+            "pra_out_score": 244.17119470567746
+        },
+        {
+            "id": "중괄호",
+            "alias": "중괄호",
+            "averageView": 1149.861623616236,
+            "subscriberCount": "1937",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "형독방송",
+            "alias": "형독",
+            "averageView": 67319.31732283464,
+            "subscriberCount": "176173",
+            "pra_score": 125985.37698412698,
+            "inlink_count": 27,
+            "outlink_count": 20,
+            "pra_out_score": 385641.3611111111
+        },
+        {
+            "id": "악녀",
+            "alias": "악녀",
+            "averageView": 91331.3423180593,
+            "subscriberCount": "262219",
+            "pra_score": 38733.61052449965,
+            "inlink_count": 8,
+            "outlink_count": 1,
+            "pra_out_score": 18692.0
+        },
+        {
+            "id": "홍방장",
+            "alias": "홍방장",
+            "averageView": 27710.033827375762,
+            "subscriberCount": "297196",
+            "pra_score": 400.0811784028856,
+            "inlink_count": 25,
+            "outlink_count": 1,
+            "pra_out_score": 402.9473684210526
+        },
+        {
+            "id": "우정잉",
+            "alias": "우정잉",
+            "averageView": 26808.762331838567,
+            "subscriberCount": "43067",
+            "pra_score": 10564.590190035951,
+            "inlink_count": 6,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "김도",
+            "alias": "김도",
+            "averageView": 13620.954790543343,
+            "subscriberCount": "105800",
+            "pra_score": 27804.255042889774,
+            "inlink_count": 14,
+            "outlink_count": 6,
+            "pra_out_score": 2596.3599865047236
+        },
+        {
+            "id": "서나랑",
+            "alias": "서나랑",
+            "averageView": 27234.928251121077,
+            "subscriberCount": "21096",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "코렛트",
+            "alias": "코렛트",
+            "averageView": 56020.56779661017,
+            "subscriberCount": "65553",
+            "pra_score": 63973.208823529414,
+            "inlink_count": 3,
+            "outlink_count": 4,
+            "pra_out_score": 28421.142857142855
+        },
+        {
+            "id": "닥터준_라인하르트",
+            "alias": "닥터준",
+            "averageView": 77280.66831683168,
+            "subscriberCount": "145636",
+            "pra_score": 11240.837117481855,
+            "inlink_count": 12,
+            "outlink_count": 74,
+            "pra_out_score": 62650.254507075166
+        },
+        {
+            "id": "카라멜",
+            "alias": "카라멜",
+            "averageView": 31775.66304347826,
+            "subscriberCount": "62315",
+            "pra_score": 3159.2727272727275,
+            "inlink_count": 1,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "딩셉션",
+            "alias": "딩셉션",
+            "averageView": 17923.549477566074,
+            "subscriberCount": "112737",
+            "pra_score": 20318.43524118287,
+            "inlink_count": 19,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "샤이__",
+            "alias": "샤이",
+            "averageView": 191011.1325301205,
+            "subscriberCount": "114828",
+            "pra_score": 50620.93452380951,
+            "inlink_count": 3,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "갓보기",
+            "alias": "갓보기",
+            "averageView": 5074.293650793651,
+            "subscriberCount": "3735",
+            "pra_score": 7287.389898832189,
+            "inlink_count": 55,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "홍개",
+            "alias": "홍개",
+            "averageView": 463421.36363636365,
+            "subscriberCount": "263864",
+            "pra_score": 14089.432744415852,
+            "inlink_count": 17,
+            "outlink_count": 25,
+            "pra_out_score": 136888.63636363635
+        },
+        {
+            "id": "쌍베",
+            "alias": "쌍베",
+            "averageView": 6368.652680652681,
+            "subscriberCount": "18199",
+            "pra_score": 5375.283630952381,
+            "inlink_count": 4,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "날게렌",
+            "alias": "날게렌",
+            "averageView": 26648.379821958457,
+            "subscriberCount": "91941",
+            "pra_score": 5475.545454545454,
+            "inlink_count": 1,
+            "outlink_count": 54,
+            "pra_out_score": 140945.55940164762
+        },
+        {
+            "id": "고차비",
+            "alias": "고차비",
+            "averageView": 19051.9754601227,
+            "subscriberCount": "50734",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "빅헤드",
+            "alias": "빅헤드",
+            "averageView": 39800.44019642231,
+            "subscriberCount": "331170",
+            "pra_score": 20721.382609603923,
+            "inlink_count": 20,
+            "outlink_count": 1,
+            "pra_out_score": 4770.285714285714
+        },
+        {
+            "id": "김뚜띠",
+            "alias": "김뚜띠",
+            "averageView": 44690.85086342229,
+            "subscriberCount": "140499",
+            "pra_score": 31394.394570135744,
+            "inlink_count": 6,
+            "outlink_count": 29,
+            "pra_out_score": 26817.341989164084
+        },
+        {
+            "id": "액시스마이콜",
+            "alias": "액시스마이콜",
+            "averageView": 85183.57834862385,
+            "subscriberCount": "637323",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 1,
+            "pra_out_score": 1954.03125
+        },
+        {
+            "id": "인간젤리",
+            "alias": "인간젤리",
+            "averageView": 5425.627898417372,
+            "subscriberCount": "44549",
+            "pra_score": 2615.6875,
+            "inlink_count": 1,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "쉐리",
+            "alias": "쉐리",
+            "averageView": 13079.228867719763,
+            "subscriberCount": "161776",
+            "pra_score": 2845.524421646129,
+            "inlink_count": 25,
+            "outlink_count": 1,
+            "pra_out_score": 233.75675675675677
+        },
+        {
+            "id": "침착맨",
+            "alias": "침착맨",
+            "averageView": 27253.43971952047,
+            "subscriberCount": "345107",
+            "pra_score": 13613.515338543733,
+            "inlink_count": 52,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "이초홍",
+            "alias": "이초홍",
+            "averageView": 24005.18079096045,
+            "subscriberCount": "106202",
+            "pra_score": 40312.014355089355,
+            "inlink_count": 13,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "흐쟁이덩",
+            "alias": "흐쟁이덩",
+            "averageView": 12654.910921766073,
+            "subscriberCount": "37198",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "얍얍",
+            "alias": "얍얍",
+            "averageView": 23781.68967052538,
+            "subscriberCount": "77309",
+            "pra_score": 27336.963335242457,
+            "inlink_count": 60,
+            "outlink_count": 1,
+            "pra_out_score": 2022.5833333333333
+        },
+        {
+            "id": "녹두로",
+            "alias": "녹두로",
+            "averageView": 8770.015068990559,
+            "subscriberCount": "88368",
+            "pra_score": 6708.6826254826265,
+            "inlink_count": 10,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "치킨쿤",
+            "alias": "치킨쿤",
+            "averageView": 29774.279026217228,
+            "subscriberCount": "73630",
+            "pra_score": 5707.623674242424,
+            "inlink_count": 7,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "heavyRainism",
+            "alias": "heavyRainism",
+            "averageView": 101204.48421052631,
+            "subscriberCount": "103365",
+            "pra_score": 2633.733333333333,
+            "inlink_count": 1,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "긍정인",
+            "alias": "긍정인",
+            "averageView": 28352.562659846546,
+            "subscriberCount": "38239",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 22,
+            "pra_out_score": 30831.71904761905
+        },
+        {
+            "id": "김용녀",
+            "alias": "김용녀",
+            "averageView": 19447.777222474633,
+            "subscriberCount": "160348",
+            "pra_score": 9846.454054054055,
+            "inlink_count": 7,
+            "outlink_count": 6,
+            "pra_out_score": 629.4285714285713
+        },
+        {
+            "id": "캡틴잭",
+            "alias": "캡틴잭",
+            "averageView": 30876.567567567567,
+            "subscriberCount": "38361",
+            "pra_score": 1168.0497685185185,
+            "inlink_count": 2,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "백설양",
+            "alias": "백설양",
+            "averageView": 32851.79191745486,
+            "subscriberCount": "93907",
+            "pra_score": 2331.842105263158,
+            "inlink_count": 1,
+            "outlink_count": 2,
+            "pra_out_score": 1371.4482758620688
+        },
+        {
+            "id": "스피드소닉",
+            "alias": "스피드소닉",
+            "averageView": 1933.716034271726,
+            "subscriberCount": "4340",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "제갈량",
+            "alias": "제갈량",
+            "averageView": 9779.993128964059,
+            "subscriberCount": "55522",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 28,
+            "pra_out_score": 739.862703352578
+        },
+        {
+            "id": "식빵월드",
+            "alias": "식빵월드",
+            "averageView": 5371.373903262092,
+            "subscriberCount": "0",
+            "pra_score": 5812.167291471415,
+            "inlink_count": 43,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "루시아",
+            "alias": "루시아",
+            "averageView": 1888.5059616381545,
+            "subscriberCount": "23169",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "선바",
+            "alias": "선바",
+            "averageView": 171293.09220452642,
+            "subscriberCount": "465408",
+            "pra_score": 2953.1555555555556,
+            "inlink_count": 1,
+            "outlink_count": 1,
+            "pra_out_score": 11111.538461538463
+        },
+        {
+            "id": "공혁준",
+            "alias": "공혁준",
+            "averageView": 50556.150259067355,
+            "subscriberCount": "79785",
+            "pra_score": 13509.826050071302,
+            "inlink_count": 62,
+            "outlink_count": 16,
+            "pra_out_score": 36219.34285714287
+        },
+        {
+            "id": "아구",
+            "alias": "아구",
+            "averageView": 72250.13510520487,
+            "subscriberCount": "164873",
+            "pra_score": 10981.5,
+            "inlink_count": 1,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "매드라이프",
+            "alias": "매드라이프",
+            "averageView": 54677.17192982456,
+            "subscriberCount": "135185",
+            "pra_score": 653.53125,
+            "inlink_count": 1,
+            "outlink_count": 4,
+            "pra_out_score": 2058.074074074074
+        },
+        {
+            "id": "소니쇼",
+            "alias": "소니쇼",
+            "averageView": 10490.930107526881,
+            "subscriberCount": "64314",
+            "pra_score": 33891.5440555005,
+            "inlink_count": 44,
+            "outlink_count": 2,
+            "pra_out_score": 2811.818181818182
+        },
+        {
+            "id": "연두는말안드뤄",
+            "alias": "연두",
+            "averageView": 23366.577205882353,
+            "subscriberCount": "74664",
+            "pra_score": 646.0,
+            "inlink_count": 1,
+            "outlink_count": 133,
+            "pra_out_score": 259249.61472463998
+        },
+        {
+            "id": "견자희",
+            "alias": "견자희",
+            "averageView": 46189.53708133971,
+            "subscriberCount": "210859",
+            "pra_score": 8995.370998116761,
+            "inlink_count": 3,
+            "outlink_count": 6,
+            "pra_out_score": 46520.666666666664
+        },
+        {
+            "id": "마스카",
+            "alias": "마스카",
+            "averageView": 6718.0484196368525,
+            "subscriberCount": "16258",
+            "pra_score": 27690.068344620096,
+            "inlink_count": 62,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "에렌디라",
+            "alias": "에렌디라",
+            "averageView": 102442.56915739269,
+            "subscriberCount": "281946",
+            "pra_score": 14210.571428571428,
+            "inlink_count": 2,
+            "outlink_count": 1,
+            "pra_out_score": 12254.72222222222
+        },
+        {
+            "id": "풍월량",
+            "alias": "풍월량",
+            "averageView": 26758.678368988847,
+            "subscriberCount": "364045",
+            "pra_score": 54374.18892625233,
+            "inlink_count": 122,
+            "outlink_count": 1,
+            "pra_out_score": 1860.5666666666666
+        },
+        {
+            "id": "안산저격수",
+            "alias": "안산저격수",
+            "averageView": 73027.27814569537,
+            "subscriberCount": "81547",
+            "pra_score": 14089.432744415852,
+            "inlink_count": 17,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "눈쟁이",
+            "alias": "눈쟁이",
+            "averageView": 71840.16387559808,
+            "subscriberCount": "404207",
+            "pra_score": 34407.86798559872,
+            "inlink_count": 36,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "플러리",
+            "alias": "플러리",
+            "averageView": 22867.88295687885,
+            "subscriberCount": "35973",
+            "pra_score": 6854.373144646019,
+            "inlink_count": 44,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "홍차",
+            "alias": "홍차",
+            "averageView": 19959.261904761905,
+            "subscriberCount": "2534",
+            "pra_score": 5798.556180360304,
+            "inlink_count": 42,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "갱생레바",
+            "alias": "레바",
+            "averageView": 358495.1615384615,
+            "subscriberCount": "280649",
+            "pra_score": 54209.79090375662,
+            "inlink_count": 18,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "이춘향",
+            "alias": "이춘향",
+            "averageView": 24363.630733944956,
+            "subscriberCount": "101050",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "서새봄냥",
+            "alias": "서새봄",
+            "averageView": 35228.90927284856,
+            "subscriberCount": "211880",
+            "pra_score": 37335.011316981705,
+            "inlink_count": 45,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "노돌리",
+            "alias": "노돌리",
+            "averageView": 59850.87083616587,
+            "subscriberCount": "230149",
+            "pra_score": 20200.22660098522,
+            "inlink_count": 8,
+            "outlink_count": 5,
+            "pra_out_score": 6473.3357624831315
+        },
+        {
+            "id": "미라지",
+            "alias": "미라지",
+            "averageView": 52582.456790123455,
+            "subscriberCount": "153857",
+            "pra_score": 7534.47766475011,
+            "inlink_count": 7,
+            "outlink_count": 8,
+            "pra_out_score": 9184.890886699506
+        },
+        {
+            "id": "천양",
+            "alias": "천양",
+            "averageView": 11645.61530577383,
+            "subscriberCount": "86834",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "보물창고",
+            "alias": "보물창고",
+            "averageView": 285677.438247012,
+            "subscriberCount": "257911",
+            "pra_score": 3924.050292397661,
+            "inlink_count": 2,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "우주하마",
+            "alias": "우주하마",
+            "averageView": 121297.8153526971,
+            "subscriberCount": "431966",
+            "pra_score": 438.0909090909091,
+            "inlink_count": 1,
+            "outlink_count": 205,
+            "pra_out_score": 219633.0825248064
+        },
+        {
+            "id": "탬탬버린",
+            "alias": "탬탬버린",
+            "averageView": 65369.08568548387,
+            "subscriberCount": "248939",
+            "pra_score": 72162.12131162181,
+            "inlink_count": 11,
+            "outlink_count": 8,
+            "pra_out_score": 61349.92647058823
+        },
+        {
+            "id": "스틸로",
+            "alias": "스틸로",
+            "averageView": 15152.510989010989,
+            "subscriberCount": "13947",
+            "pra_score": 8941.24959075738,
+            "inlink_count": 52,
+            "outlink_count": 10,
+            "pra_out_score": 3903.500000000001
+        },
+        {
+            "id": "머독",
+            "alias": "머독",
+            "averageView": 37546.74510161305,
+            "subscriberCount": "539665",
+            "pra_score": 432608.755340674,
+            "inlink_count": 44,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "삼식",
+            "alias": "삼식",
+            "averageView": 112959.59406372764,
+            "subscriberCount": "665845",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 3,
+            "pra_out_score": 7147.875
+        },
+        {
+            "id": "충전용",
+            "alias": "충전용",
+            "averageView": 19573.25,
+            "subscriberCount": "63342",
+            "pra_score": 8960.251336898395,
+            "inlink_count": 9,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        },
+        {
+            "id": "케인",
+            "alias": "케인",
+            "averageView": 26904.602543201825,
+            "subscriberCount": "82401",
+            "pra_score": 8069.42581453634,
+            "inlink_count": 5,
+            "outlink_count": 1,
+            "pra_out_score": 661.4090909090909
+        },
+        {
+            "id": "푸사",
+            "alias": "푸사",
+            "averageView": 180457.48571428572,
+            "subscriberCount": "56186",
+            "pra_score": 0,
+            "inlink_count": 0,
+            "outlink_count": 2,
+            "pra_out_score": 12230.727272727274
+        },
+        {
+            "id": "옥냥이",
+            "alias": "옥냥이",
+            "averageView": 82719.38330696203,
+            "subscriberCount": "259666",
+            "pra_score": 20304.126251094167,
+            "inlink_count": 46,
+            "outlink_count": 0,
+            "pra_out_score": 0
+        }
+    ],
+    "links": [
+        {
+            "source": "함군",
+            "target": "우왁굳",
+            "count": 1,
+            "score": 32.75
+        },
+        {
+            "source": "와나나",
+            "target": "테스터훈",
+            "count": 2,
+            "score": 11271.107936507935
+        },
+        {
+            "source": "와나나",
+            "target": "뷜랑",
+            "count": 1,
+            "score": 2953.1555555555556
+        },
+        {
+            "source": "와나나",
+            "target": "김재원",
+            "count": 2,
+            "score": 11271.107936507935
+        },
+        {
+            "source": "와나나",
+            "target": "김블루",
+            "count": 1,
+            "score": 2953.1555555555556
+        },
+        {
+            "source": "와나나",
+            "target": "형독방송",
+            "count": 3,
+            "score": 18540.907936507934
+        },
+        {
+            "source": "와나나",
+            "target": "악녀",
+            "count": 7,
+            "score": 36274.11052449965
+        },
+        {
+            "source": "와나나",
+            "target": "우정잉",
+            "count": 1,
+            "score": 2953.1555555555556
+        },
+        {
+            "source": "와나나",
+            "target": "선바",
+            "count": 1,
+            "score": 2953.1555555555556
+        },
+        {
+            "source": "와나나",
+            "target": "견자희",
+            "count": 1,
+            "score": 7269.8
+        },
+        {
+            "source": "와나나",
+            "target": "갱생레바",
+            "count": 8,
+            "score": 43544.99287744083
+        },
+        {
+            "source": "와나나",
+            "target": "보물창고",
+            "count": 1,
+            "score": 2953.1555555555556
+        },
+        {
+            "source": "오킹",
+            "target": "우정잉",
+            "count": 3,
+            "score": 5885.863636363636
+        },
+        {
+            "source": "오킹",
+            "target": "김뚜띠",
+            "count": 1,
+            "score": 1662.076923076923
+        },
+        {
+            "source": "오킹",
+            "target": "서새봄냥",
+            "count": 1,
+            "score": 2096.7000000000003
+        },
+        {
+            "source": "오킹",
+            "target": "탬탬버린",
+            "count": 1,
+            "score": 1662.076923076923
+        },
+        {
+            "source": "텔론_",
+            "target": "테스터훈",
+            "count": 37,
+            "score": 314592.28996295336
+        },
+        {
+            "source": "텔론_",
+            "target": "아빠킹",
+            "count": 38,
+            "score": 326781.1899629534
+        },
+        {
+            "source": "텔론_",
+            "target": "케인",
+            "count": 2,
+            "score": 2596.9333333333334
+        },
+        {
+            "source": "테스터훈",
+            "target": "텔론_",
+            "count": 2,
+            "score": 35463.72619047618
+        },
+        {
+            "source": "테스터훈",
+            "target": "샤이__",
+            "count": 3,
+            "score": 50620.93452380951
+        },
+        {
+            "source": "왈도쿤",
+            "target": "김뚜띠",
+            "count": 1,
+            "score": 737.9000000000001
+        },
+        {
+            "source": "왈도쿤",
+            "target": "풍월량",
+            "count": 3,
+            "score": 3918.3529411764703
+        },
+        {
+            "source": "햇살살",
+            "target": "다주",
+            "count": 24,
+            "score": 166.3244216461288
+        },
+        {
+            "source": "햇살살",
+            "target": "홍방장",
+            "count": 24,
+            "score": 166.3244216461288
+        },
+        {
+            "source": "햇살살",
+            "target": "쉐리",
+            "count": 24,
+            "score": 166.3244216461288
+        },
+        {
+            "source": "햇살살",
+            "target": "소니쇼",
+            "count": 24,
+            "score": 166.3244216461288
+        },
+        {
+            "source": "햇살살",
+            "target": "풍월량",
+            "count": 28,
+            "score": 172.52050007750134
+        },
+        {
+            "source": "햇살살",
+            "target": "서새봄냥",
+            "count": 24,
+            "score": 166.3244216461288
+        },
+        {
+            "source": "동수칸",
+            "target": "텔론_",
+            "count": 6,
+            "score": 25434.67628205128
+        },
+        {
+            "source": "동수칸",
+            "target": "얍얍",
+            "count": 1,
+            "score": 3972.583333333333
+        },
+        {
+            "source": "뷜랑",
+            "target": "테스터훈",
+            "count": 6,
+            "score": 68570.625
+        },
+        {
+            "source": "뷜랑",
+            "target": "악녀",
+            "count": 1,
+            "score": 2459.5
+        },
+        {
+            "source": "초승달",
+            "target": "동수칸",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "김재원",
+            "count": 4,
+            "score": 3124.8474576271187
+        },
+        {
+            "source": "초승달",
+            "target": "피유",
+            "count": 2,
+            "score": 1366.13125
+        },
+        {
+            "source": "초승달",
+            "target": "룩삼",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "짬타수아",
+            "count": 6,
+            "score": 4281.448940677966
+        },
+        {
+            "source": "초승달",
+            "target": "철면수심",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "소풍왔니",
+            "count": 2,
+            "score": 990.5
+        },
+        {
+            "source": "초승달",
+            "target": "우정잉",
+            "count": 2,
+            "score": 1725.5709981167608
+        },
+        {
+            "source": "초승달",
+            "target": "이초홍",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "얍얍",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "치킨쿤",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "캡틴잭",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "공혁준",
+            "count": 2,
+            "score": 1159.3389423076924
+        },
+        {
+            "source": "초승달",
+            "target": "매드라이프",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "견자희",
+            "count": 2,
+            "score": 1725.5709981167608
+        },
+        {
+            "source": "초승달",
+            "target": "풍월량",
+            "count": 3,
+            "score": 1882.4009741608509
+        },
+        {
+            "source": "초승달",
+            "target": "플러리",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "초승달",
+            "target": "스틸로",
+            "count": 1,
+            "score": 653.53125
+        },
+        {
+            "source": "다주",
+            "target": "우주하마",
+            "count": 1,
+            "score": 438.0909090909091
+        },
+        {
+            "source": "피유",
+            "target": "동수칸",
+            "count": 4,
+            "score": 7120.628935185185
+        },
+        {
+            "source": "피유",
+            "target": "초승달",
+            "count": 2,
+            "score": 2637.012121212121
+        },
+        {
+            "source": "피유",
+            "target": "다주",
+            "count": 1,
+            "score": 1226.878787878788
+        },
+        {
+            "source": "피유",
+            "target": "룩삼",
+            "count": 1,
+            "score": 2599.633333333333
+        },
+        {
+            "source": "피유",
+            "target": "쌍베",
+            "count": 2,
+            "score": 4552.977083333333
+        },
+        {
+            "source": "피유",
+            "target": "이초홍",
+            "count": 1,
+            "score": 2599.633333333333
+        },
+        {
+            "source": "피유",
+            "target": "얍얍",
+            "count": 2,
+            "score": 3826.512121212121
+        },
+        {
+            "source": "피유",
+            "target": "공혁준",
+            "count": 1,
+            "score": 1226.878787878788
+        },
+        {
+            "source": "피유",
+            "target": "스틸로",
+            "count": 1,
+            "score": 1226.878787878788
+        },
+        {
+            "source": "레니아워",
+            "target": "침착맨",
+            "count": 1,
+            "score": 35.76470588235294
+        },
+        {
+            "source": "기무기훈",
+            "target": "갓보기",
+            "count": 7,
+            "score": 1458.7378459535987
+        },
+        {
+            "source": "기무기훈",
+            "target": "공혁준",
+            "count": 7,
+            "score": 1458.7378459535987
+        },
+        {
+            "source": "룩삼",
+            "target": "동수칸",
+            "count": 2,
+            "score": 4864.30303030303
+        },
+        {
+            "source": "룩삼",
+            "target": "피유",
+            "count": 2,
+            "score": 4864.30303030303
+        },
+        {
+            "source": "룩삼",
+            "target": "인간젤리",
+            "count": 1,
+            "score": 2615.6875
+        },
+        {
+            "source": "룩삼",
+            "target": "침착맨",
+            "count": 2,
+            "score": 7346.812865497075
+        },
+        {
+            "source": "룩삼",
+            "target": "이초홍",
+            "count": 3,
+            "score": 8328.969696969696
+        },
+        {
+            "source": "룩삼",
+            "target": "얍얍",
+            "count": 3,
+            "score": 7638.05303030303
+        },
+        {
+            "source": "룩삼",
+            "target": "heavyRainism",
+            "count": 1,
+            "score": 2633.733333333333
+        },
+        {
+            "source": "룩삼",
+            "target": "공혁준",
+            "count": 1,
+            "score": 2703.368421052631
+        },
+        {
+            "source": "룩삼",
+            "target": "소니쇼",
+            "count": 1,
+            "score": 2663.3846153846157
+        },
+        {
+            "source": "룩삼",
+            "target": "미라지",
+            "count": 1,
+            "score": 2703.368421052631
+        },
+        {
+            "source": "짬타수아",
+            "target": "동수칸",
+            "count": 1,
+            "score": 616.09375
+        },
+        {
+            "source": "짬타수아",
+            "target": "초승달",
+            "count": 3,
+            "score": 1391.6752136752136
+        },
+        {
+            "source": "짬타수아",
+            "target": "다주",
+            "count": 1,
+            "score": 616.09375
+        },
+        {
+            "source": "짬타수아",
+            "target": "피유",
+            "count": 4,
+            "score": 2047.6527777777776
+        },
+        {
+            "source": "짬타수아",
+            "target": "룩삼",
+            "count": 2,
+            "score": 1011.5381944444443
+        },
+        {
+            "source": "짬타수아",
+            "target": "쌍베",
+            "count": 1,
+            "score": 420.0208333333333
+        },
+        {
+            "source": "짬타수아",
+            "target": "이초홍",
+            "count": 4,
+            "score": 1757.213408119658
+        },
+        {
+            "source": "짬타수아",
+            "target": "얍얍",
+            "count": 1,
+            "score": 616.09375
+        },
+        {
+            "source": "짬타수아",
+            "target": "소니쇼",
+            "count": 3,
+            "score": 1391.6752136752136
+        },
+        {
+            "source": "짬타수아",
+            "target": "연두는말안드뤄",
+            "count": 1,
+            "score": 646.0
+        },
+        {
+            "source": "짬타수아",
+            "target": "갱생레바",
+            "count": 3,
+            "score": 1878.1875
+        },
+        {
+            "source": "짬타수아",
+            "target": "스틸로",
+            "count": 2,
+            "score": 1232.1875
+        },
+        {
+            "source": "짬타수아",
+            "target": "케인",
+            "count": 1,
+            "score": 1381.6842105263156
+        },
+        {
+            "source": "김블루",
+            "target": "형독방송",
+            "count": 1,
+            "score": 66838.75
+        },
+        {
+            "source": "김블루",
+            "target": "코렛트",
+            "count": 1,
+            "score": 62164.0
+        },
+        {
+            "source": "김블루",
+            "target": "탬탬버린",
+            "count": 1,
+            "score": 62164.0
+        },
+        {
+            "source": "철면수심",
+            "target": "기무기훈",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "룩삼",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "갓보기",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "침착맨",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "얍얍",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "식빵월드",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "공혁준",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "마스카",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "풍월량",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "플러리",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "홍차",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "스틸로",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "철면수심",
+            "target": "옥냥이",
+            "count": 42,
+            "score": 5798.556180360304
+        },
+        {
+            "source": "아빠킹",
+            "target": "아구",
+            "count": 1,
+            "score": 10981.5
+        },
+        {
+            "source": "빡겜러",
+            "target": "케인",
+            "count": 1,
+            "score": 639.0714285714286
+        },
+        {
+            "source": "태상",
+            "target": "기무기훈",
+            "count": 6,
+            "score": 30.09587251828631
+        },
+        {
+            "source": "태상",
+            "target": "룩삼",
+            "count": 5,
+            "score": 24.992424242424242
+        },
+        {
+            "source": "태상",
+            "target": "철면수심",
+            "count": 6,
+            "score": 30.09587251828631
+        },
+        {
+            "source": "태상",
+            "target": "갓보기",
+            "count": 6,
+            "score": 30.09587251828631
+        },
+        {
+            "source": "태상",
+            "target": "침착맨",
+            "count": 6,
+            "score": 30.09587251828631
+        },
+        {
+            "source": "태상",
+            "target": "얍얍",
+            "count": 5,
+            "score": 24.992424242424242
+        },
+        {
+            "source": "태상",
+            "target": "식빵월드",
+            "count": 1,
+            "score": 13.61111111111111
+        },
+        {
+            "source": "태상",
+            "target": "공혁준",
+            "count": 6,
+            "score": 30.09587251828631
+        },
+        {
+            "source": "태상",
+            "target": "스틸로",
+            "count": 6,
+            "score": 30.09587251828631
+        },
+        {
+            "source": "형독방송",
+            "target": "머독",
+            "count": 20,
+            "score": 385641.3611111111
+        },
+        {
+            "source": "악녀",
+            "target": "머독",
+            "count": 1,
+            "score": 18692.0
+        },
+        {
+            "source": "홍방장",
+            "target": "빅헤드",
+            "count": 1,
+            "score": 402.9473684210526
+        },
+        {
+            "source": "김도",
+            "target": "닥터준_라인하르트",
+            "count": 5,
+            "score": 2323.7830634278002
+        },
+        {
+            "source": "김도",
+            "target": "풍월량",
+            "count": 1,
+            "score": 272.5769230769231
+        },
+        {
+            "source": "코렛트",
+            "target": "에렌디라",
+            "count": 2,
+            "score": 14210.571428571428
+        },
+        {
+            "source": "코렛트",
+            "target": "노돌리",
+            "count": 2,
+            "score": 14210.571428571428
+        },
+        {
+            "source": "닥터준_라인하르트",
+            "target": "김재원",
+            "count": 17,
+            "score": 14089.432744415852
+        },
+        {
+            "source": "닥터준_라인하르트",
+            "target": "홍개",
+            "count": 17,
+            "score": 14089.432744415852
+        },
+        {
+            "source": "닥터준_라인하르트",
+            "target": "치킨쿤",
+            "count": 1,
+            "score": 1863.7
+        },
+        {
+            "source": "닥터준_라인하르트",
+            "target": "안산저격수",
+            "count": 17,
+            "score": 14089.432744415852
+        },
+        {
+            "source": "닥터준_라인하르트",
+            "target": "눈쟁이",
+            "count": 17,
+            "score": 14089.432744415852
+        },
+        {
+            "source": "닥터준_라인하르트",
+            "target": "미라지",
+            "count": 5,
+            "score": 4428.823529411765
+        },
+        {
+            "source": "홍개",
+            "target": "김재원",
+            "count": 23,
+            "score": 125937.54545454547
+        },
+        {
+            "source": "홍개",
+            "target": "날게렌",
+            "count": 1,
+            "score": 5475.545454545454
+        },
+        {
+            "source": "홍개",
+            "target": "충전용",
+            "count": 1,
+            "score": 5475.545454545454
+        },
+        {
+            "source": "날게렌",
+            "target": "와나나",
+            "count": 4,
+            "score": 2790.1818181818185
+        },
+        {
+            "source": "날게렌",
+            "target": "오킹",
+            "count": 2,
+            "score": 1395.0909090909092
+        },
+        {
+            "source": "날게렌",
+            "target": "김재원",
+            "count": 33,
+            "score": 124358.52673796788
+        },
+        {
+            "source": "날게렌",
+            "target": "닥터준_라인하르트",
+            "count": 7,
+            "score": 8917.054054054055
+        },
+        {
+            "source": "날게렌",
+            "target": "충전용",
+            "count": 8,
+            "score": 3484.705882352941
+        },
+        {
+            "source": "빅헤드",
+            "target": "김블루",
+            "count": 1,
+            "score": 4770.285714285714
+        },
+        {
+            "source": "김뚜띠",
+            "target": "삐부",
+            "count": 9,
+            "score": 8336.044388544891
+        },
+        {
+            "source": "김뚜띠",
+            "target": "김진우",
+            "count": 9,
+            "score": 8336.044388544891
+        },
+        {
+            "source": "김뚜띠",
+            "target": "코렛트",
+            "count": 2,
+            "score": 1809.2088235294118
+        },
+        {
+            "source": "김뚜띠",
+            "target": "탬탬버린",
+            "count": 9,
+            "score": 8336.044388544891
+        },
+        {
+            "source": "액시스마이콜",
+            "target": "김블루",
+            "count": 1,
+            "score": 1954.03125
+        },
+        {
+            "source": "쉐리",
+            "target": "홍방장",
+            "count": 1,
+            "score": 233.75675675675677
+        },
+        {
+            "source": "얍얍",
+            "target": "옥냥이",
+            "count": 1,
+            "score": 2022.5833333333333
+        },
+        {
+            "source": "긍정인",
+            "target": "형독방송",
+            "count": 22,
+            "score": 30831.71904761905
+        },
+        {
+            "source": "김용녀",
+            "target": "녹두로",
+            "count": 6,
+            "score": 629.4285714285713
+        },
+        {
+            "source": "백설양",
+            "target": "옥냥이",
+            "count": 2,
+            "score": 1371.4482758620688
+        },
+        {
+            "source": "제갈량",
+            "target": "우왁굳",
+            "count": 14,
+            "score": 369.931351676289
+        },
+        {
+            "source": "제갈량",
+            "target": "풍월량",
+            "count": 14,
+            "score": 369.931351676289
+        },
+        {
+            "source": "선바",
+            "target": "옥냥이",
+            "count": 1,
+            "score": 11111.538461538463
+        },
+        {
+            "source": "공혁준",
+            "target": "김재원",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "레니아워",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "기무기훈",
+            "count": 3,
+            "score": 24028.394805194806
+        },
+        {
+            "source": "공혁준",
+            "target": "룩삼",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "철면수심",
+            "count": 3,
+            "score": 6520.467532467533
+        },
+        {
+            "source": "공혁준",
+            "target": "쌍베",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "침착맨",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "소니쇼",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "플러리",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "공혁준",
+            "target": "서새봄냥",
+            "count": 2,
+            "score": 2452.194805194805
+        },
+        {
+            "source": "공혁준",
+            "target": "미라지",
+            "count": 1,
+            "score": 402.2857142857143
+        },
+        {
+            "source": "매드라이프",
+            "target": "철면수심",
+            "count": 1,
+            "score": 514.5185185185185
+        },
+        {
+            "source": "매드라이프",
+            "target": "얍얍",
+            "count": 1,
+            "score": 514.5185185185185
+        },
+        {
+            "source": "매드라이프",
+            "target": "캡틴잭",
+            "count": 1,
+            "score": 514.5185185185185
+        },
+        {
+            "source": "매드라이프",
+            "target": "풍월량",
+            "count": 1,
+            "score": 514.5185185185185
+        },
+        {
+            "source": "소니쇼",
+            "target": "서새봄냥",
+            "count": 2,
+            "score": 2811.818181818182
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "우왁굳",
+            "count": 6,
+            "score": 12247.21788562315
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "김나성",
+            "count": 1,
+            "score": 1663.56
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "동수칸",
+            "count": 8,
+            "score": 15584.988731657153
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "초승달",
+            "count": 11,
+            "score": 22787.499554167975
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "다주",
+            "count": 1,
+            "score": 1781.4285714285713
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "룩삼",
+            "count": 11,
+            "score": 23337.913088002562
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "짬타수아",
+            "count": 1,
+            "score": 2312.054054054054
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "소풍왔니",
+            "count": 11,
+            "score": 22787.499554167975
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "김도",
+            "count": 14,
+            "score": 27804.255042889774
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "카라멜",
+            "count": 1,
+            "score": 3159.2727272727275
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "쉐리",
+            "count": 1,
+            "score": 2679.2000000000003
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "얍얍",
+            "count": 1,
+            "score": 3159.2727272727275
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "녹두로",
+            "count": 4,
+            "score": 6079.254054054055
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "김용녀",
+            "count": 7,
+            "score": 9846.454054054055
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "백설양",
+            "count": 1,
+            "score": 2331.842105263158
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "소니쇼",
+            "count": 15,
+            "score": 29267.874090508823
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "마스카",
+            "count": 1,
+            "score": 1573.076923076923
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "풍월량",
+            "count": 11,
+            "score": 21126.89629602261
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "갱생레바",
+            "count": 7,
+            "score": 8786.61052631579
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "서새봄냥",
+            "count": 15,
+            "score": 29524.74890832259
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "머독",
+            "count": 4,
+            "score": 7956.958988380041
+        },
+        {
+            "source": "연두는말안드뤄",
+            "target": "케인",
+            "count": 1,
+            "score": 3451.736842105263
+        },
+        {
+            "source": "견자희",
+            "target": "와나나",
+            "count": 1,
+            "score": 9774.0
+        },
+        {
+            "source": "견자희",
+            "target": "형독방송",
+            "count": 1,
+            "score": 9774.0
+        },
+        {
+            "source": "견자희",
+            "target": "이초홍",
+            "count": 4,
+            "score": 26972.666666666664
+        },
+        {
+            "source": "에렌디라",
+            "target": "똘킹",
+            "count": 1,
+            "score": 12254.72222222222
+        },
+        {
+            "source": "풍월량",
+            "target": "초승달",
+            "count": 1,
+            "score": 1860.5666666666666
+        },
+        {
+            "source": "노돌리",
+            "target": "우왁굳",
+            "count": 3,
+            "score": 4106.307692307693
+        },
+        {
+            "source": "노돌리",
+            "target": "치킨쿤",
+            "count": 1,
+            "score": 1396.1333333333332
+        },
+        {
+            "source": "노돌리",
+            "target": "보물창고",
+            "count": 1,
+            "score": 970.8947368421052
+        },
+        {
+            "source": "미라지",
+            "target": "우왁굳",
+            "count": 1,
+            "score": 689.0357142857142
+        },
+        {
+            "source": "미라지",
+            "target": "와나나",
+            "count": 1,
+            "score": 2506.2
+        },
+        {
+            "source": "미라지",
+            "target": "노돌리",
+            "count": 6,
+            "score": 5989.655172413793
+        },
+        {
+            "source": "우주하마",
+            "target": "우왁굳",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "똘킹",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "김재원",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "김블루",
+            "count": 16,
+            "score": 17709.19165143928
+        },
+        {
+            "source": "우주하마",
+            "target": "이선생84",
+            "count": 17,
+            "score": 18774.74870272133
+        },
+        {
+            "source": "우주하마",
+            "target": "딩셉션",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "빅헤드",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "마스카",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "풍월량",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "눈쟁이",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "우주하마",
+            "target": "서새봄냥",
+            "count": 1,
+            "score": 283.225
+        },
+        {
+            "source": "우주하마",
+            "target": "머독",
+            "count": 19,
+            "score": 20318.43524118287
+        },
+        {
+            "source": "탬탬버린",
+            "target": "삐부",
+            "count": 1,
+            "score": 8929.15
+        },
+        {
+            "source": "탬탬버린",
+            "target": "김진우",
+            "count": 3,
+            "score": 23426.35882352941
+        },
+        {
+            "source": "탬탬버린",
+            "target": "김뚜띠",
+            "count": 4,
+            "score": 28994.41764705882
+        },
+        {
+            "source": "스틸로",
+            "target": "레니아워",
+            "count": 1,
+            "score": 504.95000000000005
+        },
+        {
+            "source": "스틸로",
+            "target": "얍얍",
+            "count": 3,
+            "score": 1132.8500000000001
+        },
+        {
+            "source": "스틸로",
+            "target": "치킨쿤",
+            "count": 3,
+            "score": 1132.8500000000001
+        },
+        {
+            "source": "스틸로",
+            "target": "공혁준",
+            "count": 3,
+            "score": 1132.8500000000001
+        },
+        {
+            "source": "삼식",
+            "target": "다주",
+            "count": 3,
+            "score": 7147.875
+        },
+        {
+            "source": "케인",
+            "target": "치킨쿤",
+            "count": 1,
+            "score": 661.4090909090909
+        },
+        {
+            "source": "푸사",
+            "target": "텔론_",
+            "count": 1,
+            "score": 6115.363636363637
+        },
+        {
+            "source": "푸사",
+            "target": "테스터훈",
+            "count": 1,
+            "score": 6115.363636363637
+        }
+    ]
+}

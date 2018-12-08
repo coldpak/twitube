@@ -1,0 +1,98 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+import json
+import sys
+import os
+
+def YoutubeConvert(file_path, out_dir="data"):
+    """
+    This function converts raw json data of Youtube crawler to refined one.
+    """
+    # path settings...
+    base_dir = os.path.dirname(__file__)
+    try:
+        with open(os.path.join(base_dir, file_path), encoding='utf-8') as file:
+            raw_data = json.load(file)
+    except:
+        print("Error: Cannot open file")
+        sys.exit(1)
+    out_dir = os.path.join(base_dir, out_dir)
+    if not os.path.exists(out_dir):
+        os.mkdir(out_dir)
+    # make a name list of streamers
+    names = {name: name.split("_")[0] for name in raw_data['Channels']}
+    namesArray = [name for name in raw_data['Channels']]
+    # for outliners...
+    names["이선생84"] = '이선생'
+    names["갱생레바"] = '레바'
+    names["서새봄냥"] = '서새봄'
+    names["연두는말안드뤄"] = '연두'
+    names["형독방송"] = '형독'
+    num = len(namesArray)
+    # Park Rank Algorithm(PRA) for video tags
+    invalidTags = ['샤이니', '더샤이', '게임']
+    pra_score_list = {}
+    links = [[[0 for _ in range(2)] for _ in range(num)] for _ in range(num)]
+    for key, videos in raw_data['Videos'].items():
+        source = namesArray.index(key)
+        # print('from: ', namesArray[source])
+        for video in videos:
+            for tag in video['tags']:
+                if tag not in invalidTags:
+                    # self tag doesn't add score to rank
+                    alpha = 1.0 / len(video['tags'])
+                    vs = video['statistics']
+                    video_score = float(vs['viewCount']) + float(vs['favoriteCount'])
+                    # + int(vs['likeCount']) - int(vs['dislikeCount']) + int(vs["favoriteCount"]
+                    # TODO: some videos doesn't have likeCount
+                    # TODO: 자기 자신과 같이 태그한 것들 처리. 필요한지는 의문.
+                    if names[key] not in tag:
+                        suggested_tag = None
+                        for _key, name in names.items():
+                            if key != _key and tag in name or name in tag:
+                                suggested_tag = _key
+                        if suggested_tag == None: continue
+                        target = namesArray.index(suggested_tag)
+                        links[source][target][0] += 1
+                        links[source][target][1] += alpha * video_score
+                        # print('to: ', namesArray[target], source, target, links[source][target])
+          
+    # refined_data generation part
+    refined_data={ 'nodes': [], 'links': [] }
+    for i in range(num):
+        for j in range(num):
+            if links[i][j][0] != 0:
+                link = {
+                    'source': namesArray[i],
+                    'target': namesArray[j],
+                    'count' : links[i][j][0],
+                    'score' : links[i][j][1]
+                }
+                refined_data['links'].append(link)
+    for i in range(num):
+        _id = namesArray[i]
+        channel_infos = raw_data['Channels'][_id]
+        node = {
+            'id': _id,
+            'alias': names[_id],
+            'averageView': int(channel_infos["viewCount"])/int(channel_infos["videoCount"]),
+            'subscriberCount': channel_infos['subscriberCount'],
+            'pra_score': 0,
+            'inlink_count': 0,
+            'outlink_count': 0,
+            'pra_out_score': 0,
+        }
+        for j in range(num):
+            node['inlink_count'] += links[j][i][0]
+            node['pra_score'] += links[j][i][1]
+            node['outlink_count'] += links[i][j][0]
+            node['pra_out_score'] += links[i][j][1]
+        refined_data['nodes'].append(node)
+
+    # save data into json format
+    with open(out_dir + '/' + file.name.split("/")[1], 'w') as f:
+        json.dump(refined_data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
+        print('end crawling')
+
+if __name__ == '__main__':
+    YoutubeConvert(sys.argv[1])
