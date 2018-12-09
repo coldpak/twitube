@@ -109,8 +109,8 @@
     };
     var kind_to_color = function(d){
       return d3.rgb(
-        0.8 * 255 * d.averageView / kind_max.averageView,
-        255 * Math.sqrt(d.epiksubscriberCount / kind_max.subscriberCount),  // 90% not to make it too bright
+        255 * d.averageView / kind_max.averageView,
+        0.9 * 255 * d.subscriberCount / kind_max.subscriberCount,  // 90% not to make it too bright
         255 * d.pra_out_score / kind_max.pra_out_score
       ) 
     };
