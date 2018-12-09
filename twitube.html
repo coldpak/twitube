@@ -100,20 +100,23 @@
     .force("center", d3.forceCenter(width / 2, height / 2));
 
   d3.json("data/1812081200.json").then(function(graph) {
-    var kinds = ["averageView", "subscriberCount", "pra_out_score"]
+    var kinds = ["averageView", "subscriberCount", "recent_average_view"]
     var kind_max = {}
     for(var i = 0; i < kinds.length; i++){
-      kind_max[kinds[i]] = d3.max(graph.nodes, function(d, i){
+      kind_max[kinds[i]] = d3.max(graph.nodes, function(d){
         return d[kinds[i]];
       });
     };
     var kind_to_color = function(d){
       return d3.rgb(
-        255 * d.averageView / kind_max.averageView,
-        0.9 * 255 * d.subscriberCount / kind_max.subscriberCount,  // 90% not to make it too bright
-        255 * d.pra_out_score / kind_max.pra_out_score
+        225 * d.averageView / kind_max.averageView,
+        225 * d.pra_out_score / kind_max.pra_out_score,
+        225 * d.recent_average_view / kind_max.recent_average_view
       ) 
     };
+
+    var main = svg.append("g")
+                  .attr("class", "graph");
 
     var simulation = d3.forceSimulation()
         .nodes(graph.nodes);	
@@ -124,13 +127,11 @@
         .force("x", d3.forceX())
         .force("y", d3.forceY());       
 
-    var node = svg.append("g")
-                  .attr("class", "nodes_circle")
-                  .selectAll("circle")
+    var node = main.selectAll(".node_circle")
                   .data(graph.nodes)
-                  .enter()
-                  .append("circle")
-                  .attr("r", function(d) { return 0.05 * Math.sqrt(d.averageView);})
+                .enter().append("circle")
+                  .attr("class", ".node_circle")
+                  .attr("r", function(d) { return 0.05 * Math.sqrt(d.recent_average_view);})
                   .attr("fill", function(d){ return kind_to_color(d).toString();});  
     //add tick instructions: 
     simulation.on("tick", tickActions );
@@ -145,12 +146,22 @@
     simulation.force("links", link_force);
 
     //draw lines for the links 
-    var link = svg.append("g")
-          .attr("class", "link")
-        .selectAll("line")
-        .data(graph.links)
-        .enter().append("line")
-          .attr("stroke-width", function(d) { return 0.01 * Math.sqrt(d.score); });  
+    var link = main.selectAll(".link")
+                  .data(graph.links)
+                  .enter().append("line")
+                    .attr("class", "link")
+                    .attr("stroke-width", function(d) { return 0.01 * Math.sqrt(d.score); });  
+    // label nodes with alias
+    var label = main.selectAll(".node_label")
+                    .data(graph.nodes)
+                  .enter().append("text")
+                    .attr("class", "node_label")
+                    .attr("dx", ".4em")
+                    .attr("dy", ".4em")
+                    .attr("font-family", "Verdana")
+                    .attr("font-size", 10)
+                    .style("fill", "#000000")
+                    .text(function(d) { return d.alias; });
 
     function tickActions() {
       //update circle positions each tick of the simulation 
@@ -166,6 +177,9 @@
           .attr("y1", function(d) { return d.source.y; })
           .attr("x2", function(d) { return d.target.x; })
           .attr("y2", function(d) { return d.target.y; });
+      label
+          .attr("x", function(d) { return d.x; })
+          .attr("y", function(d) { return d.y; });
     }  
 });
 function dragstarted() {

@@ -32,11 +32,14 @@ def YoutubeConvert(file_path, out_dir="data"):
     # Park Rank Algorithm(PRA) for video tags
     invalidTags = ['샤이니', '더샤이', '게임']
     pra_score_list = {}
+    recent_average_view_array = []
     links = [[[0 for _ in range(2)] for _ in range(num)] for _ in range(num)]
     for key, videos in raw_data['Videos'].items():
         source = namesArray.index(key)
         # print('from: ', namesArray[source])
+        recent_view_count = 0
         for video in videos:
+            recent_view_count += int(video['statistics']['viewCount'])
             for tag in video['tags']:
                 if tag not in invalidTags:
                     # self tag doesn't add score to rank
@@ -56,6 +59,9 @@ def YoutubeConvert(file_path, out_dir="data"):
                         links[source][target][0] += 1
                         links[source][target][1] += alpha * video_score
                         # print('to: ', namesArray[target], source, target, links[source][target])
+        if len(videos) != 0:
+            recent_average_view_count = recent_view_count / len(videos)
+        recent_average_view_array.append(recent_average_view_count)
           
     # refined_data generation part
     refined_data={ 'nodes': [], 'links': [] }
@@ -76,6 +82,7 @@ def YoutubeConvert(file_path, out_dir="data"):
             'id': _id,
             'alias': names[_id],
             'averageView': int(channel_infos["viewCount"])/int(channel_infos["videoCount"]),
+            'recent_average_view': recent_average_view_array[i],
             'subscriberCount': channel_infos['subscriberCount'],
             'pra_score': 0,
             'inlink_count': 0,
