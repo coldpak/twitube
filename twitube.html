@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<head>
+  <title>Twitube</title>
+  <meta name="description" content="Visualization of Korean Game streamers.">
+  <meta name="keywords" content="twitch,youtube,streamer,game,influence,power">
+  <meta name="author" content="Over Engineering">
+  <meta charset="utf-8">
+</head>
+<style>
+  body {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+  header {
+    height: 3rem;
+    background: #777;
+  }
+  footer {
+    height: 2rem;
+    text-align: center;
+    background: #777;
+  }
+  .page_template {
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: flex;
+    flex-wrap: wrap
+  }
+  .page_template .graph_view {
+    width: 60%;
+    height: 70%;
+    /* background: rgb(240, 174, 174); */
+  }
+  .page_template .infos {
+    width: 40%;
+    height: 70%;
+    /* background: rgb(169, 169, 247); */
+  }
+  .page_template .control_panel {
+    width: 60%;
+    height: 30%;
+    /* background: rgb(152, 243, 152); */
+  }
+  .page_template .summary {
+    width: 40%;
+    height: 30%;
+    /* background: rgb(252, 252, 162); */
+  }
+
+  .node_circle {
+    stroke: #777;
+    stroke-width: 1.0px;
+  }
+  .node_label {
+    pointer-events: none;
+  }
+  .link {
+    stroke: #777;
+    stroke-opacity: .2;
+  }
+  .node_count {
+    stroke: #777;
+    stroke-width: 1.0px;
+    fill: #999;
+  }
+  text.legend {
+    font-family: Verdana;
+    font-size: 13px;
+    fill: #000;
+  }
+</style>
+<body>
+  <svg width="960" height="600"> </svg>
+  <!-- <header>
+    TWITUBE
+  </header>
+  <div class="page_template">
+    <svg class="graph_view" id="graph_view">
+    </svg>
+    <div class="infos">
+    </div>
+    <div class="control_panel">
+    </div>
+    <div class="summary"></div>
+  </div>
+  <footer>
+    TWITUBE
+  </footer> -->
+<script src="../lib/d3/d3.min.js"></script>
+<script>
+  var svg = d3.select('svg'),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+  var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+  d3.json("data/1812081200.json").then(function(graph) {
+    var kinds = ["averageView", "subscriberCount", "pra_out_score"]
+    var kind_max = {}
+    for(var i = 0; i < kinds.length; i++){
+      kind_max[kinds[i]] = d3.max(graph.nodes, function(d, i){
+        return d[kinds[i]];
+      });
+    };
+    var kind_to_color = function(d){
+      return d3.rgb(
+        0.8 * 255 * d.averageView / kind_max.averageView,
+        255 * Math.sqrt(d.epiksubscriberCount / kind_max.subscriberCount),  // 90% not to make it too bright
+        255 * d.pra_out_score / kind_max.pra_out_score
+      ) 
+    };
+
+    var simulation = d3.forceSimulation()
+        .nodes(graph.nodes);	
+    
+    simulation
+        .force("charge_force", d3.forceManyBody().strength(-100))
+        .force("center_force", d3.forceCenter(width / 2, height / 2))
+        .force("x", d3.forceX())
+        .force("y", d3.forceY());       
+
+    var node = svg.append("g")
+                  .attr("class", "nodes_circle")
+                  .selectAll("circle")
+                  .data(graph.nodes)
+                  .enter()
+                  .append("circle")
+                  .attr("r", function(d) { return 0.05 * Math.sqrt(d.averageView);})
+                  .attr("fill", function(d){ return kind_to_color(d).toString();});  
+    //add tick instructions: 
+    simulation.on("tick", tickActions );
+
+    //Create the link force 
+    //We need the id accessor to use named sources and targets 
+
+    var link_force =  d3.forceLink(graph.links)
+                        .id(function(d) { return d.id; })
+                        .distance(50);
+
+    simulation.force("links", link_force);
+
+    //draw lines for the links 
+    var link = svg.append("g")
+          .attr("class", "link")
+        .selectAll("line")
+        .data(graph.links)
+        .enter().append("line")
+          .attr("stroke-width", function(d) { return 0.01 * Math.sqrt(d.score); });  
+
+    function tickActions() {
+      //update circle positions each tick of the simulation 
+      node
+          .attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; });
+          
+      //update link positions 
+      //simply tells one end of the line to follow one node around
+      //and the other end of the line to follow the other node around
+      link
+          .attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+    }  
+});
+function dragstarted() {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d3.event.subject.fx = d3.event.subject.x;
+  d3.event.subject.fy = d3.event.subject.y;
+}
+
+function dragged() {
+  d3.event.subject.fx = d3.event.x;
+  d3.event.subject.fy = d3.event.y;
+}
+
+function dragended() {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d3.event.subject.fx = null;
+  d3.event.subject.fy = null;
+}
+
+function drawLink(d) {
+  context.moveTo(d.source.x, d.source.y);
+  context.lineTo(d.target.x, d.target.y);
+}
+
+function drawNode(d) {
+  context.moveTo(d.x + 3, d.y);
+  context.arc(d.x, d.y, 3, 0, 2 * Math.PI);
+}
+</script>
