@@ -14,27 +14,78 @@ def readDailyFiles(base_dir, date = '181210'):
         print('wrong input')
         sys.exit(-1)
 
-def getDailyViewer(data):
-    ban_keyword = ['top_game', 'live_streams', 'stream_summary']
-    dailyViewers = {}
+def getAverageViewers(daily_viewers):
+    average_viewers = {}
+    for user, viewer in daily_viewers.items():
+        average_viewers[user] = {
+            'viewer' :  sum(viewer) / len(viewer),
+            'duration' : len(viewer) / 2,
+        }
+    return average_viewers
+
+def getAverageShare(shares):
+    average_share = {}
+    for game, share in shares.items():
+        average_share[game] = {
+            'share' : sum(share) / len(share),
+            'duration' : len(share) / 2,
+        }
+    return average_share
+
+def ConvertData(data): 
+    not_streamer = ['top_game', 'live_streams', 'stream_summary']
+    daily_viewers = {}
+    followers = {}
+    games = {}
+    shares = {}
+
     for datum in data:
         for key, value in datum.items():           
-            if  key not in ban_keyword \
-                and'viewers' in value['streams'] :
-                if (not key in dailyViewers):
-                    dailyViewers[key] = []
-                dailyViewers[key].append(value['streams']['viewers'])
-    return dailyViewers
-def getAverageViewers(data):
-    averageViewers = {}
-    dailyViewers = getDailyViewer(data)
-    for user, viewer in dailyViewers.items():
-        averageViewers[user] = {
-            'viewer' :  sum(viewer) / len(viewer),
-            'duration' : len(viewer) / 2
-        }
-    
-    return averageViewers
+            if  key not in not_streamer :
+                # Process data if there is streams key
+                if 'viewers' in value['streams'] :
+                    viewers = value['streams']['viewers']
+                    game = value['streams']['game']
+
+                    # Get daily viewers
+                    if not key in daily_viewers:
+                        daily_viewers[key] = []
+                    daily_viewers[key].append(viewers)
+                   
+                   # Get game list the streamer played
+                    if not key in games:
+                        games[key] = {}
+                    if not game in games[key]:
+                        games[key][game] = 1
+                    else :
+                        games[key][game] += 1
+
+                # Get the number of followers
+                if 'channels' in value :
+                    followers[key] = value['channels']['followers']
+            else :
+                if key == 'top_game':
+                    # total_channels = sum(t['channels'] for t in value['top'])
+                    total_viewers = sum(t['viewers'] for t in value['top'])
+                    top_games_moment = sorted(value['top'], key = lambda x: x['channels'], reverse = True)
+                    for top_game in top_games_moment:
+                        game = top_game['game']['name']
+                        if not game in shares:
+                            shares[game] = []
+                        # channel_score = top_game['channels']
+                        viewers = top_game['viewers']
+                        shares[game].append(viewers / total_viewers)
+                elif key == 'live_streams':
+                    pass
+                elif key == 'stream_summary':
+                    pass
+    return {
+        'averageViewers' : getAverageViewers(daily_viewers),
+        'followers' : followers,
+        'games' : games,
+        'averageShare' : getAverageShare(shares),
+    }
+
 
 def TwitchConvert(date = '181210', data_dir = 'twitch_data'):
     base_dir = os.path.join(os.path.dirname(__file__), data_dir)
@@ -43,8 +94,8 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data'):
 
     users = data[0].keys()
 
-    averageViewers = getAverageViewers(data)
-    print(averageViewers)
+    processed = ConvertData(data)
+    print('A')
 
 if __name__ == '__main__':
     #TwitchConvert('18' + str(sys.argv[1]))
