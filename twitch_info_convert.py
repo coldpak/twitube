@@ -14,30 +14,22 @@ def readDailyFiles(base_dir, date = '181210'):
         print('wrong input')
         sys.exit(-1)
 
-def getAverageViewers(daily_viewers):
-    average_viewers = {}
-    for user, viewer in daily_viewers.items():
-        average_viewers[user] = {
-            'viewer' :  sum(viewer) / len(viewer),
-            'duration' : len(viewer) / 2,
+def getAverage(data, target = 'value'):
+    average = {}
+    for key, value in data.items():
+        average[key] = {
+            target : sum(value) / len(value),
+            'duration' : len(value) / 2,
         }
-    return average_viewers
+    return average
 
-def getAverageShare(shares):
-    average_share = {}
-    for game, share in shares.items():
-        average_share[game] = {
-            'share' : sum(share) / len(share),
-            'duration' : len(share) / 2,
-        }
-    return average_share
-
-def ConvertData(data): 
+def InfluenceData(data): 
     not_streamer = ['top_game', 'live_streams', 'stream_summary']
     daily_viewers = {}
     followers = {}
     games = {}
     shares = {}
+    follows =  {}
 
     for datum in data:
         for key, value in datum.items():           
@@ -63,6 +55,7 @@ def ConvertData(data):
                 # Get the number of followers
                 if 'channels' in value :
                     followers[key] = value['channels']['followers']
+
             else :
                 if key == 'top_game':
                     # total_channels = sum(t['channels'] for t in value['top'])
@@ -80,21 +73,24 @@ def ConvertData(data):
                 elif key == 'stream_summary':
                     pass
     return {
-        'averageViewers' : getAverageViewers(daily_viewers),
+        'averageViewers' : getAverage(daily_viewers, 'viewer'),
         'followers' : followers,
         'games' : games,
-        'averageShare' : getAverageShare(shares),
+        'averageShare' : getAverage(shares, 'share'),
     }
 
+def LinkData(data, file_path = 'twitch-targets.json'):
+    pass
 
 def TwitchConvert(date = '181210', data_dir = 'twitch_data'):
-    base_dir = os.path.join(os.path.dirname(__file__), data_dir)
+    base_dir = os.path.dirname(__file__)
 
-    data = readDailyFiles(base_dir, date)
+    data = readDailyFiles(os.path.join(base_dir, data_dir), date)
 
     users = data[0].keys()
 
-    processed = ConvertData(data)
+    influenceData = InfluenceData(data)
+    #linkData = LinkData(data[0], os.path.join(base_dir, 'twitch-targets.json'))
     print('A')
 
 if __name__ == '__main__':
