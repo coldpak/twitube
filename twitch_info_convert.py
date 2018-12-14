@@ -2,6 +2,8 @@ import json
 import sys
 import os
 
+not_streamer = ['top_game', 'live_streams', 'stream_summary']
+
 def readDailyFiles(base_dir, date = '181210'):
     try:
         data = []
@@ -23,16 +25,14 @@ def getAverage(data, target = 'value'):
         }
     return average
 
-def InfluenceData(data): 
-    not_streamer = ['top_game', 'live_streams', 'stream_summary']
+def InfluenceData(data_list): 
     daily_viewers = {}
     followers = {}
     games = {}
     shares = {}
-    follows =  {}
 
-    for datum in data:
-        for key, value in datum.items():           
+    for data in data_list:
+        for key, value in data.items():           
             if  key not in not_streamer :
                 # Process data if there is streams key
                 if 'viewers' in value['streams'] :
@@ -72,6 +72,7 @@ def InfluenceData(data):
                     pass
                 elif key == 'stream_summary':
                     pass
+    
     return {
         'averageViewers' : getAverage(daily_viewers, 'viewer'),
         'followers' : followers,
@@ -79,8 +80,16 @@ def InfluenceData(data):
         'averageShare' : getAverage(shares, 'share'),
     }
 
-def LinkData(data, file_path = 'twitch-targets.json'):
-    pass
+def LinkData(data, target_path = 'twitch-targets.json'):
+    link_data = {}
+    with open(target_path, encoding='utf-8') as f:
+        targets =  json.load(f).keys()
+
+    for key, value in data.items():
+        if  key not in not_streamer :
+            link_data[key] = list(filter(lambda x : x in targets, value['follows']))
+
+    return link_data
 
 def TwitchConvert(date = '181210', data_dir = 'twitch_data'):
     base_dir = os.path.dirname(__file__)
@@ -90,8 +99,8 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data'):
     users = data[0].keys()
 
     influenceData = InfluenceData(data)
-    #linkData = LinkData(data[0], os.path.join(base_dir, 'twitch-targets.json'))
-    print('A')
+    linkData = LinkData(data[0], os.path.join(base_dir, 'twitch-targets.json'))
+    print('done!!')
 
 if __name__ == '__main__':
     #TwitchConvert('18' + str(sys.argv[1]))
