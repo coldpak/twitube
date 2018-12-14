@@ -91,15 +91,41 @@ def LinkData(data, target_path = 'twitch-targets.json'):
 
     return link_data
 
-def TwitchConvert(date = '181210', data_dir = 'twitch_data'):
+def Merge(users, influence_data, link_data):
+    merged = {}
+    for user in users:
+        if  user not in not_streamer :
+            merged[user] = {
+                'averageViewers' : influence_data['averageViewers'][user] if user in influence_data['averageViewers'] else {},
+                'followers' : influence_data['followers'][user] if user in influence_data['followers'] else {},
+                'games' : influence_data['games'][user] if user in influence_data['games'] else {},
+                'link' : link_data[user] if  user in link_data else [],
+            }
+    return merged
+
+def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = 'data'):
     base_dir = os.path.dirname(__file__)
 
     data = readDailyFiles(os.path.join(base_dir, data_dir), date)
 
     users = data[0].keys()
 
-    influenceData = InfluenceData(data)
-    linkData = LinkData(data[0], os.path.join(base_dir, 'twitch-targets.json'))
+    influence_data = InfluenceData(data)
+    link_data = LinkData(data[0], os.path.join(base_dir, 'twitch-targets.json'))
+
+    user_data = Merge(users, influence_data, link_data)
+    summary_data = {
+        'averageShare' : influence_data['averageShare']
+    }
+
+    output = {
+        'user' : user_data,
+        'summary' : summary_data,
+    }
+    
+    with open(out_dir + '/' + 'twi' + date + '.json', 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=4, separators=(',', ': '), ensure_ascii=False)
+
     print('done!!')
 
 if __name__ == '__main__':
