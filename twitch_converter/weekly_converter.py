@@ -91,7 +91,9 @@ def getWeeklyInfluenceSummary(weekly_summary) :
                     weekly_influence[user]['averageViewers']['viewer'].append(value['averageViewers']['viewer'])
                     weekly_influence[user]['averageViewers']['duration'].append(value['averageViewers']['duration'])
                 weekly_influence[user]['followers'].append(value['followers'])
-                for game, duration in value['games'].items() :
+                for game_data in value['games'] :
+                    game = game_data['game']
+                    duration = game_data['duration']
                     if not game in weekly_influence[user]['games'] :
                         weekly_influence[user]['games'][game] = []
                     weekly_influence[user]['games'][game].append(duration)

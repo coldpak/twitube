@@ -4,6 +4,17 @@ import os
 
 not_streamer = ['top_game', 'live_streams', 'stream_summary']
 
+def convertToListValue(target_with_dict_value, key_name, value_name) :
+    converted = {}
+    for user, value in target_with_dict_value.items():
+        converted[user] = []
+        for key, value in value.items() :
+            converted[user].append({
+                key_name : key,
+                value_name : value
+            })
+    return converted
+
 def readDailyFiles(base_dir, date = '181210'):
     try:
         daily_data = []
@@ -71,11 +82,11 @@ def getInfluenceData(data_list):
                     pass
                 elif key == 'stream_summary':
                     pass
-    
+
     return {
         'averageViewers' : getAverage(daily_viewers, 'viewer'),
         'followers' : followers,
-        'games' : games,
+        'games' : convertToListValue(games, key_name='game', value_name='duration'),
         'averageShare' : getAverage(shares, 'share'),
     }
 
