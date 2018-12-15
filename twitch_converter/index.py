@@ -25,8 +25,8 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = 'data'):
         'nodes' : weekly_nodes,
         'links' : weekly_links,
         'statistics' : {
-            'summary' : weekly_summary,
-            'average_share' : weekly_average_game_share,
+            'weekly_summary' : weekly_summary,
+            'weekly_average_share' : weekly_average_game_share,
         }
     }
 
