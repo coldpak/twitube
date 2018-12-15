@@ -88,7 +88,6 @@ def getLinkData(data, target_path = 'twitch-targets.json'):
         if key not in not_streamer :
             link_data[key] = list(filter(lambda x : x in targets, value['follows']))
     return link_data
-
     
 def getSummary(users, influence_data):
     summary = {}
@@ -120,7 +119,7 @@ def getSRA(score_summary) :
                 sra[target] = 0.
             sra[target] += score_summary[user][target]
     return sra
-    
+
 def createNode(influence_summary, SRA) :
     nodes = []
     for user, data in influence_summary.items() :
