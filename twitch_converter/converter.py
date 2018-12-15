@@ -6,15 +6,14 @@ not_streamer = ['top_game', 'live_streams', 'stream_summary']
 
 def readDailyFiles(base_dir, date = '181210'):
     try:
-        data = []
-        for i in  range(0, 48):
+        daily_data = []
+        for i in range(0, 48):
             time = date + '%02d%02d' % (i/2, (30 * i) % 60)
             with open(os.path.join(base_dir, time + '.json'), encoding = 'utf-8') as f:
-                data.append(json.load(f))
-        return data
+                daily_data.append(json.load(f))
+        return daily_data
     except:
-        print('wrong input')
-        sys.exit(-1)
+        return []
 
 def getAverage(data, target = 'value'):
     average = {}
@@ -25,7 +24,7 @@ def getAverage(data, target = 'value'):
         }
     return average
 
-def InfluenceData(data_list): 
+def getInfluenceData(data_list): 
     daily_viewers = {}
     followers = {}
     games = {}
@@ -80,54 +79,69 @@ def InfluenceData(data_list):
         'averageShare' : getAverage(shares, 'share'),
     }
 
-def LinkData(data, target_path = 'twitch-targets.json'):
+def getLinkData(data, target_path = 'twitch-targets.json'):
     link_data = {}
     with open(target_path, encoding='utf-8') as f:
         targets =  json.load(f).keys()
 
     for key, value in data.items():
-        if  key not in not_streamer :
+        if key not in not_streamer :
             link_data[key] = list(filter(lambda x : x in targets, value['follows']))
-
     return link_data
 
-def Merge(users, influence_data, link_data):
+    
+def getSummary(users, influence_data):
     merged = {}
     for user in users:
-        if  user not in not_streamer :
+        if user not in not_streamer :
             merged[user] = {
                 'averageViewers' : influence_data['averageViewers'][user] if user in influence_data['averageViewers'] else {},
                 'followers' : influence_data['followers'][user] if user in influence_data['followers'] else {},
                 'games' : influence_data['games'][user] if user in influence_data['games'] else {},
-                'link' : link_data[user] if  user in link_data else [],
             }
     return merged
 
-def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = 'data'):
-    base_dir = os.path.dirname(__file__)
+def getScore(users, influence_data, link_data):
+    average_viewers = influence_data['averageViewers']
+    scores = {}
+    for user in users:
+        if user not in not_streamer :
+            scores[user] = {}
+            for target in link_data[user] :
+                if user in average_viewers and target in average_viewers :
+                    scores[user][target] = average_viewers[user]['viewer'] / average_viewers[target]['viewer']
+    return scores
 
-    data = readDailyFiles(os.path.join(base_dir, data_dir), date)
+def getSRA(score_summary) :
+    sra = {}
+    for user, scores in score_summary.items() :
+        for target in scores.keys() :
+            if not target in sra :
+                sra[target] = 0.
+            sra[target] += score_summary[user][target]
+    return sra
 
-    users = data[0].keys()
-
-    influence_data = InfluenceData(data)
-    link_data = LinkData(data[0], os.path.join(base_dir, 'twitch-targets.json'))
-
-    user_data = Merge(users, influence_data, link_data)
-    summary_data = {
-        'averageShare' : influence_data['averageShare']
-    }
-
-    output = {
-        'user' : user_data,
-        'summary' : summary_data,
-    }
+def createNode(influence_summary, SRA) :
+    nodes = []
+    for user, data in influence_summary.items() :
+        nodes.append({
+            'id' : user,
+            'alias' : '',
+            'average_viewer' : data['averageViewers'],
+            'games' : data['games'],
+            'followers' : data['followers'],
+            'sra_score' : SRA[user] if user in SRA else 0.0
+        })
     
-    with open(out_dir + '/' + 'twi' + date + '.json', 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=4, separators=(',', ': '), ensure_ascii=False)
+    return nodes
 
-    print('done!!')
-
-if __name__ == '__main__':
-    #TwitchConvert('18' + str(sys.argv[1]))
-    TwitchConvert('181210')
+def createLink(score_summary) :
+    links = []
+    for user, targets in score_summary.items() :
+        for target, score in targets.items() :
+            links.append({
+                'source' : user,
+                'target' : target,
+                'score' : score
+            })
+    return links
