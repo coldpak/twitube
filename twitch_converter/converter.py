@@ -131,12 +131,12 @@ def getSRA(score_summary) :
             sra[target] += score_summary[user][target]
     return sra
 
-def createNode(influence_summary, SRA) :
+def createNode(influence_summary, SRA, alias) :
     nodes = []
     for user, data in influence_summary.items() :
         nodes.append({
             'id' : user,
-            'alias' : '',
+            'alias' : alias[user],
             'average_viewer' : data['averageViewers'],
             'games' : data['games'],
             'followers' : data['followers'],

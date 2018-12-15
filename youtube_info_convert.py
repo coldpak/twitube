@@ -28,6 +28,7 @@ def YoutubeConvert(file_path, out_dir="data"):
     names["서새봄냥"] = '서새봄'
     names["연두는말안드뤄"] = '연두'
     names["형독방송"] = '형독'
+    names["흐쟁이덩"] = '흐쟁이'
     num = len(namesArray)
     # Park Rank Algorithm(PRA) for video tags
     invalidTags = ['샤이니', '더샤이', '게임']
