@@ -4,21 +4,17 @@ import json
 import sys
 import os
 
-def YoutubeConvert(file_path, out_dir="data"):
+def YoutubeConvert(date, data_dir, out_dir="data"):
     """
     This function converts raw json data of Youtube crawler to refined one.
     """
-    # path settings...
-    base_dir = os.path.dirname(__file__)
     try:
-        with open(os.path.join(base_dir, file_path), encoding='utf-8') as file:
+        with open(os.path.join(data_dir, date + '0000.json'), encoding='utf-8') as file:
             raw_data = json.load(file)
     except:
         print("Error: Cannot open file")
         sys.exit(1)
-    out_dir = os.path.join(base_dir, out_dir)
-    if not os.path.exists(out_dir):
-        os.mkdir(out_dir)
+
     # make a name list of streamers
     names = {name: name.split("_")[0] for name in raw_data['Channels']}
     namesArray = [name for name in raw_data['Channels']]
@@ -98,9 +94,7 @@ def YoutubeConvert(file_path, out_dir="data"):
         refined_data['nodes'].append(node)
 
     # save data into json format
-    with open(out_dir + '/' + file.name.split("/")[1], 'w') as f:
+    with open(os.path.join(out_dir, 'youtube-' + date + '.json'), 'w', encoding='utf-8') as f:
         json.dump(refined_data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
-        print('end crawling')
-
-if __name__ == '__main__':
-    YoutubeConvert(sys.argv[1])
+    
+    print('youtube preprocessing done!!')
