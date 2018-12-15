@@ -30,7 +30,7 @@ def getInfluenceData(data_list):
     games = {}
     shares = {}
 
-    for data in data_list:
+    for data in data_list['data']:
         for key, value in data.items():           
             if  key not in not_streamer :
                 # Process data if there is streams key
@@ -91,15 +91,15 @@ def getLinkData(data, target_path = 'twitch-targets.json'):
 
     
 def getSummary(users, influence_data):
-    merged = {}
+    summary = {}
     for user in users:
         if user not in not_streamer :
-            merged[user] = {
+            summary[user] = {
                 'averageViewers' : influence_data['averageViewers'][user] if user in influence_data['averageViewers'] else {},
                 'followers' : influence_data['followers'][user] if user in influence_data['followers'] else {},
                 'games' : influence_data['games'][user] if user in influence_data['games'] else {},
             }
-    return merged
+    return summary
 
 def getScore(users, influence_data, link_data):
     average_viewers = influence_data['averageViewers']
@@ -120,7 +120,7 @@ def getSRA(score_summary) :
                 sra[target] = 0.
             sra[target] += score_summary[user][target]
     return sra
-
+    
 def createNode(influence_summary, SRA) :
     nodes = []
     for user, data in influence_summary.items() :

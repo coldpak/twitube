@@ -8,7 +8,7 @@ def readWeeklyFiles(base_dir, year = '18', month = '12', day = '10'):
     for i in range(0, 5) :
         date = year + month + '%2d' %(int(day) + i)
         daily_data = readDailyFiles(base_dir, date)
-        weekly_data.append(daily_data)
+        weekly_data.append({ 'data' : daily_data, 'date' : date })
     return weekly_data
 
 def getWeeklyInfluenceData(weekly_data):
@@ -20,8 +20,9 @@ def getWeeklyInfluenceData(weekly_data):
 def getWeeklyLinkData(weekly_data, target_path = 'twitch-targets.json'):
     weekly_link_data = []
     for daily_data in weekly_data :
-        if len(daily_data) > 0 :
-            weekly_link_data.append(getLinkData(daily_data[0], target_path))
+        data = daily_data['data']
+        if len(data) > 0 :
+            weekly_link_data.append(getLinkData(data[0], target_path))
         else :
             weekly_link_data.append({})
     return weekly_link_data
@@ -29,17 +30,25 @@ def getWeeklyLinkData(weekly_data, target_path = 'twitch-targets.json'):
 def getWeeklyUsers(weekly_data) :
     weekly_users = []
     for daily_data in weekly_data :
-        if len(daily_data) > 0 :
-            weekly_users.append(daily_data[0].keys())
+        data = daily_data['data']
+        date = daily_data['date']
+        if len(data) > 0 :
+            weekly_users.append({
+                'users' : data[0].keys(),
+                'date' : date
+            })
         else :
-            weekly_users.append({}) 
+            weekly_users.append({
+                'users' : [],
+                'date' : date
+            }) 
     return weekly_users
 
 def getWeeklyScoreSummary(weekly_users, weekly_influence_data, weekly_link_data) :
     weekly_score = {}
 
     for i in range(0, len(weekly_users)) :
-        daily_score = getScore(weekly_users[i], \
+        daily_score = getScore(weekly_users[i]['users'], \
                                   weekly_influence_data[i], \
                                   weekly_link_data[i])
         for user, value in daily_score.items() :
@@ -60,14 +69,18 @@ def getWeeklyScoreSummary(weekly_users, weekly_influence_data, weekly_link_data)
 def getWeeklySummary(weekly_users, weekly_influence_data) :
     weekly_summary = []
     for i in range(0, len(weekly_users)) :
-        weekly_summary.append(getSummary(weekly_users[i], weekly_influence_data[i]))
+        weekly_summary.append({
+            'summary' : getSummary(weekly_users[i]['users'], weekly_influence_data[i]),
+            'date' : weekly_users[i]['date']
+        })
     return weekly_summary
 
 def getWeeklyInfluenceSummary(weekly_summary) :
     weekly_influence = {}
     for daily_summary in weekly_summary :
-        if len(daily_summary) > 0 :
-            for user, value in daily_summary.items() :
+        summary = daily_summary['summary']
+        if len(summary) > 0 :
+            for user, value in summary.items() :
                 if not user in weekly_influence :
                     weekly_influence[user] = {
                         'averageViewers' : {
@@ -104,9 +117,28 @@ def getWeeklyInfluenceSummary(weekly_summary) :
             })
 
     return weekly_influence_summary
-def createWeeklyStatistics(weekly_summary):
-    return []
-    
+
+def getWeeklyAverageGameShare(weekly_influence_data) :
+    weekly_game_statistics = {}
+    for daily_influence_data in weekly_influence_data :
+        for game, value in daily_influence_data['averageShare'].items() :
+            if not game in weekly_game_statistics :
+                weekly_game_statistics[game] = {
+                    'share' : [],
+                    'duration' : []
+                }
+            weekly_game_statistics[game]['share'].append(value['share'])
+            weekly_game_statistics[game]['duration'].append(value['duration'])
+
+    weekly_game_statistics_summary = []
+    for game, value in weekly_game_statistics.items() :
+        weekly_game_statistics_summary.append({
+            'game' : game,
+            'share' : sum(value['share']) / len(value['share']),
+            'duration' : sum(value['duration'])
+        })
+    return weekly_game_statistics_summary
+
 def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = 'data'):
     base_dir = os.path.dirname(__file__)
 
@@ -119,17 +151,22 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = 'data'):
     weekly_SRA = getSRA(weekly_score_summary)
     weekly_summary = getWeeklySummary(weekly_users, weekly_influence_data)
     weekly_influence_summary = getWeeklyInfluenceSummary(weekly_summary)
+    weekly_average_game_share = getWeeklyAverageGameShare(weekly_influence_data) 
     
-    nodes = createNode(weekly_influence_summary, weekly_SRA)
-    links = createLink(weekly_score_summary)
-    statistics = createWeeklyStatistics(weekly_summary)
-    #user_data = Merge(users, influence_data, link_data)
-    #summary_data = {
-    #    'averageShare' : influence_data['averageShare']
-    #}
+    weekly_nodes = createNode(weekly_influence_summary, weekly_SRA)
+    weekly_links = createLink(weekly_score_summary)
     
-    #with open(out_dir + '/' + 'twi' + date + '.json', 'w', encoding='utf-8') as f:
-    #    json.dump(output, f, indent=4, separators=(',', ': '), ensure_ascii=False)
+    output = {
+        'nodes' : weekly_nodes,
+        'links' : weekly_links,
+        'statistics' : {
+            'summary' : weekly_summary,
+            'average_share' : weekly_average_game_share,
+        }
+    }
+
+    with open(out_dir + '/' + 'twi' + date + '.json', 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 
     print('done!!')
 
