@@ -1,0 +1,57 @@
+body {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .page_template {
+    width: 800px;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .page_template .graph_view {
+    width: 800px;
+    height: 600px;
+    /* background: rgb(240, 174, 174); */
+  }
+  .infos {
+    width: calc(100vw - 800px);
+    height: 100vh;
+    background: rgb(169, 169, 247);
+  }
+  .page_template .control_panel {
+    width: 800px;
+    height: calc(100vh - 600px);
+    background: rgb(152, 243, 152);
+  }
+  .node_circle {
+    stroke: #777;
+    stroke-width: 1.0px;
+  }
+  .node_label {
+    pointer-events: none;
+  }
+  .link {
+    stroke: #777;
+    stroke-opacity: .2;
+  }
+  #arrow {
+    fill: #777;
+    fill-opacity: .2;
+  }
+  #outArrow {
+    fill: #292;
+    fill-opacity: 1;
+  }
+  #inArrow {
+    fill: #229;
+    fill-opacity: 1;
+  }
+  #bothArrow {
+    fill: #922;
+    fill-opacity: 1;
+  }
