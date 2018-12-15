@@ -12,43 +12,31 @@
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-  }
-  header {
-    height: 3rem;
-    background: #777;
-  }
-  footer {
-    height: 2rem;
-    text-align: center;
-    background: #777;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: wrap;
   }
   .page_template {
-    width: 100%;
-    height: calc(100vh - 5rem);
+    width: 800px;
+    height: 100vh;
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
   }
   .page_template .graph_view {
-    width: 60%;
-    height: 70%;
+    width: 800px;
+    height: 600px;
     /* background: rgb(240, 174, 174); */
   }
-  .page_template .infos {
-    width: 40%;
-    height: 70%;
-    /* background: rgb(169, 169, 247); */
+  .infos {
+    width: calc(100vw - 800px);
+    height: 100vh;
+    background: rgb(169, 169, 247);
   }
   .page_template .control_panel {
-    width: 60%;
-    height: 30%;
-    /* background: rgb(152, 243, 152); */
+    width: 800px;
+    height: calc(100vh - 600px);
+    background: rgb(152, 243, 152);
   }
-  .page_template .summary {
-    width: 40%;
-    height: 30%;
-    /* background: rgb(252, 252, 162); */
-  }
-
   .node_circle {
     stroke: #777;
     stroke-width: 1.0px;
@@ -64,35 +52,34 @@
     fill: #777;
     fill-opacity: .2;
   }
-  #boldArrow {
-    fill: #777;
+  #outArrow {
+    fill: #292;
+    fill-opacity: 1;
+  }
+  #inArrow {
+    fill: #229;
+    fill-opacity: 1;
+  }
+  #bothArrow {
+    fill: #922;
     fill-opacity: 1;
   }
 </style>
 <body>
   <!-- <svg width="960" height="600"> </svg> -->
-  <header>
-    TWITUBE
-  </header>
   <div class="page_template">
-    <svg id="graph_view" width="960" height="600">
+    <svg id="graph_view" width="800" height="600">
     </svg>
-    <div class="infos">
-    </div>
     <div class="control_panel">
     </div>
-    <div class="summary"></div>
   </div>
-  <footer>
-    TWITUBE
-  </footer>
-<script src="../lib/d3/d3.min.js"></script>
+  <div class="infos">
+  </div>
+<script src="./lib/d3/d3.min.js"></script>
 <script>
   var svg = d3.select('svg'),
     width = +svg.attr("width"),
     height = +svg.attr("height");
-
-  console.log(width, height)
 
   var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -100,8 +87,10 @@
     .force("center", d3.forceCenter(width / 2, height / 2));
     
   defs = svg.append("defs");
-  defs.append("marker")
-      .attr("id","arrow")
+
+  function arrowFactory(defs, arrow_id) {
+    defs.append("marker")
+      .attr("id", arrow_id)
       .attr("viewBox", "0 -5 10 10")
       .attr("refX", 5)
       .attr("refY", 0)
@@ -109,19 +98,13 @@
       .attr("markerHeight",4)
       .attr("orient","auto")
       .append("path")
-        .attr("d", "M0,-3L6,0L0,3")
+        .attr("d", "M0,-5L10,0L0,5")
         .attr("class","arrowHead");
-  defs.append("marker")
-      .attr("id","boldArrow")
-      .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 5)
-      .attr("refY", 0)
-      .attr("markerWidth",4)
-      .attr("markerHeight",4)
-      .attr("orient","auto")
-      .append("path")
-        .attr("d", "M0,-4L8,0L0,4")
-        .attr("class","arrowHead");
+  }
+  arrowFactory(defs, "arrow");
+  arrowFactory(defs, "inArrow");
+  arrowFactory(defs, "outArrow");
+  arrowFactory(defs, "bothArrow");
 
   d3.json("data/1812081200.json").then(function(graph) {
     var kinds = ["averageView", "subscriberCount", "recent_average_view"]
@@ -143,26 +126,27 @@
                   .attr("class", "graph");
 
     var simulation = d3.forceSimulation()
-        .nodes(graph.nodes);	
-    
+        .nodes(graph.nodes);
+
     simulation
-        .force("charge_force", d3.forceManyBody().strength(-100))
+        .force("charge_force", d3.forceManyBody().strength(-70))
         .force("center_force", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(function(d) { return 0.05 * Math.sqrt(d.recent_average_view) + 0.5; }).iterations(2))
         .force("x", d3.forceX())
-        .force("y", d3.forceY());       
+        .force("y", d3.forceY());
 
     var node = main.selectAll(".node_circle")
                   .data(graph.nodes)
                 .enter().append("circle")
                   .attr("class", ".node_circle")
-                  .attr("r", function(d) { return 0.05 * Math.sqrt(d.recent_average_view);})
+                  .attr("r", function(d) { return 0.03 * Math.sqrt(d.recent_average_view);})
                   .attr("fill", function(d){ return kind_to_color(d).toString();})
-                  .on("mouseover", mouseOver(0.2))
-                  .on("mouseout", mouseOut)
+                  .on("mousedown", mouseOver(0.2))
                   .call(drag(simulation));  
+    document.body.addEventListener("mouseup", mouseOut);
 
     //add tick instructions: 
-    simulation.on("tick", tickActions );
+    simulation.on("tick", tickActions);
 
     //Create the link force 
     //We need the id accessor to use named sources and targets 
@@ -195,8 +179,8 @@
     function tickActions() {
       //update circle positions each tick of the simulation 
       node
-          .attr("cx", function(d) { return d.x; })
-          .attr("cy", function(d) { return d.y; });
+          .attr("cx", function(d) { return d.x = Math.max(2, Math.min(width-2, d.x)); })
+          .attr("cy", function(d) { return d.y = Math.max(2, Math.min(height-2, d.y)); });
           
       //update link positions 
       //simply tells one end of the line to follow one node around
@@ -220,6 +204,9 @@
     function isConnected(a, b) {
         return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
     }
+    function outlinkExist(a, b) {
+        return linkedByIndex[a.index + "," + b.index];
+    }
     function mouseOver(opacity) {
       return function(d) {
         // check all other nodes to see if they're connected
@@ -238,12 +225,38 @@
             return o.source === d || o.target === d ? 1 : opacity;
         });
         link.style("stroke", function(o){
-            return o.source === d || o.target === d ? o.source.colour : "#ddd";
+            // out-link
+            if (o.source === d) {
+              return outlinkExist(o.target, d) ? "#922" : "#292";
+            }
+            // in-link
+            if (o.target === d) {
+              return outlinkExist(d, o.source) ? "#922" : "#229";
+            }
+            return "#ddd";
         });
         link.style("fill", function(o){
-            return o.source === d || o.target === d ? o.source.colour : "#ddd";
+            // out-link
+            if (o.source === d) {
+              return outlinkExist(o.target, d) ? "#922" : "#292";
+            }
+            // in-link
+            if (o.target === d) {
+              return outlinkExist(d, o.source) ? "#922" : "#229";
+            }
+            return "#ddd";
         });
-        link.attr('marker-end', o => (o.source === d || o.target === d ? 'url(#boldArrow)' : 'url(#arrow)'));
+        link.attr('marker-end', function(o) {
+            // out-link
+            if (o.source === d) {
+              return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
+            }
+            // in-link
+            if (o.target === d) {
+              return outlinkExist(d, o.source) ? 'url(#bothArrow)' : 'url(#inArrow)';
+            }
+            return 'url(#arrow)';
+        });
       };
     } 
     function mouseOut() {
@@ -251,6 +264,7 @@
         node.style("fill-opacity", 1);
         link.style("stroke-opacity", .2);
         link.style("stroke", "#ddd");
+        link.attr('marker-end', 'url(#arrow)');
     } 
 });
 
