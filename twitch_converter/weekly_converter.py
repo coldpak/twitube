@@ -1,9 +1,12 @@
 from converter import *
+import datetime as dt
 
-def readWeeklyFiles(base_dir, year = '18', month = '12', day = '10'):
+def readWeeklyFiles(base_dir, date):
+    base_time = dt.datetime(2000 + int(date[0:2]), int(date[2:4]), int(date[4:6]))
     weekly_data = []
     for i in range(0, 5) :
-        date = year + month + '%2d' %(int(day) + i)
+        time = base_time - dt.timedelta(i)
+        date = '%2d%2d%2d' %(time.year - 2000, time.month, time.day)
         daily_data = readDailyFiles(base_dir, date)
         weekly_data.append({ 'data' : daily_data, 'date' : date })
     return weekly_data
