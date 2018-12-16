@@ -56,7 +56,7 @@ d3.json("data/youtube-181214.json").then(function (graph) {
         .force("charge_force", d3.forceManyBody().strength(-70))
         .force("center_force", d3.forceCenter(width / 2, height / 2))
         .force("collide", d3.forceCollide().radius(function (d) {
-            return 0.05 * Math.sqrt(d.recent_average_view) + 0.5;
+            return 20 * d.normalized_average_view + 0.5;
         }).iterations(2))
         .force("x", d3.forceX())
         .force("y", d3.forceY());
@@ -66,7 +66,7 @@ d3.json("data/youtube-181214.json").then(function (graph) {
         .enter().append("circle")
         .attr("class", ".node_circle")
         .attr("r", function (d) {
-            return 0.03 * Math.sqrt(d.recent_average_view);
+            return 20 * d.normalized_subscriber_count;
         })
         .attr("fill", function (d) {
             return kind_to_color(d).toString();
@@ -96,7 +96,7 @@ d3.json("data/youtube-181214.json").then(function (graph) {
         .attr("class", "link")
         .attr("marker-end", "url(#arrow)")
         .attr("stroke-width", function (d) {
-            return 0.01 * Math.sqrt(d.score);
+            return 6 * d.normalized_score
         });
     // label nodes with alias
     var label = main.selectAll(".node_label")

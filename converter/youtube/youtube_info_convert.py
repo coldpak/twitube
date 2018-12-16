@@ -3,6 +3,7 @@
 import json
 import sys
 import os
+import math
 
 def YoutubeConvert(date, data_dir, out_dir="data"):
     """
@@ -29,7 +30,6 @@ def YoutubeConvert(date, data_dir, out_dir="data"):
     num = len(namesArray)
     # Park Rank Algorithm(PRA) for video tags
     invalidTags = ['샤이니', '더샤이', '게임']
-    pra_score_list = {}
     recent_average_view_array = []
     links = [[[0 for _ in range(2)] for _ in range(num)] for _ in range(num)]
     for key, videos in raw_data['Videos'].items():
@@ -62,6 +62,12 @@ def YoutubeConvert(date, data_dir, out_dir="data"):
             recent_average_view_count = recent_view_count / len(videos)
         recent_average_view_array.append(recent_average_view_count)
           
+    # Find max values for normalize
+    max_subscriber_count = 0
+    max_pra_score = 0
+    max_recent_average_view = max(recent_average_view_array)
+    max_link_score = 0
+
     # refined_data generation part
     refined_data={ 'nodes': [], 'links': [] }
     for i in range(num):
@@ -71,29 +77,37 @@ def YoutubeConvert(date, data_dir, out_dir="data"):
                     'source': namesArray[i],
                     'target': namesArray[j],
                     'count' : links[i][j][0],
-                    'score' : links[i][j][1]
+                    'score' : links[i][j][1] / links[i][j][0]
                 }
                 refined_data['links'].append(link)
+                max_link_score = max(max_link_score, link['score'])
+    
     for i in range(num):
         _id = namesArray[i]
         channel_infos = raw_data['Channels'][_id]
         node = {
             'id': _id,
             'alias': names[_id],
-            'averageView': int(channel_infos["viewCount"])/int(channel_infos["videoCount"]),
             'recent_average_view': recent_average_view_array[i],
-            'subscriberCount': int(channel_infos['subscriberCount']),
+            'subscriber_count': int(channel_infos['subscriberCount']),
             'pra_score': 0,
-            'inlink_count': 0,
-            'outlink_count': 0,
             'pra_out_score': 0,
         }
         for j in range(num):
-            node['inlink_count'] += links[j][i][0]
-            node['pra_score'] += links[j][i][1]
-            node['outlink_count'] += links[i][j][0]
-            node['pra_out_score'] += links[i][j][1]
+            node['pra_score'] += links[j][i][1] 
+            node['pra_out_score'] += links[i][j][1] 
+            max_pra_score = max(max_pra_score, node['pra_score'])
         refined_data['nodes'].append(node)
+        max_subscriber_count = max(max_subscriber_count, node['subscriber_count'])
+
+    
+    # normalize
+    for link in refined_data['links']:
+        link['normalized_score'] = math.sqrt(link['score'] / max_link_score)
+    for node in refined_data['nodes']:
+        node['normalized_pra_score'] = math.sqrt(node['pra_score'] / max_pra_score)
+        node['normalized_subscriber_count'] = math.sqrt(node['subscriber_count'] / max_subscriber_count)
+        node['normalized_average_view'] = math.sqrt(node['recent_average_view'] / max_recent_average_view)
 
     # save data into json format
     with open(os.path.join(out_dir, 'youtube-' + date + '.json'), 'w', encoding='utf-8') as f:
