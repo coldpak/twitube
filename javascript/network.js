@@ -52,12 +52,17 @@ paths.forEach(function(url) {
     );
 });
 
-var youtubeGraph, twtichGraph;
+var youtubeGraph, twitchGraph;
 
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
-    twtichGraph = values[1];
+    twitchGraph = values[1];
     init();
+
+    // pie chart test
+    var pieChart = PieChart();
+    pieChart_data = twitchGraph.nodes.filter((d) => d.id == "얍얍")[0]["games"]
+    pieChart.Update(pieChart_data)
 });
 
 var nodeMappingTable = {};
@@ -65,7 +70,7 @@ var linkMappingTable = {};
 
 var influenceScale = ['normalized_view', 'normalize_follower', 'normalized_score'];
 
-function makeMergedNodes(_youtubeNodes, _twtichNodes, alpha) {
+function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     var nodes = [];
     _youtubeNodes.forEach((node, i) => {
         let _id = node.id;
@@ -81,7 +86,7 @@ function makeMergedNodes(_youtubeNodes, _twtichNodes, alpha) {
         if (!nodeMappingTable[_id]) nodeMappingTable[_id] = i;
     });
 
-    _twtichNodes.forEach((node, i) => {
+    _twitchNodes.forEach((node, i) => {
         let index = nodeMappingTable[node.id];
         let target_node = nodes[index];
         
@@ -92,7 +97,7 @@ function makeMergedNodes(_youtubeNodes, _twtichNodes, alpha) {
     return nodes;
 }
 
-function makeMergedLinks(_youtubeLinks, _twtichLinks, alpha) {
+function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha) {
     var links = [];
     _youtubeLinks.forEach((link, i) => {
         let source = link.source, target = link.target;
@@ -107,7 +112,7 @@ function makeMergedLinks(_youtubeLinks, _twtichLinks, alpha) {
         if (!linkMappingTable[_id]) linkMappingTable[_id] = i;
     });
 
-    _twtichLinks.forEach((link, i) => {
+    _twitchLinks.forEach((link, i) => {
         let source = link.source, target = link.target;
         let _id = source + target;
         let index = linkMappingTable[_id];
@@ -128,9 +133,9 @@ function makeMergedLinks(_youtubeLinks, _twtichLinks, alpha) {
     return links;
 }
 
-function merge(alpha=0.5) {
-    var _nodes = makeMergedNodes(youtubeGraph.nodes, twtichGraph.nodes, alpha);
-    var _links = makeMergedLinks(youtubeGraph.links, twtichGraph.links, alpha);
+function merge(alpha=1.0) {
+    var _nodes = makeMergedNodes(youtubeGraph.nodes, twitchGraph.nodes, alpha);
+    var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha);
 
     return { 
         'nodes': _nodes,
