@@ -49,15 +49,15 @@ body {
   #outArrow {
     pointer-events: none;
     fill: #292;
-    fill-opacity: 1;
+    fill-opacity: .5;
   }
   #inArrow {
     pointer-events: none;
     fill: #229;
-    fill-opacity: 1;
+    fill-opacity: .5;
   }
   #bothArrow {
     pointer-events: none;
     fill: #922;
-    fill-opacity: 1;
+    fill-opacity: .5;
   }

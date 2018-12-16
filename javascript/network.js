@@ -293,13 +293,13 @@ function init() {
                 return thisOpacity;
             });
             node.style("fill-opacity", function (o) {
-                thisOpacity = isConnected(d, o) ? 1 : opacity;
+                thisOpacity = isConnected(d, o) ? 1 : 0.2;
                 return thisOpacity;
             });
             // also style link accordingly
             link.style("stroke-opacity", function (o) {
                 if (o.normalized_score < 0.1) return opacity;
-                return o.source === d || o.target === d ? 1 : opacity;
+                return o.source === d || o.target === d ? .5 : opacity;
             });
             link.style("stroke", function (o) {
                 if (o.normalized_score < 0.1) {
