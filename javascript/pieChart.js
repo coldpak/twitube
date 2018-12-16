@@ -31,10 +31,16 @@ function PieChart(width = 500, height =500, radius=100) {
                        .innerRadius(radius - 30);
 
     return {
-        Update : (data) => {
+        Update : (dataset, user) => {
+            let data = getPieChartData(dataset, user)
             const path = chart.selectAll("path")
-                              .data(pie(data));
-            
+                              .data(pie(data), d => d.data['game']);
+            const text = chart.selectAll("text")
+                              .remove()
+                                              
+            path.exit()
+                .remove();
+
             path.transition()
                 .duration(200)
                 .attrTween("d", arcTween);
@@ -66,6 +72,7 @@ function PieChart(width = 500, height =500, radius=100) {
                 .text(function (d) {
                     return d.data["game"];
                 });
+
         }
     };
 
