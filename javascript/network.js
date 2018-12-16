@@ -2,12 +2,9 @@ var svg = d3.select('svg'),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
-var simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function (d) {
-        return d.id;
-    }))
-    .force("charge", d3.forceManyBody())
-    .force("center", d3.forceCenter(width / 2, height / 2));
+var radius = 25,
+    distance = 30
+    stroke = 15;
 
 defs = svg.append("defs");
 
@@ -52,7 +49,7 @@ paths.forEach(function(url) {
     );
 });
 
-var youtubeGraph, twitchGraph;
+var youtubeGraph, twitchGraph, graph;
 
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
@@ -97,12 +94,11 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     return nodes;
 }
 
-function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha) {
+function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
     var links = [];
     _youtubeLinks.forEach((link, i) => {
         let source = link.source, target = link.target;
         let _id = source + target;
-
         links.push({
             'source': source,
             'target': target,
@@ -120,27 +116,92 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha) {
 
         if (target_link){
             target_link['normalized_score'] += (1 - alpha) * link['normalized_score'];
+            if (target_link['normalized_score'] < dropout) target_link['normalized_score'] = 0;
         }
         else {
+            let score = (1 - alpha) * link['normalized_score']
+            if (score < dropout) {
+                score = 0
+            }
             links.push({
                 'source': source,
                 'target': target,
-                'normalized_score': (1 - alpha) * link['normalized_score']
+                'normalized_score': score
             });
         }
     });
-    
-    return links;
+    return links.filter(link => link.normalized_score != 0);
 }
 
-function merge(alpha=0.5) {
+function merge(alpha=0.5, dropout=0.1) {
     var _nodes = makeMergedNodes(youtubeGraph.nodes, twitchGraph.nodes, alpha);
-    var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha);
+    var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha, dropout);
 
     return { 
         'nodes': _nodes,
         'links': _links
     };
+}
+
+function makeForceSimulation(nodes) {
+    var simulation = d3.forceSimulation()
+    .nodes(nodes);
+
+    simulation
+        .force("charge_force", d3.forceManyBody().strength(-100))
+        .force("center_force", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(function (d) {
+            return radius * d.normalized_average_view + 0.5;
+        }).iterations(2))
+        .force("x", d3.forceX())
+        .force("y", d3.forceY());
+
+    return simulation;
+}
+
+function tickActions(node, link, label) {
+    //update circle positions each tick of the simulation 
+    node
+        .attr("cx", function (d) {
+            return d.x = Math.max(2, Math.min(width - 2, d.x));
+        })
+        .attr("cy", function (d) {
+            return d.y = Math.max(2, Math.min(height - 2, d.y));
+        });
+
+    //update link positions 
+    //simply tells one end of the line to follow one node around
+    //and the other end of the line to follow the other node around
+    link
+        .attr("x1", function (d) {
+            return d.source.x;
+        })
+        .attr("y1", function (d) {
+            return d.source.y;
+        })
+        .attr("x2", function (d) {
+            return d.target.x;
+        })
+        .attr("y2", function (d) {
+            return d.target.y;
+        });
+    label
+        .attr("x", function (d) {
+            return d.x;
+        })
+        .attr("y", function (d) {
+            return d.y;
+        });
+}
+
+function createLinkForce(links) {
+    //Create the link force 
+    //We need the id accessor to use named sources and targets 
+    return d3.forceLink(links)
+        .id(function (d) {
+            return d.id;
+        })
+        .distance(distance);
 }
 
 function init() {
@@ -160,193 +221,169 @@ function init() {
         )
     };
     */
-
-    var graph = merge();
-    // 
-
     // Create graph
-    var main = svg.append("g")
-        .attr("class", "graph");
+    graph = merge();
+    var main = svg.append("g").attr("id", "graph"),
+        node = main.append("g").selectAll(".node_circle"),
+        link = main.append("g").selectAll(".link"),
+        label = main.append("g").selectAll(".node_label");
+
+    // Add mouseup event to graph_view
+    document.getElementById('graph_view').addEventListener("mouseup", mouseUp);
 
     // Make force simulation
-    var simulation = d3.forceSimulation()
-        .nodes(graph.nodes);
+    var simulation = makeForceSimulation(graph.nodes);
+    
+    restart();
+    d3.timeout(function() {
+        restart(0.8);
+      }, 2000);
+    // Add event listeners.
+    function restart(alpha=0.5, dropout=0.1, scale_index=0) {
+        graph = merge(alpha, dropout)
+        // Create circles, General update pattern
+        node = node.data(graph.nodes, d => d.id);
 
-    simulation
-        .force("charge_force", d3.forceManyBody().strength(-70))
-        .force("center_force", d3.forceCenter(width / 2, height / 2))
-        .force("collide", d3.forceCollide().radius(function (d) {
-            return 20 * d.normalized_average_view + 0.5;
-        }).iterations(2))
-        .force("x", d3.forceX())
-        .force("y", d3.forceY());
-
-    // Create circles
-    var node = main.selectAll(".node_circle")
-        .data(graph.nodes)
-            .enter().append("circle")
+        node.exit().transition()
+            .attr("r", 0).remove();
+        node.transition()
+            .duration(1000)
+            .attr("r", function (node) {
+                return radius * node[influenceScale[scale_index]];
+            });
+        node = node.enter().append("circle")
                 .attr("class", ".node_circle")
                 .attr("r", function (node) {
-                    return 20 * node[influenceScale[0]];
+                    return radius * node[influenceScale[scale_index]];
                 })
                 // .attr("fill", function (d) {
                 //     return kind_to_color(d).toString();
                 // })
-                .on("mousedown", mouseOver(0))
-                .call(drag(simulation));
-    document.body.addEventListener("mouseup", mouseOut);
+                .on("mousedown", mouseDown(0))
+                .call(drag(simulation))
+                .merge(node);
+        
+        //draw lines for the links 
+        link = link.data(graph.links, d => d.source + "-" + d.target);
+        link.exit().transition()
+            .attr("stroke-width", 0).remove();
+        link.transition()
+            .duration(1000)
+            .attr("stroke-width", function(d) {
+                return stroke * d.normalized_score;
+            });
+        link = link.enter().append("line")
+            .attr("class", "link")
+            .attr("marker-end", "url(#arrow)")
+            .attr("stroke-width", function (d) {
+                return stroke * d.normalized_score;
+            })
+            .merge(link);
+        // label nodes with alias
+        label = label.data(graph.nodes, d => d.id)
+        label.exit().remove();
 
-    //add tick instructions: 
-    simulation.on("tick", tickActions);
-
-    //Create the link force 
-    //We need the id accessor to use named sources and targets 
-
-    var link_force = d3.forceLink(graph.links)
-        .id(function (d) {
-            return d.id;
-        })
-        .distance(40);
-
-    simulation.force("links", link_force);
-
-    //draw lines for the links 
-    var link = main.selectAll(".link")
-        .data(graph.links)
-        .enter().append("line")
-        .attr("class", "link")
-        .attr("marker-end", "url(#arrow)")
-        .attr("stroke-width", function (d) {
-            return 5 * Math.sqrt(d.normalized_score)
+        label = label.enter().append("text")
+                    .attr("class", "node_label")
+                    .attr("dx", ".4em")
+                    .attr("dy", ".4em")
+                    .attr("font-family", "Verdana")
+                    .attr("font-size", 10)
+                    .style("fill", "#000000")
+                    .text(function (d) {
+                        return d.alias;
+                    })
+                    .merge(label);
+        simulation.nodes(graph.nodes);
+        // Create Link Forces
+        simulation.force("links", createLinkForce(graph.links));
+        // Add tick instructions: 
+        simulation.on("tick", () => tickActions(node, link, label));
+        // build a dictionary of nodes that are linked
+        var linkedByIndex = {};
+        graph.links.forEach(function (d) {
+            if (d.normalized_score < 0.1) linkedByIndex[d.source.index + "," + d.target.index] = false; // TODO: dropout rate
+            else linkedByIndex[d.source.index + "," + d.target.index] = true;
         });
-    // label nodes with alias
-    var label = main.selectAll(".node_label")
-        .data(graph.nodes)
-        .enter().append("text")
-        .attr("class", "node_label")
-        .attr("dx", ".4em")
-        .attr("dy", ".4em")
-        .attr("font-family", "Verdana")
-        .attr("font-size", 10)
-        .style("fill", "#000000")
-        .text(function (d) {
-            return d.alias;
-        });
+        
+        // check the dictionary to see if nodes are linked
+        function isConnected(a, b) {
+            return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
+        }
 
-    function tickActions() {
-        //update circle positions each tick of the simulation 
-        node
-            .attr("cx", function (d) {
-                return d.x = Math.max(2, Math.min(width - 2, d.x));
-            })
-            .attr("cy", function (d) {
-                return d.y = Math.max(2, Math.min(height - 2, d.y));
-            });
+        function outlinkExist(a, b) {
+            return linkedByIndex[a.index + "," + b.index];
+        }
 
-        //update link positions 
-        //simply tells one end of the line to follow one node around
-        //and the other end of the line to follow the other node around
-        link
-            .attr("x1", function (d) {
-                return d.source.x;
-            })
-            .attr("y1", function (d) {
-                return d.source.y;
-            })
-            .attr("x2", function (d) {
-                return d.target.x;
-            })
-            .attr("y2", function (d) {
-                return d.target.y;
-            });
-        label
-            .attr("x", function (d) {
-                return d.x;
-            })
-            .attr("y", function (d) {
-                return d.y;
-            });
-    }
-    // build a dictionary of nodes that are linked
-    var linkedByIndex = {};
-    graph.links.forEach(function (d) {
-        if (d.normalized_score < 0.1) linkedByIndex[d.source.index + "," + d.target.index] = false; // TODO: dropout rate
-        else linkedByIndex[d.source.index + "," + d.target.index] = true;
-    });
-
-    // check the dictionary to see if nodes are linked
-    function isConnected(a, b) {
-        return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
-    }
-
-    function outlinkExist(a, b) {
-        return linkedByIndex[a.index + "," + b.index];
-    }
-
-    function mouseOver(opacity) {
-        return function (d) {
-            // check all other nodes to see if they're connected
-            // to this one. if so, keep the opacity at 1, otherwise
-            // fade
-            node.style("stroke-opacity", function (o) {
-                thisOpacity = isConnected(d, o) ? 1 : opacity;
-                return thisOpacity;
-            });
-            node.style("fill-opacity", function (o) {
-                thisOpacity = isConnected(d, o) ? 1 : 0.2;
-                return thisOpacity;
-            });
-            // also style link accordingly
-            link.style("stroke-opacity", function (o) {
-                if (o.normalized_score < 0.1) return opacity;
-                return o.source === d || o.target === d ? .5 : opacity;
-            });
-            link.style("stroke", function (o) {
-                if (o.normalized_score < 0.1) {
+        function mouseDown(opacity, dropout=0.1) {
+            return function (d) {
+                // check all other nodes to see if they're connected
+                // to this one. if so, keep the opacity at 1, otherwise
+                // fade
+                label.style("opacity", function (o) {
+                    thisOpacity = isConnected(d, o) ? 1 : 0.2;
+                    return thisOpacity;
+                });
+                node.style("stroke-opacity", function (o) {
+                    thisOpacity = isConnected(d, o) ? 1 : 0.2;
+                    return thisOpacity;
+                });
+                node.style("fill-opacity", function (o) {
+                    thisOpacity = isConnected(d, o) ? 1 : 0.2;
+                    return thisOpacity;
+                });
+                // also style link accordingly
+                link.style("stroke-opacity", function (o) {
+                    if (o.normalized_score < dropout) return opacity;
+                    return o.source === d || o.target === d ? .5 : opacity;
+                });
+                link.style("stroke", function (o) {
+                    if (o.normalized_score < 0.1) {
+                        return "#ddd";
+                    }
+                    // out-link
+                    if (o.source === d) {
+                        return outlinkExist(o.target, d) ? "#922" : "#292";
+                    }
+                    // in-link
+                    if (o.target === d) {
+                        return outlinkExist(d, o.source) ? "#922" : "#992";
+                    }
                     return "#ddd";
-                }
-                // out-link
-                if (o.source === d) {
-                    return outlinkExist(o.target, d) ? "#922" : "#292";
-                }
-                // in-link
-                if (o.target === d) {
-                    return outlinkExist(d, o.source) ? "#922" : "#229";
-                }
-                return "#ddd";
-            });
-            link.style("fill", function (o) {
-                if (o.normalized_score < 0.1) {
+                });
+                link.style("fill", function (o) {
+                    if (o.normalized_score < dropout) {
+                        return "#ddd";
+                    }
+                    // out-link
+                    if (o.source === d) {
+                        return outlinkExist(o.target, d) ? "#922" : "#292";
+                    }
+                    // in-link
+                    if (o.target === d) {
+                        return outlinkExist(d, o.source) ? "#922" : "#992";
+                    }
                     return "#ddd";
-                }
-                // out-link
-                if (o.source === d) {
-                    return outlinkExist(o.target, d) ? "#922" : "#292";
-                }
-                // in-link
-                if (o.target === d) {
-                    return outlinkExist(d, o.source) ? "#922" : "#229";
-                }
-                return "#ddd";
-            });
-            link.attr('marker-end', function (o) {
-                if (o.normalized_score < 0.1) {
-                    return null;
-                }
-                // out-link
-                if (o.source === d) {
-                    return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
-                }
-                // in-link
-                if (o.target === d) {
-                    return outlinkExist(d, o.source) ? 'url(#bothArrow)' : 'url(#inArrow)';
-                }
-                return 'url(#arrow)';
-            });
-        };
-    }
-
-    function mouseOut() {
+                });
+                link.attr('marker-end', function (o) {
+                    if (o.normalized_score < dropout) {
+                        return null;
+                    }
+                    // out-link
+                    if (o.source === d) {
+                        return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
+                    }
+                    // in-link
+                    if (o.target === d) {
+                        return outlinkExist(d, o.source) ? 'url(#bothArrow)' : 'url(#inArrow)';
+                    }
+                    return 'url(#arrow)';
+                });
+            };
+        }
+    } 
+    function mouseUp() {
+        label.style("opacity", 1);
         node.style("stroke-opacity", 1);
         node.style("fill-opacity", 1);
         link.style("stroke-opacity", .2);
@@ -354,6 +391,7 @@ function init() {
         link.attr('marker-end', 'url(#arrow)');
     }
 }
+
 
 drag = function (simulation) {
 
