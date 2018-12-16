@@ -23,6 +23,7 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = '../../da
     alias["서새봄냥"] = '서새봄'
     alias["연두는말안드뤄"] = '연두'
     alias["형독방송"] = '형독'
+    alias["날게렌"] = '게렌'
     alias["흐쟁이덩"] = '흐쟁이'
 
     weekly_nodes = createNode(weekly_influence_summary, weekly_SRA, alias)
