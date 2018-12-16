@@ -93,7 +93,7 @@
   function translate(x,y) {
     return 'translate(' + x + ', ' + y + ')';
   }
-  d3.json("data/1812081200.json").then(function(graph) {
+  d3.json("data/youtube-181214.json").then(function(graph) {
     var data = graph.nodes;
     
     var maxXData = d3.max(data, d => d.subscriberCount);
