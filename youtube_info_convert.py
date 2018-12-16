@@ -28,6 +28,7 @@ def YoutubeConvert(file_path, out_dir="data"):
     names["서새봄냥"] = '서새봄'
     names["연두는말안드뤄"] = '연두'
     names["형독방송"] = '형독'
+    names["날게렌"] = '게렌'
     num = len(namesArray)
     # Park Rank Algorithm(PRA) for video tags
     invalidTags = ['샤이니', '더샤이', '게임']
@@ -38,6 +39,7 @@ def YoutubeConvert(file_path, out_dir="data"):
         source = namesArray.index(key)
         # print('from: ', namesArray[source])
         recent_view_count = 0
+        recent_average_view_count = 0
         for video in videos:
             recent_view_count += int(video['statistics']['viewCount'])
             for tag in video['tags']:
@@ -83,7 +85,7 @@ def YoutubeConvert(file_path, out_dir="data"):
             'alias': names[_id],
             'averageView': int(channel_infos["viewCount"])/int(channel_infos["videoCount"]),
             'recent_average_view': recent_average_view_array[i],
-            'subscriberCount': channel_infos['subscriberCount'],
+            'subscriberCount': int(channel_infos['subscriberCount']),
             'pra_score': 0,
             'inlink_count': 0,
             'outlink_count': 0,

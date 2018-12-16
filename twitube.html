@@ -74,6 +74,14 @@
     </div>
   </div>
   <div class="infos">
+    <div class="info_basic">
+      <div class="info_name"></div>
+      <div class="info_average_view"></div>
+    </div>
+    <div class="info_graphs">
+    </div>
+    <div class="info_recommend">
+    </div>
   </div>
 <script src="./lib/d3/d3.min.js"></script>
 <script>
@@ -257,6 +265,9 @@
             }
             return 'url(#arrow)';
         });
+        
+        // About infos section
+        updateInfosSection(d);
       };
     } 
     function mouseOut() {
@@ -267,6 +278,12 @@
         link.attr('marker-end', 'url(#arrow)');
     } 
 });
+
+function updateInfosSection(d) {
+  document.getElementsByClassName("info_name")[0].innerHTML = d.alias;
+  document.getElementsByClassName("info_average_view")[0].innerHTML = 
+    `최근 3주 동영상 당 평균 시청 횟수: ${d.recent_average_view}<br/>구독자 수: ${d.subscriberCount}<br/>YouTube 로열티 지수: ${d.recent_average_view/d.subscriberCount}`;
+}
 
 drag = function(simulation) {
   
