@@ -66,7 +66,7 @@ d3.json("data/youtube-181214.json").then(function (graph) {
         .enter().append("circle")
         .attr("class", ".node_circle")
         .attr("r", function (d) {
-            return 20 * d.normalized_subscriber_count;
+            return 20 * d.normalized_average_view;
         })
         .attr("fill", function (d) {
             return kind_to_color(d).toString();
