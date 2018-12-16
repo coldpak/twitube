@@ -34,7 +34,7 @@
             "normalized_average_view": 0.0762285014213835
         },
         {
-            "id": "카라멜",
+            "id": "카라멜_",
             "alias": "카라멜",
             "recent_average_view": 37725.642857142855,
             "subscriber_count": 63992,
@@ -199,7 +199,7 @@
             "normalized_average_view": 0.4120976289741478
         },
         {
-            "id": "매드라이프",
+            "id": "매드라이프_",
             "alias": "매드라이프",
             "recent_average_view": 80211.70588235294,
             "subscriber_count": 136834,
@@ -661,7 +661,7 @@
             "normalized_average_view": 0.1510540278472433
         },
         {
-            "id": "김재원",
+            "id": "김재원_",
             "alias": "김재원",
             "recent_average_view": 395951.6666666667,
             "subscriber_count": 1109416,
@@ -716,7 +716,7 @@
             "normalized_average_view": 0.32494024325901694
         },
         {
-            "id": "매도우이헌터",
+            "id": "메도우이헌터",
             "alias": "매도우이헌터",
             "recent_average_view": 59019.5,
             "subscriber_count": 226136,
@@ -991,7 +991,7 @@
             "normalized_average_view": 0.16204149703411985
         },
         {
-            "id": "김뚜띠",
+            "id": "김뚜띠_",
             "alias": "김뚜띠",
             "recent_average_view": 18404.0,
             "subscriber_count": 141315,
@@ -1013,7 +1013,7 @@
             "normalized_average_view": 0.01924035696155712
         },
         {
-            "id": "동수칸",
+            "id": "한동숙",
             "alias": "동수칸",
             "recent_average_view": 47845.32,
             "subscriber_count": 101724,
@@ -1202,7 +1202,7 @@
         },
         {
             "source": "우주하마",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 20,
             "score": 1139.7155305468561,
             "normalized_score": 0.1262068107410593
@@ -1279,7 +1279,7 @@
         },
         {
             "source": "테스터훈",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 1,
             "score": 10713.032258064515,
             "normalized_score": 0.3869374501136685
@@ -1559,7 +1559,7 @@
         },
         {
             "source": "초승달",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 2,
             "score": 968.2033898305085,
             "normalized_score": 0.11632360646627678
@@ -1580,7 +1580,7 @@
         },
         {
             "source": "초승달",
-            "target": "동수칸",
+            "target": "한동숙",
             "count": 1,
             "score": 859.6279069767442,
             "normalized_score": 0.10960738387036219
@@ -1664,7 +1664,7 @@
         },
         {
             "source": "와나나",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 2,
             "score": 6110.015873015873,
             "normalized_score": 0.29221716853108276
@@ -1678,7 +1678,7 @@
         },
         {
             "source": "홍개",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 22,
             "score": 5627.890909090911,
             "normalized_score": 0.2804512592052305
@@ -1734,7 +1734,7 @@
         },
         {
             "source": "피유",
-            "target": "동수칸",
+            "target": "한동숙",
             "count": 2,
             "score": 1769.1,
             "normalized_score": 0.1572391727548271
@@ -1755,7 +1755,7 @@
         },
         {
             "source": "닥터준_라인하르트",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 18,
             "score": 703.4874179410002,
             "normalized_score": 0.09915456788882297
@@ -1825,7 +1825,7 @@
         },
         {
             "source": "탬탬버린",
-            "target": "김뚜띠",
+            "target": "김뚜띠_",
             "count": 2,
             "score": 5662.64705882353,
             "normalized_score": 0.2813159173115561
@@ -1895,7 +1895,7 @@
         },
         {
             "source": "오킹",
-            "target": "김뚜띠",
+            "target": "김뚜띠_",
             "count": 1,
             "score": 2059.2307692307695,
             "normalized_score": 0.16964343924622755
@@ -1923,7 +1923,7 @@
         },
         {
             "source": "날게렌",
-            "target": "김재원",
+            "target": "김재원_",
             "count": 14,
             "score": 3724.437847866418,
             "normalized_score": 0.22814708525276195
@@ -2154,7 +2154,7 @@
         },
         {
             "source": "연두는말안드뤄",
-            "target": "동수칸",
+            "target": "한동숙",
             "count": 5,
             "score": 1658.1725014625015,
             "normalized_score": 0.1522297076708033
@@ -2195,28 +2195,28 @@
             "normalized_score": 0.1565395840745161
         },
         {
-            "source": "김뚜띠",
+            "source": "김뚜띠_",
             "target": "삐부",
             "count": 7,
             "score": 1062.98085190598,
             "normalized_score": 0.12188416312751905
         },
         {
-            "source": "김뚜띠",
+            "source": "김뚜띠_",
             "target": "김진우",
             "count": 7,
             "score": 1062.98085190598,
             "normalized_score": 0.12188416312751905
         },
         {
-            "source": "김뚜띠",
+            "source": "김뚜띠_",
             "target": "탬탬버린",
             "count": 7,
             "score": 1062.98085190598,
             "normalized_score": 0.12188416312751905
         },
         {
-            "source": "김뚜띠",
+            "source": "김뚜띠_",
             "target": "코렛트",
             "count": 2,
             "score": 987.7073529411765,
@@ -2279,14 +2279,14 @@
             "normalized_score": 0.008964529812225036
         },
         {
-            "source": "동수칸",
+            "source": "한동숙",
             "target": "갱생레바",
             "count": 1,
             "score": 2914.5,
             "normalized_score": 0.2018211092812024
         },
         {
-            "source": "동수칸",
+            "source": "한동숙",
             "target": "텔론_",
             "count": 4,
             "score": 4663.948076923077,

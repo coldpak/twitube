@@ -30,7 +30,121 @@ arrowFactory(defs, "inArrow");
 arrowFactory(defs, "outArrow");
 arrowFactory(defs, "bothArrow");
 
-d3.json("data/youtube-181214.json").then(function (graph) {
+var paths = [
+    'data/youtube-181214.json',
+    'data/twitch-181214.json'
+];
+
+var promises = [];
+
+paths.forEach(function(url) {
+    promises.push(
+        new Promise(function(resolve, reject) {
+            d3.json(url)
+                .then(function(res) {
+                    resolve(res);
+                })
+                .catch(function(err) {
+                    console.error(err);
+                    reject(err);
+                });
+        })
+    );
+});
+
+var youtubeGraph, twitchGraph;
+
+Promise.all(promises).then(function(values) {
+    youtubeGraph = values[0];
+    twitchGraph = values[1];
+    init();
+
+    // pie chart test
+    var pieChart = PieChart();
+    pieChart_data = twitchGraph.nodes.filter((d) => d.id == "얍얍")[0]["games"]
+    pieChart.Update(pieChart_data)
+});
+
+var nodeMappingTable = {};
+var linkMappingTable = {};
+
+var influenceScale = ['normalized_view', 'normalize_follower', 'normalized_score'];
+
+function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
+    var nodes = [];
+    _youtubeNodes.forEach((node, i) => {
+        let _id = node.id;
+
+        nodes.push({
+            'id' : _id,
+            'alias' : node.alias,
+            'normalized_view' : alpha * node['normalized_average_view'],
+            'normalized_follower' : alpha * node['normalized_subscriber_count'],
+            'normalized_score' : alpha * node['normalized_pra_score']
+        });
+
+        if (!nodeMappingTable[_id]) nodeMappingTable[_id] = i;
+    });
+
+    _twitchNodes.forEach((node, i) => {
+        let index = nodeMappingTable[node.id];
+        let target_node = nodes[index];
+        
+        target_node['normalized_view'] += (1 - alpha) * node['average_viewer']['normalized_viewer'];
+        target_node['normalized_follower'] += (1 - alpha) * node['normalized_followers'];
+        target_node['normalized_score'] += (1 - alpha) * node['normalized_sra_score'];
+    });
+    return nodes;
+}
+
+function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha) {
+    var links = [];
+    _youtubeLinks.forEach((link, i) => {
+        let source = link.source, target = link.target;
+        let _id = source + target;
+
+        links.push({
+            'source': source,
+            'target': target,
+            'normalized_score': alpha * link['normalized_score']
+        });
+
+        if (!linkMappingTable[_id]) linkMappingTable[_id] = i;
+    });
+
+    _twitchLinks.forEach((link, i) => {
+        let source = link.source, target = link.target;
+        let _id = source + target;
+        let index = linkMappingTable[_id];
+        let target_link =  links[index];
+
+        if (target_link){
+            target_link['normailized_score'] += (1 - alpha) * link['normalized_score'];
+        }
+        else {
+            links.push({
+                'source': source,
+                'target': target,
+                'normalized_score': (1 - alpha) * link['normalized_score']
+            });
+        }
+    });
+    
+    return links;
+}
+
+function merge(alpha=1.0) {
+    var _nodes = makeMergedNodes(youtubeGraph.nodes, twitchGraph.nodes, alpha);
+    var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha);
+
+    return { 
+        'nodes': _nodes,
+        'links': _links
+    };
+}
+
+function init() {
+    /*
     var kinds = ["averageView", "subscriberCount", "recent_average_view"]
     var kind_max = {}
     for (var i = 0; i < kinds.length; i++) {
@@ -45,10 +159,16 @@ d3.json("data/youtube-181214.json").then(function (graph) {
             200
         )
     };
+    */
 
+    var graph = merge();
+    // 
+
+    // Create graph
     var main = svg.append("g")
         .attr("class", "graph");
 
+    // Make force simulation
     var simulation = d3.forceSimulation()
         .nodes(graph.nodes);
 
@@ -61,18 +181,19 @@ d3.json("data/youtube-181214.json").then(function (graph) {
         .force("x", d3.forceX())
         .force("y", d3.forceY());
 
+    // Create circles
     var node = main.selectAll(".node_circle")
         .data(graph.nodes)
-        .enter().append("circle")
-        .attr("class", ".node_circle")
-        .attr("r", function (d) {
-            return 20 * d.normalized_average_view;
-        })
-        .attr("fill", function (d) {
-            return kind_to_color(d).toString();
-        })
-        .on("mousedown", mouseOver(0.2))
-        .call(drag(simulation));
+            .enter().append("circle")
+                .attr("class", ".node_circle")
+                .attr("r", function (node) {
+                    return 20 * node[influenceScale[0]];
+                })
+                // .attr("fill", function (d) {
+                //     return kind_to_color(d).toString();
+                // })
+                .on("mousedown", mouseOver(0.2))
+                .call(drag(simulation));
     document.body.addEventListener("mouseup", mouseOut);
 
     //add tick instructions: 
@@ -221,7 +342,7 @@ d3.json("data/youtube-181214.json").then(function (graph) {
         link.style("stroke", "#ddd");
         link.attr('marker-end', 'url(#arrow)');
     }
-});
+}
 
 drag = function (simulation) {
 

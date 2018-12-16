@@ -1,0 +1,32 @@
+{
+  "name": "twitube",
+  "version": "1.0.0",
+  "description": "Influence Visualization Project for TwitchTV and YouTube",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CPark-02F/twitube.git"
+  },
+  "keywords": [
+    "twitch",
+    "youtube",
+    "game",
+    "visualize",
+    "streaming"
+  ],
+  "author": "OverEngineering",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CPark-02F/twitube/issues"
+  },
+  "homepage": "https://github.com/CPark-02F/twitube#readme",
+  "dependencies": {
+    "@material-ui/core": "^3.6.2"
+  }
+}

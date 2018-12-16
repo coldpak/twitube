@@ -9,4 +9,4 @@ if __name__ == '__main__' :
     date = '181214'
     TwitchConvert(date, os.path.join(base_dir, '../raw_data/twitch_data'), os.path.join(base_dir, '../data'))
     YoutubeConvert(date, os.path.join(base_dir, '../raw_data/youtube_data'), os.path.join(base_dir, '../data'))
-    merge_data_into_one(date, data_dir = os.path.join(base_dir, '../data'), out_dir = os.path.join(base_dir, '../data'))
+    #merge_data_into_one(date, data_dir = os.path.join(base_dir, '../data'), out_dir = os.path.join(base_dir, '../data'))
