@@ -56,16 +56,15 @@ var youtubeGraph, twitchGraph;
 
 var pieChart = PieChart();
 var lineChart = LineChart();
+
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
     twitchGraph = values[1];
     init();
 
+    // testing chart
     var user = '얍얍', key = 'viewer'
-    pieChart_data = getPieChartData(twitchGraph.nodes, user)
-    pieChart.Update(pieChart_data)
-
-    //lineChart_data = getLineChartData(twitchGraph.statistics["weekly_summary"], user, key)
+    pieChart.Update(twitchGraph.nodes, user)
     lineChart.Update(twitchGraph.statistics["weekly_summary"], user, key);
 });
 
