@@ -54,15 +54,19 @@ paths.forEach(function(url) {
 
 var youtubeGraph, twitchGraph;
 
+var pieChart = PieChart();
+var lineChart = LineChart();
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
     twitchGraph = values[1];
     init();
 
-    // pie chart test
-    var pieChart = PieChart();
-    pieChart_data = twitchGraph.nodes.filter((d) => d.id == "얍얍")[0]["games"]
+    var user = '얍얍', key = 'viewer'
+    pieChart_data = getPieChartData(twitchGraph.nodes, user)
     pieChart.Update(pieChart_data)
+
+    //lineChart_data = getLineChartData(twitchGraph.statistics["weekly_summary"], user, key)
+    lineChart.Update(twitchGraph.statistics["weekly_summary"], user, key);
 });
 
 var nodeMappingTable = {};
