@@ -315,7 +315,7 @@ function init() {
             return linkedByIndex[a.index + "," + b.index];
         }
 
-        function mouseDown(opacity, dropout=0.1) {
+        function mouseDown(opacity) {
             return function (d) {
                 // check all other nodes to see if they're connected
                 // to this one. if so, keep the opacity at 1, otherwise
@@ -334,7 +334,6 @@ function init() {
                 });
                 // also style link accordingly
                 link.style("stroke-opacity", function (o) {
-                    if (o.normalized_score < dropout) return opacity;
                     return o.source === d || o.target === d ? .5 : opacity;
                 });
                 link.style("stroke", function (o) {
@@ -352,9 +351,6 @@ function init() {
                     return "#ddd";
                 });
                 link.style("fill", function (o) {
-                    if (o.normalized_score < dropout) {
-                        return "#ddd";
-                    }
                     // out-link
                     if (o.source === d) {
                         return outlinkExist(o.target, d) ? "#922" : "#292";
@@ -366,9 +362,6 @@ function init() {
                     return "#ddd";
                 });
                 link.attr('marker-end', function (o) {
-                    if (o.normalized_score < dropout) {
-                        return null;
-                    }
                     // out-link
                     if (o.source === d) {
                         return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
