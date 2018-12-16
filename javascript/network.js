@@ -119,7 +119,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha) {
         let target_link =  links[index];
 
         if (target_link){
-            target_link['normailized_score'] += (1 - alpha) * link['normalized_score'];
+            target_link['normalized_score'] += (1 - alpha) * link['normalized_score'];
         }
         else {
             links.push({
@@ -133,7 +133,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha) {
     return links;
 }
 
-function merge(alpha=1.0) {
+function merge(alpha=0.5) {
     var _nodes = makeMergedNodes(youtubeGraph.nodes, twitchGraph.nodes, alpha);
     var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha);
 
@@ -192,7 +192,7 @@ function init() {
                 // .attr("fill", function (d) {
                 //     return kind_to_color(d).toString();
                 // })
-                .on("mousedown", mouseOver(0.2))
+                .on("mousedown", mouseOver(0))
                 .call(drag(simulation));
     document.body.addEventListener("mouseup", mouseOut);
 
@@ -217,7 +217,7 @@ function init() {
         .attr("class", "link")
         .attr("marker-end", "url(#arrow)")
         .attr("stroke-width", function (d) {
-            return 6 * d.normalized_score
+            return 5 * Math.sqrt(d.normalized_score)
         });
     // label nodes with alias
     var label = main.selectAll(".node_label")
@@ -270,7 +270,8 @@ function init() {
     // build a dictionary of nodes that are linked
     var linkedByIndex = {};
     graph.links.forEach(function (d) {
-        linkedByIndex[d.source.index + "," + d.target.index] = 1;
+        if (d.normalized_score < 0.1) linkedByIndex[d.source.index + "," + d.target.index] = false; // TODO: dropout rate
+        else linkedByIndex[d.source.index + "," + d.target.index] = true;
     });
 
     // check the dictionary to see if nodes are linked
@@ -297,9 +298,13 @@ function init() {
             });
             // also style link accordingly
             link.style("stroke-opacity", function (o) {
+                if (o.normalized_score < 0.1) return opacity;
                 return o.source === d || o.target === d ? 1 : opacity;
             });
             link.style("stroke", function (o) {
+                if (o.normalized_score < 0.1) {
+                    return "#ddd";
+                }
                 // out-link
                 if (o.source === d) {
                     return outlinkExist(o.target, d) ? "#922" : "#292";
@@ -311,6 +316,9 @@ function init() {
                 return "#ddd";
             });
             link.style("fill", function (o) {
+                if (o.normalized_score < 0.1) {
+                    return "#ddd";
+                }
                 // out-link
                 if (o.source === d) {
                     return outlinkExist(o.target, d) ? "#922" : "#292";
@@ -322,6 +330,9 @@ function init() {
                 return "#ddd";
             });
             link.attr('marker-end', function (o) {
+                if (o.normalized_score < 0.1) {
+                    return null;
+                }
                 // out-link
                 if (o.source === d) {
                     return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
