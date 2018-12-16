@@ -1,5 +1,6 @@
 import twitch.daily_converter as dc
 import datetime as dt
+import math
 
 def readWeeklyFiles(data_dir, date):
     base_time = dt.datetime(2000 + int(date[0:2]), int(date[2:4]), int(date[4:6]))
@@ -77,6 +78,8 @@ def getWeeklySummary(weekly_users, weekly_influence_data) :
 
 def getWeeklyInfluenceSummary(weekly_summary) :
     weekly_influence = {}
+    max_follower = 0.0
+
     for daily_summary in weekly_summary :
         summary = daily_summary['summary']
         if len(summary) > 0 :
@@ -85,6 +88,7 @@ def getWeeklyInfluenceSummary(weekly_summary) :
                     weekly_influence[user] = {
                         'averageViewers' : {
                             'viewer' : [],
+                            'normalized_viewer' : [],
                             'duration' : [],
                         },
                         'followers' : [],
@@ -92,8 +96,13 @@ def getWeeklyInfluenceSummary(weekly_summary) :
                     }
                 if len(value['averageViewers']) > 0 :
                     weekly_influence[user]['averageViewers']['viewer'].append(value['averageViewers']['viewer'])
+                    weekly_influence[user]['averageViewers']['normalized_viewer'].append(value['averageViewers']['normalized_viewer'])
                     weekly_influence[user]['averageViewers']['duration'].append(value['averageViewers']['duration'])
                 weekly_influence[user]['followers'].append(value['followers'])
+                
+                # update max followers
+                max_follower = max(max_follower, value['followers'])
+                
                 for game_data in value['games'] :
                     game = game_data['game']
                     duration = game_data['duration']
@@ -104,12 +113,15 @@ def getWeeklyInfluenceSummary(weekly_summary) :
     
     weekly_influence_summary = {}
     for user, value in weekly_influence.items() :
+        followers = value['followers'].pop()
         weekly_influence_summary[user] = {
             'averageViewers' : {
                 'viewer' : sum(value['averageViewers']['viewer']) / len(value['averageViewers']['viewer']) if len(value['averageViewers']['viewer']) > 0 else 0.0 ,
+                'normalized_viewer' : sum(value['averageViewers']['normalized_viewer']) / len(value['averageViewers']['normalized_viewer']) if len(value['averageViewers']['normalized_viewer']) > 0 else 0.0 ,
                 'duration' : sum(value['averageViewers']['duration'])
             },
-            'followers' : value['followers'],
+            'followers' : followers,
+            'normalized_followers' : math.sqrt(followers / max_follower),
             'games' : []
         }
         for game, duration in value['games'].items() :
