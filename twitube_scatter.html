@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<head>
+  <title>Twitube</title>
+  <meta name="description" content="Visualization of Korean Game streamers.">
+  <meta name="keywords" content="twitch,youtube,streamer,game,influence,power">
+  <meta name="author" content="Over Engineering">
+  <meta charset="utf-8">
+</head>
+<style>
+  body {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .page_template {
+    width: 800px;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .page_template .graph_view {
+    width: 800px;
+    height: 600px;
+    /* background: rgb(240, 174, 174); */
+  }
+  .infos {
+    width: calc(100vw - 800px);
+    height: 100vh;
+    background: rgb(169, 169, 247);
+  }
+  .page_template .control_panel {
+    width: 800px;
+    height: calc(100vh - 600px);
+    background: rgb(152, 243, 152);
+  }
+  .node_circle {
+    stroke: #777;
+    stroke-width: 1.0px;
+  }
+  .node_label {
+    pointer-events: none;
+  }
+  .link {
+    stroke: #777;
+    stroke-opacity: .2;
+  }
+  #arrow {
+    fill: #777;
+    fill-opacity: .2;
+  }
+  #outArrow {
+    fill: #292;
+    fill-opacity: 1;
+  }
+  #inArrow {
+    fill: #229;
+    fill-opacity: 1;
+  }
+  #bothArrow {
+    fill: #922;
+    fill-opacity: 1;
+  }
+</style>
+<body>
+  <!-- <svg width="960" height="600"> </svg> -->
+  <div class="page_template">
+    <svg id="graph_view" width="800" height="600">
+    </svg>
+    <div class="control_panel">
+    </div>
+  </div>
+  <div class="infos">
+    <div class="info_basic">
+      <div class="info_name"></div>
+      <div class="info_average_view"></div>
+    </div>
+    <div class="info_graphs">
+    </div>
+    <div class="info_recommend">
+    </div>
+  </div>
+<script src="./lib/d3/d3.min.js"></script>
+<script>
+  var svg = d3.select('svg'),
+    width = +svg.attr("width") - 50,
+    height = +svg.attr("height") - 50;
+  var plot = svg.append('g')
+                .attr('transform', translate(30, 20));
+  function translate(x,y) {
+    return 'translate(' + x + ', ' + y + ')';
+  }
+  d3.json("data/1812081200.json").then(function(graph) {
+    var data = graph.nodes;
+    
+    var maxXData = d3.max(data, d => d.subscriberCount);
+    var maxYData = d3.max(data, d => d.subscriberCount ? d.recent_average_view / d.subscriberCount : 0);
+    var xscale = d3.scaleLinear().domain([0, maxXData]).range([0, width])
+    var yscale = d3.scaleLinear().domain([0, maxYData]).range([height, 0]);
+    
+    var xAxis = d3.axisBottom(xscale);
+    var yAxis = d3.axisLeft(yscale);
+    
+    plot
+      .append("g")
+        .attr("class", "x")
+        .attr("transform", translate(0, height))
+        .call(xAxis);
+
+    plot
+      .append("g")
+        .attr("class", "y")
+        .call(yAxis);
+
+    plot
+      .selectAll(".x")
+        .transition()
+        .duration(450)
+        .call(xAxis);
+    plot
+      .selectAll(".y")
+        .transition()
+        .duration(450)
+        .call(yAxis);
+    
+    var node = plot.selectAll(".node_circle")
+                  .data(data)
+                .enter().append("circle")
+                  .attr("class", ".node_circle")
+                  .attr("r", 2)
+                  .attr('cx', d => xscale(d.subscriberCount))
+                  .attr('cy', d => yscale(d.subscriberCount ? d.recent_average_view / d.subscriberCount : 0))
+                  .attr("fill", '#777');
+                  // .on("mouseover", mouseOver(0.2))
+                  // .on("mouseout", mouseOut)
+
+    // label nodes with alias
+    var label = plot.selectAll(".node_label")
+                    .data(data)
+                  .enter().append("text")
+                    .attr("class", "node_label")
+                    .attr("dx", ".4em")
+                    .attr("dy", ".4em")
+                    .attr("font-family", "Verdana")
+                    .attr("font-size", 10)
+                    .style("fill", "#000000")
+                    .text(function(d) { return d.alias; });
+
+});
+
+function updateInfosSection(d) {
+  document.getElementsByClassName("info_name")[0].innerHTML = d.alias;
+  document.getElementsByClassName("info_average_view")[0].innerHTML = 
+    `최근 3주 동영상 당 평균 시청 횟수: ${d.recent_average_view}<br/>구독자 수: ${d.subscriberCount}<br/>YouTube 로열티 지수: ${d.recent_average_view/d.subscriberCount}`;
+}
+
+drag = function(simulation) {
+  
+  function dragstarted(d) {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  
+  function dragged(d) {
+    d.fx = d3.event.x;
+    d.fy = d3.event.y;
+  }
+  
+  function dragended(d) {
+    if (!d3.event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+  
+  return d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended);
+}
+</script>
