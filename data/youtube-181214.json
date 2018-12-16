@@ -3,1102 +3,1102 @@
         {
             "id": "빅헤드",
             "alias": "빅헤드",
-            "averageView": 39830.15045486354,
             "recent_average_view": 31017.947368421053,
-            "subscriberCount": 331773,
+            "subscriber_count": 331773,
             "pra_score": 18481.938110937124,
-            "inlink_count": 17,
-            "outlink_count": 2,
-            "pra_out_score": 8375.428571428572
+            "pra_out_score": 8375.428571428572,
+            "normalized_pra_score": 0.20390164915946288,
+            "normalized_subscriber_count": 0.5110265219809456,
+            "normalized_average_view": 0.24700733097307412
         },
         {
             "id": "풍월량",
             "alias": "풍월량",
-            "averageView": 26836.83599671263,
             "recent_average_view": 43362.19047619047,
-            "subscriberCount": 365528,
+            "subscriber_count": 365528,
             "pra_score": 49777.49921622403,
-            "inlink_count": 119,
-            "outlink_count": 1,
-            "pra_out_score": 2184.866666666667
+            "pra_out_score": 2184.866666666667,
+            "normalized_pra_score": 0.3346289569116461,
+            "normalized_subscriber_count": 0.5363931777457709,
+            "normalized_average_view": 0.2920511508833821
         },
         {
             "id": "김나성",
             "alias": "김나성",
-            "averageView": 1842.9478260869564,
             "recent_average_view": 2954.12,
-            "subscriberCount": 15016,
+            "subscriber_count": 15016,
             "pra_score": 3012.448695652174,
-            "inlink_count": 2,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.08232027493027602,
+            "normalized_subscriber_count": 0.10871764848899033,
+            "normalized_average_view": 0.0762285014213835
         },
         {
             "id": "카라멜",
             "alias": "카라멜",
-            "averageView": 32376.978723404256,
             "recent_average_view": 37725.642857142855,
-            "subscriberCount": 63992,
+            "subscriber_count": 63992,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.2244325078243057,
+            "normalized_average_view": 0.2724091180240367
         },
         {
             "id": "룩삼",
             "alias": "룩삼",
-            "averageView": 45519.08844065167,
             "recent_average_view": 54482.204545454544,
-            "subscriberCount": 95527,
+            "subscriber_count": 95527,
             "pra_score": 18366.534519530913,
-            "inlink_count": 55,
-            "outlink_count": 5,
-            "pra_out_score": 15734.559478021976
+            "pra_out_score": 15734.559478021976,
+            "normalized_pra_score": 0.20326405827980357,
+            "normalized_subscriber_count": 0.27421170551960794,
+            "normalized_average_view": 0.32736379885049044
         },
         {
             "id": "아구",
             "alias": "아구",
-            "averageView": 72588.74257425743,
             "recent_average_view": 53215.28,
-            "subscriberCount": 165857,
+            "subscriber_count": 165857,
             "pra_score": 11246.5,
-            "inlink_count": 1,
-            "outlink_count": 1,
-            "pra_out_score": 1742.64
+            "pra_out_score": 1742.64,
+            "normalized_pra_score": 0.15905805824584698,
+            "normalized_subscriber_count": 0.361318187727027,
+            "normalized_average_view": 0.3235351652975267
         },
         {
             "id": "쌍베",
             "alias": "쌍베",
-            "averageView": 7077.291759465479,
             "recent_average_view": 14471.39534883721,
-            "subscriberCount": 21051,
+            "subscriber_count": 21051,
             "pra_score": 3513.769230769231,
-            "inlink_count": 2,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.08890651774664991,
+            "normalized_subscriber_count": 0.12872392868387697,
+            "normalized_average_view": 0.1687168738389917
         },
         {
             "id": "캡틴잭",
             "alias": "캡틴잭",
-            "averageView": 31124.91891891892,
             "recent_average_view": 8213.5,
-            "subscriberCount": 38947,
+            "subscriber_count": 38947,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.17508942872359276,
+            "normalized_average_view": 0.12710640814705182
         },
         {
             "id": "우주하마",
             "alias": "우주하마",
-            "averageView": 122018.41054808686,
             "recent_average_view": 86142.28571428571,
-            "subscriberCount": 434907,
+            "subscriber_count": 434907,
             "pra_score": 1003.8181818181819,
-            "inlink_count": 1,
-            "outlink_count": 203,
-            "pra_out_score": 230633.7969360682
+            "pra_out_score": 230633.7969360682,
+            "normalized_pra_score": 0.04751978985187153,
+            "normalized_subscriber_count": 0.585087903580656,
+            "normalized_average_view": 0.41163425773772194
         },
         {
             "id": "흐쟁이덩",
             "alias": "흐쟁이",
-            "averageView": 12761.411149825784,
             "recent_average_view": 21591.090909090908,
-            "subscriberCount": 37472,
+            "subscriber_count": 37472,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.17174193713058247,
+            "normalized_average_view": 0.20608226009322222
         },
         {
             "id": "백설양",
             "alias": "백설양",
-            "averageView": 32850.45501285347,
             "recent_average_view": 20525.875,
-            "subscriberCount": 93920,
+            "subscriber_count": 93920,
             "pra_score": 2398.157894736842,
-            "inlink_count": 1,
-            "outlink_count": 2,
-            "pra_out_score": 1405.9310344827586
+            "pra_out_score": 1405.9310344827586,
+            "normalized_pra_score": 0.07344899697179098,
+            "normalized_subscriber_count": 0.27189546401495845,
+            "normalized_average_view": 0.20093433572712852
         },
         {
             "id": "테스터훈",
             "alias": "테스터훈",
-            "averageView": 288181.44662480376,
             "recent_average_view": 347666.75,
-            "subscriberCount": 1083011,
+            "subscriber_count": 1083011,
             "pra_score": 442023.3907012251,
-            "inlink_count": 50,
-            "outlink_count": 15,
-            "pra_out_score": 196730.0530302493
+            "pra_out_score": 196730.0530302493,
+            "normalized_pra_score": 0.9971709280174542,
+            "normalized_subscriber_count": 0.9232925989420864,
+            "normalized_average_view": 0.8269607449499277
         },
         {
             "id": "샤이__",
             "alias": "샤이",
-            "averageView": 194489.03488372092,
             "recent_average_view": 205044.0,
-            "subscriberCount": 118860,
+            "subscriber_count": 118860,
             "pra_score": 72684.46336996337,
-            "inlink_count": 5,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.4043596172193606,
+            "normalized_subscriber_count": 0.30587274696880895,
+            "normalized_average_view": 0.6350776781480331
         },
         {
             "id": "우정잉",
             "alias": "우정잉",
-            "averageView": 26802.781659388645,
             "recent_average_view": 17737.25,
-            "subscriberCount": 44097,
+            "subscriber_count": 44097,
             "pra_score": 11314.308585858587,
-            "inlink_count": 4,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.15953684246996924,
+            "normalized_subscriber_count": 0.18630625787867883,
+            "normalized_average_view": 0.1867869192759358
         },
         {
             "id": "김용녀",
             "alias": "김용녀",
-            "averageView": 19519.536177268616,
             "recent_average_view": 7788.4,
-            "subscriberCount": 162044,
+            "subscriber_count": 162044,
             "pra_score": 6476.343243243244,
-            "inlink_count": 5,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.12070128998604228,
+            "normalized_subscriber_count": 0.35714074313335303,
+            "normalized_average_view": 0.12377343381781529
         },
         {
             "id": "긍정인",
             "alias": "긍정인",
-            "averageView": 30027.448979591838,
             "recent_average_view": 56354.90909090909,
-            "subscriberCount": 41002,
+            "subscriber_count": 41002,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 22,
-            "pra_out_score": 31001.247619047615
+            "pra_out_score": 31001.247619047615,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.17964926349977464,
+            "normalized_average_view": 0.3329424663559648
         },
         {
             "id": "삐부",
             "alias": "삐부",
-            "averageView": 24296.748427672956,
             "recent_average_view": 35856.333333333336,
-            "subscriberCount": 68642,
+            "subscriber_count": 68642,
             "pra_score": 7440.865963341859,
-            "inlink_count": 7,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.12937749058085507,
+            "normalized_subscriber_count": 0.2324437562248996,
+            "normalized_average_view": 0.2655744274582277
         },
         {
             "id": "악녀",
             "alias": "악녀",
-            "averageView": 91722.35838926175,
             "recent_average_view": 86336.33333333333,
-            "subscriberCount": 263993,
+            "subscriber_count": 263993,
             "pra_score": 43566.20232919254,
-            "inlink_count": 9,
-            "outlink_count": 1,
-            "pra_out_score": 24529.75
+            "pra_out_score": 24529.75,
+            "normalized_pra_score": 0.31305585782131656,
+            "normalized_subscriber_count": 0.45584702636394786,
+            "normalized_average_view": 0.4120976289741478
         },
         {
             "id": "매드라이프",
             "alias": "매드라이프",
-            "averageView": 55060.851211072666,
             "recent_average_view": 80211.70588235294,
-            "subscriberCount": 136834,
+            "subscriber_count": 136834,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.3281859101560407,
+            "normalized_average_view": 0.39721184600432624
         },
         {
             "id": "천양",
             "alias": "천양",
-            "averageView": 11716.050460279577,
             "recent_average_view": 41306.13636363636,
-            "subscriberCount": 87069,
+            "subscriber_count": 87069,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.2617909919614937,
+            "normalized_average_view": 0.2850431461065902
         },
         {
             "id": "이선생84",
             "alias": "이선생",
-            "averageView": 18699.868528610354,
             "recent_average_view": 3288.5555555555557,
-            "subscriberCount": 92432,
+            "subscriber_count": 92432,
             "pra_score": 14374.447257278589,
-            "inlink_count": 13,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.1798218905988327,
+            "normalized_subscriber_count": 0.26973300798238775,
+            "normalized_average_view": 0.0804277477432811
         },
         {
             "id": "형독방송",
             "alias": "형독",
-            "averageView": 69156.28347689899,
             "recent_average_view": 178688.4,
-            "subscriberCount": 184680,
+            "subscriber_count": 184680,
             "pra_score": 143876.91162314388,
-            "inlink_count": 28,
-            "outlink_count": 20,
-            "pra_out_score": 390136.15598290606
+            "pra_out_score": 390136.15598290606,
+            "normalized_pra_score": 0.568908648637832,
+            "normalized_subscriber_count": 0.3812701922241048,
+            "normalized_average_view": 0.5928591071768875
         },
         {
             "id": "노돌리",
             "alias": "노돌리",
-            "averageView": 60207.61465400271,
             "recent_average_view": 41041.0,
-            "subscriberCount": 232753,
+            "subscriber_count": 232753,
             "pra_score": 10051.544334975368,
-            "inlink_count": 8,
-            "outlink_count": 1,
-            "pra_out_score": 1534.0
+            "pra_out_score": 1534.0,
+            "normalized_pra_score": 0.1503707544991989,
+            "normalized_subscriber_count": 0.4280264075795633,
+            "normalized_average_view": 0.284126854041676
         },
         {
             "id": "다주",
             "alias": "다주",
-            "averageView": 44034.78014184397,
             "recent_average_view": 24406.214285714286,
-            "subscriberCount": 296462,
+            "subscriber_count": 296462,
             "pra_score": 3159.654065789564,
-            "inlink_count": 30,
-            "outlink_count": 1,
-            "pra_out_score": 1003.8181818181819
+            "pra_out_score": 1003.8181818181819,
+            "normalized_pra_score": 0.08430760475712971,
+            "normalized_subscriber_count": 0.48306707472557114,
+            "normalized_average_view": 0.21910562422275737
         },
         {
             "id": "눈쟁이",
             "alias": "눈쟁이",
-            "averageView": 71867.85867620751,
             "recent_average_view": 45827.666666666664,
-            "subscriberCount": 406229,
+            "subscriber_count": 406229,
             "pra_score": 27620.095780216594,
-            "inlink_count": 32,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.24926400730684287,
+            "normalized_subscriber_count": 0.5654684546627932,
+            "normalized_average_view": 0.3002390576878021
         },
         {
             "id": "쉐리",
             "alias": "쉐리",
-            "averageView": 13070.137827445325,
             "recent_average_view": 4365.78,
-            "subscriberCount": 161795,
+            "subscriber_count": 161795,
             "pra_score": 2947.9443255298243,
-            "inlink_count": 29,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0814341600430146,
+            "normalized_subscriber_count": 0.356866242894348,
+            "normalized_average_view": 0.09266894933394264
         },
         {
             "id": "선바",
             "alias": "선바",
-            "averageView": 171807.37166666667,
             "recent_average_view": 111125.96296296296,
-            "subscriberCount": 466456,
+            "subscriber_count": 466456,
             "pra_score": 3517.5555555555557,
-            "inlink_count": 1,
-            "outlink_count": 1,
-            "pra_out_score": 10521.333333333332
+            "pra_out_score": 10521.333333333332,
+            "normalized_pra_score": 0.08895440625232569,
+            "normalized_subscriber_count": 0.6059381021162429,
+            "normalized_average_view": 0.4675317233063688
         },
         {
             "id": "철면수심",
             "alias": "철면수심",
-            "averageView": 14193.057736720555,
             "recent_average_view": 15475.883720930233,
-            "subscriberCount": 47226,
+            "subscriber_count": 47226,
             "pra_score": 28.751196172248804,
-            "inlink_count": 5,
-            "outlink_count": 559,
-            "pra_out_score": 88998.28834739146
+            "pra_out_score": 88998.28834739146,
+            "normalized_pra_score": 0.008042201337385419,
+            "normalized_subscriber_count": 0.19280287330597332,
+            "normalized_average_view": 0.17447413126034766
         },
         {
             "id": "햇살살",
             "alias": "햇살살",
-            "averageView": 425.8493150684931,
             "recent_average_view": 335.7142857142857,
-            "subscriberCount": 6297,
+            "subscriber_count": 6297,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 172,
-            "pra_out_score": 1155.32673749267
+            "pra_out_score": 1155.32673749267,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.07040277328660882,
+            "normalized_average_view": 0.02569734331567124
         },
         {
             "id": "플러리",
             "alias": "플러리",
-            "averageView": 23057.798403193614,
             "recent_average_view": 23017.6,
-            "subscriberCount": 36966,
+            "subscriber_count": 36966,
             "pra_score": 6846.022180568573,
-            "inlink_count": 43,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.12409838609125398,
+            "normalized_subscriber_count": 0.17057844459890975,
+            "normalized_average_view": 0.21278123973087434
         },
         {
             "id": "푸사",
             "alias": "푸사",
-            "averageView": 205397.09677419355,
             "recent_average_view": 70537.0,
-            "subscriberCount": 56250,
+            "subscriber_count": 56250,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 2,
-            "pra_out_score": 12824.909090909092
+            "pra_out_score": 12824.909090909092,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.21041862766051497,
+            "normalized_average_view": 0.3724875898766929
         },
         {
             "id": "견자희",
             "alias": "견자희",
-            "averageView": 46574.18831942789,
             "recent_average_view": 80975.66666666667,
-            "subscriberCount": 212703,
+            "subscriber_count": 212703,
             "pra_score": 8200.1,
-            "inlink_count": 1,
-            "outlink_count": 7,
-            "pra_out_score": 55659.07478632478
+            "pra_out_score": 55659.07478632478,
+            "normalized_pra_score": 0.1358177579259892,
+            "normalized_subscriber_count": 0.4091756001611799,
+            "normalized_average_view": 0.3990989467885789
         },
         {
             "id": "갱생레바",
             "alias": "레바",
-            "averageView": 360145.19548872183,
             "recent_average_view": 189969.18181818182,
-            "subscriberCount": 286074,
+            "subscriber_count": 286074,
             "pra_score": 57637.942689992735,
-            "inlink_count": 16,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.3600818390289078,
+            "normalized_subscriber_count": 0.4745282963064122,
+            "normalized_average_view": 0.611286622497194
         },
         {
             "id": "머독",
             "alias": "머독",
-            "averageView": 37619.51552116522,
             "recent_average_view": 39152.32,
-            "subscriberCount": 540996,
+            "subscriber_count": 540996,
             "pra_score": 444535.07625782525,
-            "inlink_count": 45,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 1.0,
+            "normalized_subscriber_count": 0.652559245947825,
+            "normalized_average_view": 0.27751219108143965
         },
         {
             "id": "김도",
             "alias": "김도",
-            "averageView": 13629.610336341264,
             "recent_average_view": 8096.38,
-            "subscriberCount": 106165,
+            "subscriber_count": 106165,
             "pra_score": 21442.851992438365,
-            "inlink_count": 13,
-            "outlink_count": 6,
-            "pra_out_score": 1897.913752913753
+            "pra_out_score": 1897.913752913753,
+            "normalized_pra_score": 0.21962827801371831,
+            "normalized_subscriber_count": 0.28907704223893527,
+            "normalized_average_view": 0.126196920514071
         },
         {
             "id": "김블루",
             "alias": "김블루",
-            "averageView": 437650.10754017305,
             "recent_average_view": 508385.75,
-            "subscriberCount": 1270440,
+            "subscriber_count": 1270440,
             "pra_score": 45080.341419062686,
-            "inlink_count": 22,
-            "outlink_count": 1,
-            "pra_out_score": 71553.5
+            "pra_out_score": 71553.5,
+            "normalized_pra_score": 0.31844950696681557,
+            "normalized_subscriber_count": 1.0,
+            "normalized_average_view": 1.0
         },
         {
             "id": "이초홍",
             "alias": "이초홍",
-            "averageView": 24809.131086142323,
             "recent_average_view": 76047.83333333333,
-            "subscriberCount": 109180,
+            "subscriber_count": 109180,
             "pra_score": 32489.254985754982,
-            "inlink_count": 7,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.27034407691250556,
+            "normalized_subscriber_count": 0.2931530826869426,
+            "normalized_average_view": 0.3867646189462042
         },
         {
             "id": "녹두로",
             "alias": "녹두로",
-            "averageView": 8771.907622504537,
             "recent_average_view": 6628.666666666667,
-            "subscriberCount": 88630,
+            "subscriber_count": 88630,
             "pra_score": 4453.2932432432435,
-            "inlink_count": 3,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.10008929482238345,
+            "normalized_subscriber_count": 0.2641273019516981,
+            "normalized_average_view": 0.11418693236199164
         },
         {
             "id": "초승달",
             "alias": "초승달",
-            "averageView": 18520.583409298084,
             "recent_average_view": 25602.727272727272,
-            "subscriberCount": 66401,
+            "subscriber_count": 66401,
             "pra_score": 19350.424951349953,
-            "inlink_count": 14,
-            "outlink_count": 12,
-            "pra_out_score": 7123.464651810736
+            "pra_out_score": 7123.464651810736,
+            "normalized_pra_score": 0.2086374355668232,
+            "normalized_subscriber_count": 0.2286178995903379,
+            "normalized_average_view": 0.224412183091726
         },
         {
             "id": "소풍왔니",
             "alias": "소풍왔니",
-            "averageView": 45621.73543307087,
             "recent_average_view": 69412.0,
-            "subscriberCount": 109832,
+            "subscriber_count": 109832,
             "pra_score": 13726.813697788697,
-            "inlink_count": 10,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.17572431225825216,
+            "normalized_subscriber_count": 0.29402710404191457,
+            "normalized_average_view": 0.3695052341162488
         },
         {
             "id": "heavyRainism",
             "alias": "heavyRainism",
-            "averageView": 101837.43157894736,
             "recent_average_view": 0,
-            "subscriberCount": 103767,
+            "subscriber_count": 103767,
             "pra_score": 2884.0,
-            "inlink_count": 1,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.08054611736545914,
+            "normalized_subscriber_count": 0.28579363415299597,
+            "normalized_average_view": 0.0
         },
         {
             "id": "제갈량",
             "alias": "제갈량",
-            "averageView": 9897.563357972545,
             "recent_average_view": 2674.3076923076924,
-            "subscriberCount": 56417,
+            "subscriber_count": 56417,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 22,
-            "pra_out_score": 1060.603220523182
+            "pra_out_score": 1060.603220523182,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.2107307509302184,
+            "normalized_average_view": 0.07252855121466105
         },
         {
             "id": "보물창고",
             "alias": "보물창고",
-            "averageView": 286104.67729083664,
             "recent_average_view": 0,
-            "subscriberCount": 257653,
+            "subscriber_count": 257653,
             "pra_score": 8593.518888888888,
-            "inlink_count": 3,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.1390376761708554,
+            "normalized_subscriber_count": 0.45033999868660607,
+            "normalized_average_view": 0.0
         },
         {
             "id": "와나나",
             "alias": "와나나",
-            "averageView": 140435.2857142857,
             "recent_average_view": 115947.66666666667,
-            "subscriberCount": 69758,
+            "subscriber_count": 69758,
             "pra_score": 24067.520742913,
-            "inlink_count": 5,
-            "outlink_count": 31,
-            "pra_out_score": 163651.91590955225
+            "pra_out_score": 163651.91590955225,
+            "normalized_pra_score": 0.23268193135161175,
+            "normalized_subscriber_count": 0.2343257041501265,
+            "normalized_average_view": 0.47756701423333187
         },
         {
             "id": "홍개",
             "alias": "홍개",
-            "averageView": 465653.1909090909,
             "recent_average_view": 309534.0,
-            "subscriberCount": 264337,
+            "subscriber_count": 264337,
             "pra_score": 12662.773522938003,
-            "inlink_count": 18,
-            "outlink_count": 25,
-            "pra_out_score": 140697.2727272728
+            "pra_out_score": 140697.2727272728,
+            "normalized_pra_score": 0.1687762768649137,
+            "normalized_subscriber_count": 0.4561439287940811,
+            "normalized_average_view": 0.7802926131699607
         },
         {
             "id": "중괄호",
             "alias": "중괄호",
-            "averageView": 1175.9216757741349,
             "recent_average_view": 2170.5416666666665,
-            "subscriberCount": 2012,
+            "subscriber_count": 2012,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.03979576967344193,
+            "normalized_average_view": 0.06534124108581645
         },
         {
             "id": "가이코",
             "alias": "가이코",
-            "averageView": 51150.06168286959,
             "recent_average_view": 0,
-            "subscriberCount": 271890,
+            "subscriber_count": 271890,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.46261481614976496,
+            "normalized_average_view": 0.0
         },
         {
             "id": "인간젤리",
             "alias": "인간젤리",
-            "averageView": 5483.839882482556,
             "recent_average_view": 17432.708333333332,
-            "subscriberCount": 44816,
+            "subscriber_count": 44816,
             "pra_score": 2735.9375,
-            "inlink_count": 1,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0784512862760227,
+            "normalized_subscriber_count": 0.18781897503015949,
+            "normalized_average_view": 0.18517644726435925
         },
         {
             "id": "소니쇼",
             "alias": "소니쇼",
-            "averageView": 10666.60606060606,
             "recent_average_view": 21332.25,
-            "subscriberCount": 65804,
+            "subscriber_count": 65804,
             "pra_score": 28191.869842591714,
-            "inlink_count": 47,
-            "outlink_count": 1,
-            "pra_out_score": 157.12121212121212
+            "pra_out_score": 157.12121212121212,
+            "normalized_pra_score": 0.2518308453885034,
+            "normalized_subscriber_count": 0.22758784694807632,
+            "normalized_average_view": 0.2048432454201492
         },
         {
             "id": "케인",
             "alias": "케인",
-            "averageView": 27104.615084525358,
             "recent_average_view": 35861.470588235294,
-            "subscriberCount": 83556,
+            "subscriber_count": 83556,
             "pra_score": 8710.156019857335,
-            "inlink_count": 9,
-            "outlink_count": 1,
-            "pra_out_score": 686.7727272727273
+            "pra_out_score": 686.7727272727273,
+            "normalized_pra_score": 0.1399780534038046,
+            "normalized_subscriber_count": 0.25645533676705756,
+            "normalized_average_view": 0.2655934516380334
         },
         {
             "id": "피유",
             "alias": "피유",
-            "averageView": 39806.06301369863,
             "recent_average_view": 35504.181818181816,
-            "subscriberCount": 46160,
+            "subscriber_count": 46160,
             "pra_score": 1247.9873160832065,
-            "inlink_count": 3,
-            "outlink_count": 7,
-            "pra_out_score": 11296.707692307693
+            "pra_out_score": 11296.707692307693,
+            "normalized_pra_score": 0.052984893809017525,
+            "normalized_subscriber_count": 0.1906144500843629,
+            "normalized_average_view": 0.2642670824504815
         },
         {
             "id": "얍얍",
             "alias": "얍얍",
-            "averageView": 23872.42539964476,
             "recent_average_view": 30330.380952380954,
-            "subscriberCount": 77668,
+            "subscriber_count": 77668,
             "pra_score": 8405.837662455107,
-            "inlink_count": 52,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.13751101312450062,
+            "normalized_subscriber_count": 0.24725437301931236,
+            "normalized_average_view": 0.2442543169344493
         },
         {
             "id": "닥터준_라인하르트",
             "alias": "닥터준",
-            "averageView": 76979.1662591687,
             "recent_average_view": 33358.61111111111,
-            "subscriberCount": 146200,
+            "subscriber_count": 146200,
             "pra_score": 8236.807204057204,
-            "inlink_count": 10,
-            "outlink_count": 78,
-            "pra_out_score": 57108.59566037946
+            "pra_out_score": 57108.59566037946,
+            "normalized_pra_score": 0.13612140808291406,
+            "normalized_subscriber_count": 0.33923183902687054,
+            "normalized_average_view": 0.2561576296241352
         },
         {
             "id": "서나랑",
             "alias": "서나랑",
-            "averageView": 27063.36283185841,
             "recent_average_view": 11044.666666666666,
-            "subscriberCount": 21143,
+            "subscriber_count": 21143,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.12900490561112696,
+            "normalized_average_view": 0.14739393796730793
         },
         {
             "id": "스틸로",
             "alias": "스틸로",
-            "averageView": 15261.406593406593,
             "recent_average_view": 8329.0,
-            "subscriberCount": 13998,
+            "subscriber_count": 13998,
             "pra_score": 6874.773376740822,
-            "inlink_count": 48,
-            "outlink_count": 10,
-            "pra_out_score": 4290.8
+            "pra_out_score": 4290.8,
+            "normalized_pra_score": 0.12435870067190707,
+            "normalized_subscriber_count": 0.10496775649979369,
+            "normalized_average_view": 0.12799698699653125
         },
         {
             "id": "액시스마이콜",
             "alias": "액시스마이콜",
-            "averageView": 85330.46647123489,
             "recent_average_view": 34903.85,
-            "subscriberCount": 639921,
+            "subscriber_count": 639921,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 1,
-            "pra_out_score": 2596.9375
+            "pra_out_score": 2596.9375,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.7097184602445812,
+            "normalized_average_view": 0.26202334248102654
         },
         {
             "id": "김진우",
             "alias": "김진우",
-            "averageView": 13871.013513513513,
             "recent_average_view": 10111.666666666666,
-            "subscriberCount": 29536,
+            "subscriber_count": 29536,
             "pra_score": 13985.21302216539,
-            "inlink_count": 9,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.17737055523101497,
+            "normalized_subscriber_count": 0.15247504145615795,
+            "normalized_average_view": 0.14103103329326383
         },
         {
             "id": "탬탬버린",
             "alias": "탬탬버린",
-            "averageView": 66515.55065195587,
             "recent_average_view": 128638.05555555556,
-            "subscriberCount": 253729,
+            "subscriber_count": 253729,
             "pra_score": 9500.096732572629,
-            "inlink_count": 8,
-            "outlink_count": 3,
-            "pra_out_score": 16987.941176470587
+            "pra_out_score": 16987.941176470587,
+            "normalized_pra_score": 0.1461877548525064,
+            "normalized_subscriber_count": 0.44689755060430003,
+            "normalized_average_view": 0.5030232386022138
         },
         {
             "id": "함군",
             "alias": "함군",
-            "averageView": 1454.9968704360526,
             "recent_average_view": 105.38095238095238,
-            "subscriberCount": 15559,
+            "subscriber_count": 15559,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 1,
-            "pra_out_score": 36.5
+            "pra_out_score": 36.5,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.11066588484578528,
+            "normalized_average_view": 0.014397410092938413
         },
         {
             "id": "삼식",
             "alias": "삼식",
-            "averageView": 113011.9013531209,
             "recent_average_view": 11600.0,
-            "subscriberCount": 665283,
+            "subscriber_count": 665283,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 1,
-            "pra_out_score": 1054.5454545454545
+            "pra_out_score": 1054.5454545454545,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.7236459460128842,
+            "normalized_average_view": 0.1510540278472433
         },
         {
             "id": "김재원",
             "alias": "김재원",
-            "averageView": 680168.5696670777,
             "recent_average_view": 395951.6666666667,
-            "subscriberCount": 1109416,
+            "subscriber_count": 1109416,
             "pra_score": 236282.28478776227,
-            "inlink_count": 79,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.7290588117549452,
+            "normalized_subscriber_count": 0.9344802625204395,
+            "normalized_average_view": 0.8825196890024952
         },
         {
             "id": "스피드소닉",
             "alias": "스피드소닉",
-            "averageView": 1947.5973236009731,
             "recent_average_view": 2035.1818181818182,
-            "subscriberCount": 4341,
+            "subscriber_count": 4341,
             "pra_score": 9912.878571428571,
-            "inlink_count": 3,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.14932993487852725,
+            "normalized_subscriber_count": 0.05845448160058688,
+            "normalized_average_view": 0.06327103264703457
         },
         {
             "id": "레니아워",
             "alias": "레니아워",
-            "averageView": 9465.610687022901,
             "recent_average_view": 18999.352941176472,
-            "subscriberCount": 7664,
+            "subscriber_count": 7664,
             "pra_score": 542.75,
-            "inlink_count": 1,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.03494193074641003,
+            "normalized_subscriber_count": 0.07766952845235395,
+            "normalized_average_view": 0.1933181902488919
         },
         {
             "id": "루시아",
             "alias": "루시아",
-            "averageView": 1913.0927941938828,
             "recent_average_view": 8247.666666666666,
-            "subscriberCount": 23344,
+            "subscriber_count": 23344,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.13555344448529877,
+            "normalized_average_view": 0.127370503558908
         },
         {
             "id": "고차비",
             "alias": "고차비",
-            "averageView": 19871.579268292684,
             "recent_average_view": 53678.5,
-            "subscriberCount": 52590,
+            "subscriber_count": 52590,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.20345787575552812,
+            "normalized_average_view": 0.32494024325901694
         },
         {
             "id": "매도우이헌터",
             "alias": "매도우이헌터",
-            "averageView": 40090.17158818835,
             "recent_average_view": 59019.5,
-            "subscriberCount": 226136,
+            "subscriber_count": 226136,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.4218982980067881,
+            "normalized_average_view": 0.3407227078313783
         },
         {
             "id": "옥냥이",
             "alias": "옥냥이",
-            "averageView": 82722.31839622642,
             "recent_average_view": 61162.395348837206,
-            "subscriberCount": 260643,
+            "subscriber_count": 260643,
             "pra_score": 8570.953215051331,
-            "inlink_count": 46,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.13885500704119008,
+            "normalized_subscriber_count": 0.4529455041553897,
+            "normalized_average_view": 0.34685308248163826
         },
         {
             "id": "텔론_",
             "alias": "텔론",
-            "averageView": 216692.5125,
             "recent_average_view": 134050.925,
-            "subscriberCount": 521641,
+            "subscriber_count": 521641,
             "pra_score": 107920.51998117474,
-            "inlink_count": 12,
-            "outlink_count": 83,
-            "pra_out_score": 658518.1873909063
+            "pra_out_score": 658518.1873909063,
+            "normalized_pra_score": 0.49271864545235294,
+            "normalized_subscriber_count": 0.6407797517225107,
+            "normalized_average_view": 0.5134973694704954
         },
         {
             "id": "치킨쿤",
             "alias": "치킨쿤",
-            "averageView": 29728.009310986963,
             "recent_average_view": 18045.14285714286,
-            "subscriberCount": 73661,
+            "subscriber_count": 73661,
             "pra_score": 15905.03606060606,
-            "inlink_count": 7,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.18915346948710157,
+            "normalized_subscriber_count": 0.2407918179675932,
+            "normalized_average_view": 0.1884011189719429
         },
         {
             "id": "오킹",
             "alias": "오킹",
-            "averageView": 9125.983870967742,
             "recent_average_view": 18880.11111111111,
-            "subscriberCount": 30491,
+            "subscriber_count": 30491,
             "pra_score": 1422.848484848485,
-            "inlink_count": 2,
-            "outlink_count": 7,
-            "pra_out_score": 15338.214568764572
+            "pra_out_score": 15338.214568764572,
+            "normalized_pra_score": 0.05657522768499472,
+            "normalized_subscriber_count": 0.15492045164116403,
+            "normalized_average_view": 0.19271059331217583
         },
         {
             "id": "홍방장",
             "alias": "홍방장",
-            "averageView": 27733.077324973878,
             "recent_average_view": 10977.918918918918,
-            "subscriberCount": 297332,
+            "subscriber_count": 297332,
             "pra_score": 191.39432552982407,
-            "inlink_count": 28,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.020749685157158027,
+            "normalized_subscriber_count": 0.48377536191885895,
+            "normalized_average_view": 0.14694788002233505
         },
         {
             "id": "충전용",
             "alias": "충전용",
-            "averageView": 19587.780821917808,
             "recent_average_view": 17624.666666666668,
-            "subscriberCount": 63420,
+            "subscriber_count": 63420,
             "pra_score": 5883.890909090909,
-            "inlink_count": 3,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.11504805703755827,
+            "normalized_subscriber_count": 0.2234271981102316,
+            "normalized_average_view": 0.18619318096478907
         },
         {
             "id": "침착맨",
             "alias": "침착맨",
-            "averageView": 27666.219941348972,
             "recent_average_view": 104498.23684210527,
-            "subscriberCount": 358657,
+            "subscriber_count": 358657,
             "pra_score": 8281.542607510053,
-            "inlink_count": 49,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.13649055599114557,
+            "normalized_subscriber_count": 0.5313278448143902,
+            "normalized_average_view": 0.4533752384491929
         },
         {
             "id": "공혁준",
             "alias": "공혁준",
-            "averageView": 50718.08622908623,
             "recent_average_view": 77397.38461538461,
-            "subscriberCount": 80497,
+            "subscriber_count": 80497,
             "pra_score": 8664.873376740821,
-            "inlink_count": 52,
-            "outlink_count": 1,
-            "pra_out_score": 22181.5
+            "pra_out_score": 22181.5,
+            "normalized_pra_score": 0.13961371802302794,
+            "normalized_subscriber_count": 0.2517171280362824,
+            "normalized_average_view": 0.3901813062195493
         },
         {
             "id": "딩셉션",
             "alias": "딩셉션",
-            "averageView": 17841.478340451496,
             "recent_average_view": 5266.428571428572,
-            "subscriberCount": 112490,
+            "subscriber_count": 112490,
             "pra_score": 22794.310610937122,
-            "inlink_count": 20,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.22644368492026307,
+            "normalized_subscriber_count": 0.2975636510805402,
+            "normalized_average_view": 0.10177975818208407
         },
         {
             "id": "왈도쿤",
             "alias": "왈도쿤",
-            "averageView": 61726.68031704095,
             "recent_average_view": 13475.2,
-            "subscriberCount": 142826,
+            "subscriber_count": 142826,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.3352945985345265,
+            "normalized_average_view": 0.16280619465796056
         },
         {
             "id": "날게렌",
             "alias": "게렌",
-            "averageView": 27022.76832844575,
             "recent_average_view": 47977.066666666666,
-            "subscriberCount": 93378,
+            "subscriber_count": 93378,
             "pra_score": 11255.781818181818,
-            "inlink_count": 2,
-            "outlink_count": 25,
-            "pra_out_score": 61866.12413712412
+            "pra_out_score": 61866.12413712412,
+            "normalized_pra_score": 0.15912368059468646,
+            "normalized_subscriber_count": 0.2711097923444547,
+            "normalized_average_view": 0.30719925727787345
         },
         {
             "id": "짬타수아",
             "alias": "짬타수아",
-            "averageView": 26930.05330243337,
             "recent_average_view": 23659.45,
-            "subscriberCount": 73785,
+            "subscriber_count": 73785,
             "pra_score": 3391.543026793027,
-            "inlink_count": 3,
-            "outlink_count": 19,
-            "pra_out_score": 12975.817588843905
+            "pra_out_score": 12975.817588843905,
+            "normalized_pra_score": 0.08734652830946817,
+            "normalized_subscriber_count": 0.24099440570241895,
+            "normalized_average_view": 0.21572756322292436
         },
         {
             "id": "홍차",
             "alias": "홍차",
-            "averageView": 19989.666666666668,
             "recent_average_view": 0,
-            "subscriberCount": 2529,
+            "subscriber_count": 2529,
             "pra_score": 6846.022180568573,
-            "inlink_count": 43,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.12409838609125398,
+            "normalized_subscriber_count": 0.044616688683040875,
+            "normalized_average_view": 0.0
         },
         {
             "id": "에렌디라",
             "alias": "에렌디라",
-            "averageView": 102645.3895071542,
             "recent_average_view": 0,
-            "subscriberCount": 282565,
+            "subscriber_count": 282565,
             "pra_score": 3506.785714285714,
-            "inlink_count": 2,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.08881812421626598,
+            "normalized_subscriber_count": 0.4716090211128951,
+            "normalized_average_view": 0.0
         },
         {
             "id": "아빠킹",
             "alias": "아빠킹",
-            "averageView": 47970.739338555264,
             "recent_average_view": 38035.19512195122,
-            "subscriberCount": 169067,
+            "subscriber_count": 169067,
             "pra_score": 334081.21869545314,
-            "inlink_count": 41,
-            "outlink_count": 1,
-            "pra_out_score": 11246.5
+            "pra_out_score": 11246.5,
+            "normalized_pra_score": 0.8669080049139465,
+            "normalized_subscriber_count": 0.36479791179637167,
+            "normalized_average_view": 0.27352444145243604
         },
         {
             "id": "뷜랑",
             "alias": "뷜랑",
-            "averageView": 15554.229202037352,
             "recent_average_view": 43375.25,
-            "subscriberCount": 63092,
+            "subscriber_count": 63092,
             "pra_score": 3517.5555555555557,
-            "inlink_count": 1,
-            "outlink_count": 8,
-            "pra_out_score": 101776.2232142857
+            "pra_out_score": 101776.2232142857,
+            "normalized_pra_score": 0.08895440625232569,
+            "normalized_subscriber_count": 0.22284868091699014,
+            "normalized_average_view": 0.29209512654268016
         },
         {
             "id": "서새봄냥",
             "alias": "서새봄",
-            "averageView": 35656.15709570957,
             "recent_average_view": 38740.36,
-            "subscriberCount": 215198,
+            "subscriber_count": 215198,
             "pra_score": 34450.37020179831,
-            "inlink_count": 50,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.2783837810206783,
+            "normalized_subscriber_count": 0.41156841265428035,
+            "normalized_average_view": 0.27604834113068033
         },
         {
             "id": "기무기훈",
             "alias": "기무기훈",
-            "averageView": 21553.264473684212,
             "recent_average_view": 31746.545454545456,
-            "subscriberCount": 71944,
+            "subscriber_count": 71944,
             "pra_score": 29056.27337674082,
-            "inlink_count": 49,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.25566244564480267,
+            "normalized_subscriber_count": 0.237968904129331,
+            "normalized_average_view": 0.24989153944244819
         },
         {
             "id": "갓보기",
             "alias": "갓보기",
-            "averageView": 5077.007936507936,
             "recent_average_view": 0,
-            "subscriberCount": 3728,
+            "subscriber_count": 3728,
             "pra_score": 6874.773376740822,
-            "inlink_count": 48,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.12435870067190707,
+            "normalized_subscriber_count": 0.054170254039063885,
+            "normalized_average_view": 0.0
         },
         {
             "id": "연두는말안드뤄",
             "alias": "연두",
-            "averageView": 23926.578181818182,
             "recent_average_view": 40222.89473684211,
-            "subscriberCount": 76195,
+            "subscriber_count": 76195,
             "pra_score": 724.2692307692308,
-            "inlink_count": 1,
-            "outlink_count": 111,
-            "pra_out_score": 182408.2238678306
+            "pra_out_score": 182408.2238678306,
+            "normalized_pra_score": 0.04036426049364815,
+            "normalized_subscriber_count": 0.24489851807130564,
+            "normalized_average_view": 0.28128072759995887
         },
         {
             "id": "빡겜러",
             "alias": "빡겜러",
-            "averageView": 66689.18795180722,
             "recent_average_view": 20186.615384615383,
-            "subscriberCount": 60724,
+            "subscriber_count": 60724,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 1,
-            "pra_out_score": 781.9642857142857
+            "pra_out_score": 781.9642857142857,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.2186266530532588,
+            "normalized_average_view": 0.19926685655343357
         },
         {
             "id": "코렛트",
             "alias": "코렛트",
-            "averageView": 56032.85,
             "recent_average_view": 24547.5,
-            "subscriberCount": 66270,
+            "subscriber_count": 66270,
             "pra_score": 1975.414705882353,
-            "inlink_count": 2,
-            "outlink_count": 4,
-            "pra_out_score": 7013.571428571428
+            "pra_out_score": 7013.571428571428,
+            "normalized_pra_score": 0.06666165994203066,
+            "normalized_subscriber_count": 0.22839227248594268,
+            "normalized_average_view": 0.2197389019255497
         },
         {
             "id": "두칠이",
             "alias": "두칠이",
-            "averageView": 67487.64759036145,
             "recent_average_view": 38656.42857142857,
-            "subscriberCount": 246008,
+            "subscriber_count": 246008,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.44004545076684276,
+            "normalized_average_view": 0.2757491480632355
         },
         {
             "id": "김기열",
             "alias": "김기열",
-            "averageView": 24705.250386398762,
             "recent_average_view": 13348.911764705883,
-            "subscriberCount": 108267,
+            "subscriber_count": 108267,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.2919247869429714,
+            "normalized_average_view": 0.16204149703411985
         },
         {
             "id": "김뚜띠",
             "alias": "김뚜띠",
-            "averageView": 44824.5815047022,
             "recent_average_view": 18404.0,
-            "subscriberCount": 141315,
+            "subscriber_count": 141315,
             "pra_score": 13384.524886877829,
-            "inlink_count": 3,
-            "outlink_count": 23,
-            "pra_out_score": 24298.012595907934
+            "pra_out_score": 24298.012595907934,
+            "normalized_pra_score": 0.1735195698249509,
+            "normalized_subscriber_count": 0.333516290585281,
+            "normalized_average_view": 0.1902652288817733
         },
         {
             "id": "태상",
             "alias": "태상",
-            "averageView": 364.2608695652174,
             "recent_average_view": 188.2,
-            "subscriberCount": 728,
+            "subscriber_count": 728,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 40,
-            "pra_out_score": 230.0095693779904
+            "pra_out_score": 230.0095693779904,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.023938041198927448,
+            "normalized_average_view": 0.01924035696155712
         },
         {
             "id": "동수칸",
             "alias": "동수칸",
-            "averageView": 9333.679788039364,
             "recent_average_view": 47845.32,
-            "subscriberCount": 101724,
+            "subscriber_count": 101724,
             "pra_score": 12688.690414289253,
-            "inlink_count": 8,
-            "outlink_count": 5,
-            "pra_out_score": 21570.292307692307
+            "pra_out_score": 21570.292307692307,
+            "normalized_pra_score": 0.16894890573503718,
+            "normalized_subscriber_count": 0.28296624718072644,
+            "normalized_average_view": 0.3067771774814246
         },
         {
             "id": "마스카",
             "alias": "마스카",
-            "averageView": 6721.165664662659,
             "recent_average_view": 3796.375,
-            "subscriberCount": 16249,
+            "subscriber_count": 16249,
             "pra_score": 30078.85740689031,
-            "inlink_count": 63,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.26012233870034185,
+            "normalized_subscriber_count": 0.11309313413346583,
+            "normalized_average_view": 0.08641474803645215
         },
         {
             "id": "이춘향",
             "alias": "이춘향",
-            "averageView": 24325.28604118993,
             "recent_average_view": 1225.5,
-            "subscriberCount": 101040,
+            "subscriber_count": 101040,
             "pra_score": 0,
-            "inlink_count": 0,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.0,
+            "normalized_subscriber_count": 0.28201329914975093,
+            "normalized_average_view": 0.04909756721757449
         },
         {
             "id": "똘킹",
             "alias": "똘킹",
-            "averageView": 167395.51792573623,
             "recent_average_view": 220542.0,
-            "subscriberCount": 477269,
+            "subscriber_count": 477269,
             "pra_score": 18931.334757278582,
-            "inlink_count": 16,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.20636574045245196,
+            "normalized_subscriber_count": 0.6129210455302564,
+            "normalized_average_view": 0.6586413156714278
         },
         {
             "id": "미라지",
             "alias": "미라지",
-            "averageView": 52859.711013215856,
             "recent_average_view": 62931.63636363636,
-            "subscriberCount": 155093,
+            "subscriber_count": 155093,
             "pra_score": 4543.921568627451,
-            "inlink_count": 5,
-            "outlink_count": 6,
-            "pra_out_score": 6544.758620689654
+            "pra_out_score": 6544.758620689654,
+            "normalized_pra_score": 0.10110261666358504,
+            "normalized_subscriber_count": 0.3493968769740839,
+            "normalized_average_view": 0.35183401783121676
         },
         {
             "id": "안산저격수",
             "alias": "안산저격수",
-            "averageView": 73521.17880794701,
             "recent_average_view": 0,
-            "subscriberCount": 81699,
+            "subscriber_count": 81699,
             "pra_score": 12662.773522938003,
-            "inlink_count": 18,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.1687762768649137,
+            "normalized_subscriber_count": 0.25358951367723725,
+            "normalized_average_view": 0.0
         },
         {
             "id": "식빵월드",
             "alias": "식빵월드",
-            "averageView": 5377.796133962688,
             "recent_average_view": 2502.75,
-            "subscriberCount": 0,
+            "subscriber_count": 0,
             "pra_score": 6846.022180568573,
-            "inlink_count": 43,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.12409838609125398,
+            "normalized_subscriber_count": 0.0,
+            "normalized_average_view": 0.07016363014923967
         },
         {
             "id": "우왁굳",
             "alias": "우왁굳",
-            "averageView": 44958.990373816785,
             "recent_average_view": 98328.44827586207,
-            "subscriberCount": 500556,
+            "subscriber_count": 500556,
             "pra_score": 33189.99807565699,
-            "inlink_count": 37,
-            "outlink_count": 0,
-            "pra_out_score": 0
+            "pra_out_score": 0,
+            "normalized_pra_score": 0.27324397600325867,
+            "normalized_subscriber_count": 0.6276958483375634,
+            "normalized_average_view": 0.43978752740456345
         }
     ],
     "links": [
@@ -1106,1027 +1106,1198 @@
             "source": "빅헤드",
             "target": "김블루",
             "count": 2,
-            "score": 8375.428571428572
+            "score": 4187.714285714286,
+            "normalized_score": 0.24192072804533965
         },
         {
             "source": "풍월량",
             "target": "초승달",
             "count": 1,
-            "score": 2184.866666666667
+            "score": 2184.866666666667,
+            "normalized_score": 0.17474188992310088
         },
         {
             "source": "룩삼",
             "target": "heavyRainism",
             "count": 1,
-            "score": 2884.0
+            "score": 2884.0,
+            "normalized_score": 0.20076231137985573
         },
         {
             "source": "룩삼",
             "target": "인간젤리",
             "count": 1,
-            "score": 2735.9375
+            "score": 2735.9375,
+            "normalized_score": 0.19554091592068748
         },
         {
             "source": "룩삼",
             "target": "소니쇼",
             "count": 1,
-            "score": 2711.3076923076924
+            "score": 2711.3076923076924,
+            "normalized_score": 0.19465876431315737
         },
         {
             "source": "룩삼",
             "target": "얍얍",
             "count": 1,
-            "score": 281.7142857142857
+            "score": 281.7142857142857,
+            "normalized_score": 0.0627464260945245
         },
         {
             "source": "룩삼",
             "target": "스피드소닉",
             "count": 1,
-            "score": 7121.599999999999
+            "score": 7121.599999999999,
+            "normalized_score": 0.3154811007963006
         },
         {
             "source": "아구",
             "target": "와나나",
             "count": 1,
-            "score": 1742.64
+            "score": 1742.64,
+            "normalized_score": 0.15605884856996893
         },
         {
             "source": "우주하마",
             "target": "빅헤드",
             "count": 17,
-            "score": 18481.938110937124
+            "score": 1087.172830055125,
+            "normalized_score": 0.12326331808305283
         },
         {
             "source": "우주하마",
             "target": "풍월량",
             "count": 20,
-            "score": 22794.310610937122
+            "score": 1139.7155305468561,
+            "normalized_score": 0.1262068107410593
         },
         {
             "source": "우주하마",
             "target": "이선생84",
             "count": 13,
-            "score": 14374.447257278589
+            "score": 1105.726712098353,
+            "normalized_score": 0.12431068504474924
         },
         {
             "source": "우주하마",
             "target": "눈쟁이",
             "count": 14,
-            "score": 14957.322257278589
+            "score": 1068.380161234185,
+            "normalized_score": 0.12219332050169318
         },
         {
             "source": "우주하마",
             "target": "머독",
             "count": 20,
-            "score": 22794.310610937122
+            "score": 1139.7155305468561,
+            "normalized_score": 0.1262068107410593
         },
         {
             "source": "우주하마",
             "target": "김블루",
             "count": 17,
-            "score": 19877.387534014044
+            "score": 1169.2580902361203,
+            "normalized_score": 0.127832049177598
         },
         {
             "source": "우주하마",
             "target": "김재원",
             "count": 20,
-            "score": 22794.310610937122
+            "score": 1139.7155305468561,
+            "normalized_score": 0.1262068107410593
         },
         {
             "source": "우주하마",
             "target": "딩셉션",
             "count": 20,
-            "score": 22794.310610937122
+            "score": 1139.7155305468561,
+            "normalized_score": 0.1262068107410593
         },
         {
             "source": "우주하마",
             "target": "서새봄냥",
             "count": 7,
-            "score": 8419.863353658537
+            "score": 1202.8376219512195,
+            "normalized_score": 0.1296546391306857
         },
         {
             "source": "우주하마",
             "target": "마스카",
             "count": 19,
-            "score": 21619.95061093712
+            "score": 1137.8921374177432,
+            "normalized_score": 0.12610581328104514
         },
         {
             "source": "우주하마",
             "target": "똘킹",
             "count": 16,
-            "score": 18931.334757278582
+            "score": 1183.2084223299114,
+            "normalized_score": 0.12859236546085961
         },
         {
             "source": "우주하마",
             "target": "우왁굳",
             "count": 20,
-            "score": 22794.310610937122
+            "score": 1139.7155305468561,
+            "normalized_score": 0.1262068107410593
         },
         {
             "source": "백설양",
             "target": "옥냥이",
             "count": 2,
-            "score": 1405.9310344827586
+            "score": 702.9655172413793,
+            "normalized_score": 0.09911778084871119
         },
         {
             "source": "테스터훈",
             "target": "샤이__",
             "count": 5,
-            "score": 72684.46336996337
+            "score": 14536.892673992674,
+            "normalized_score": 0.45073403305286347
         },
         {
             "source": "테스터훈",
             "target": "형독방송",
             "count": 1,
-            "score": 10713.032258064515
+            "score": 10713.032258064515,
+            "normalized_score": 0.3869374501136685
         },
         {
             "source": "테스터훈",
             "target": "김블루",
             "count": 1,
-            "score": 10713.032258064515
+            "score": 10713.032258064515,
+            "normalized_score": 0.3869374501136685
         },
         {
             "source": "테스터훈",
             "target": "와나나",
             "count": 1,
-            "score": 10713.032258064515
+            "score": 10713.032258064515,
+            "normalized_score": 0.3869374501136685
         },
         {
             "source": "테스터훈",
             "target": "김재원",
             "count": 1,
-            "score": 10713.032258064515
+            "score": 10713.032258064515,
+            "normalized_score": 0.3869374501136685
         },
         {
             "source": "테스터훈",
             "target": "텔론_",
             "count": 6,
-            "score": 81193.4606280279
+            "score": 13532.243438004649,
+            "normalized_score": 0.4348800249947762
         },
         {
             "source": "긍정인",
             "target": "형독방송",
             "count": 22,
-            "score": 31001.247619047615
+            "score": 1409.147619047619,
+            "normalized_score": 0.1403339678085019
         },
         {
             "source": "악녀",
             "target": "머독",
             "count": 1,
-            "score": 24529.75
+            "score": 24529.75,
+            "normalized_score": 0.5855056901677219
         },
         {
             "source": "형독방송",
             "target": "머독",
             "count": 20,
-            "score": 390136.15598290606
+            "score": 19506.807799145303,
+            "normalized_score": 0.5221288149801031
         },
         {
             "source": "노돌리",
             "target": "치킨쿤",
             "count": 1,
-            "score": 1534.0
+            "score": 1534.0,
+            "normalized_score": 0.1464189333945762
         },
         {
             "source": "다주",
             "target": "우주하마",
             "count": 1,
-            "score": 1003.8181818181819
+            "score": 1003.8181818181819,
+            "normalized_score": 0.11844373334173758
         },
         {
             "source": "선바",
             "target": "치킨쿤",
             "count": 1,
-            "score": 10521.333333333332
+            "score": 10521.333333333332,
+            "normalized_score": 0.3834598950330203
         },
         {
             "source": "철면수심",
             "target": "풍월량",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "룩삼",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "플러리",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "얍얍",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "스틸로",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "옥냥이",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "침착맨",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "공혁준",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "홍차",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "기무기훈",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "갓보기",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "마스카",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "철면수심",
             "target": "식빵월드",
             "count": 43,
-            "score": 6846.022180568573
+            "score": 159.20981815275752,
+            "normalized_score": 0.04717039165566461
         },
         {
             "source": "햇살살",
             "target": "풍월량",
             "count": 32,
-            "score": 198.35510984354954
+            "score": 6.198597182610923,
+            "normalized_score": 0.009307461883009148
         },
         {
             "source": "햇살살",
             "target": "다주",
             "count": 28,
-            "score": 191.39432552982407
+            "score": 6.835511626065146,
+            "normalized_score": 0.009773949081811735
         },
         {
             "source": "햇살살",
             "target": "쉐리",
             "count": 28,
-            "score": 191.39432552982407
+            "score": 6.835511626065146,
+            "normalized_score": 0.009773949081811735
         },
         {
             "source": "햇살살",
             "target": "소니쇼",
             "count": 28,
-            "score": 191.39432552982407
+            "score": 6.835511626065146,
+            "normalized_score": 0.009773949081811735
         },
         {
             "source": "햇살살",
             "target": "홍방장",
             "count": 28,
-            "score": 191.39432552982407
+            "score": 6.835511626065146,
+            "normalized_score": 0.009773949081811735
         },
         {
             "source": "햇살살",
             "target": "서새봄냥",
             "count": 28,
-            "score": 191.39432552982407
+            "score": 6.835511626065146,
+            "normalized_score": 0.009773949081811735
         },
         {
             "source": "푸사",
             "target": "테스터훈",
             "count": 1,
-            "score": 6412.454545454546
+            "score": 6412.454545454546,
+            "normalized_score": 0.29936202567252956
         },
         {
             "source": "푸사",
             "target": "텔론_",
             "count": 1,
-            "score": 6412.454545454546
+            "score": 6412.454545454546,
+            "normalized_score": 0.29936202567252956
         },
         {
             "source": "견자희",
             "target": "형독방송",
             "count": 1,
-            "score": 10189.0
+            "score": 10189.0,
+            "normalized_score": 0.3773552010220682
         },
         {
             "source": "견자희",
             "target": "이초홍",
             "count": 4,
-            "score": 30505.658119658117
+            "score": 7626.414529914529,
+            "normalized_score": 0.326471115217438
         },
         {
             "source": "견자희",
             "target": "보물창고",
             "count": 1,
-            "score": 4775.416666666666
+            "score": 4775.416666666666,
+            "normalized_score": 0.2583391310580479
         },
         {
             "source": "견자희",
             "target": "와나나",
             "count": 1,
-            "score": 10189.0
+            "score": 10189.0,
+            "normalized_score": 0.3773552010220682
         },
         {
             "source": "김도",
             "target": "풍월량",
             "count": 1,
-            "score": 283.4038461538462
+            "score": 283.4038461538462,
+            "normalized_score": 0.0629343033284977
         },
         {
             "source": "김도",
             "target": "닥터준_라인하르트",
             "count": 5,
-            "score": 1614.5099067599067
+            "score": 322.90198135198136,
+            "normalized_score": 0.06717689309184466
         },
         {
             "source": "김블루",
             "target": "형독방송",
             "count": 1,
-            "score": 71553.5
+            "score": 71553.5,
+            "normalized_score": 1.0
         },
         {
             "source": "초승달",
             "target": "풍월량",
             "count": 2,
-            "score": 1417.5367231638418
+            "score": 708.7683615819209,
+            "normalized_score": 0.09952603910923513
         },
         {
             "source": "초승달",
             "target": "소풍왔니",
             "count": 2,
-            "score": 1304.3500000000001
+            "score": 652.1750000000001,
+            "normalized_score": 0.0954699362325193
         },
         {
             "source": "초승달",
             "target": "보물창고",
             "count": 1,
-            "score": 300.5466666666667
+            "score": 300.5466666666667,
+            "normalized_score": 0.06480977546942002
         },
         {
             "source": "초승달",
             "target": "피유",
             "count": 2,
-            "score": 445.24657534246575
+            "score": 222.62328767123287,
+            "normalized_score": 0.055778888398724885
         },
         {
             "source": "초승달",
             "target": "김재원",
             "count": 2,
-            "score": 1936.406779661017
+            "score": 968.2033898305085,
+            "normalized_score": 0.11632360646627678
         },
         {
             "source": "초승달",
             "target": "옥냥이",
             "count": 1,
-            "score": 319.0
+            "score": 319.0,
+            "normalized_score": 0.06676977312861129
         },
         {
             "source": "초승달",
             "target": "공혁준",
             "count": 1,
-            "score": 540.75
+            "score": 540.75,
+            "normalized_score": 0.08693263088871839
         },
         {
             "source": "초승달",
             "target": "동수칸",
             "count": 1,
-            "score": 859.6279069767442
+            "score": 859.6279069767442,
+            "normalized_score": 0.10960738387036219
         },
         {
             "source": "제갈량",
             "target": "풍월량",
             "count": 11,
-            "score": 530.301610261591
+            "score": 48.20923729650827,
+            "normalized_score": 0.025956712653405236
         },
         {
             "source": "제갈량",
             "target": "우왁굳",
             "count": 11,
-            "score": 530.301610261591
+            "score": 48.20923729650827,
+            "normalized_score": 0.025956712653405236
         },
         {
             "source": "와나나",
             "target": "테스터훈",
             "count": 3,
-            "score": 17143.631746031748
+            "score": 5714.543915343916,
+            "normalized_score": 0.2826020750036241
         },
         {
             "source": "와나나",
             "target": "우정잉",
             "count": 1,
-            "score": 3517.5555555555557
+            "score": 3517.5555555555557,
+            "normalized_score": 0.22172008770590346
         },
         {
             "source": "와나나",
             "target": "악녀",
             "count": 8,
-            "score": 40136.32732919254
+            "score": 5017.040916149068,
+            "normalized_score": 0.2647941465496261
         },
         {
             "source": "와나나",
             "target": "형독방송",
             "count": 3,
-            "score": 20420.131746031744
+            "score": 6806.710582010582,
+            "normalized_score": 0.30842757663375187
         },
         {
             "source": "와나나",
             "target": "선바",
             "count": 1,
-            "score": 3517.5555555555557
+            "score": 3517.5555555555557,
+            "normalized_score": 0.22172008770590346
         },
         {
             "source": "와나나",
             "target": "견자희",
             "count": 1,
-            "score": 8200.1
+            "score": 8200.1,
+            "normalized_score": 0.3385276398107844
         },
         {
             "source": "와나나",
             "target": "갱생레바",
             "count": 9,
-            "score": 47943.91556448666
+            "score": 5327.1017293874065,
+            "normalized_score": 0.27285382998721774
         },
         {
             "source": "와나나",
             "target": "김블루",
             "count": 1,
-            "score": 3517.5555555555557
+            "score": 3517.5555555555557,
+            "normalized_score": 0.22172008770590346
         },
         {
             "source": "와나나",
             "target": "보물창고",
             "count": 1,
-            "score": 3517.5555555555557
+            "score": 3517.5555555555557,
+            "normalized_score": 0.22172008770590346
         },
         {
             "source": "와나나",
             "target": "김재원",
             "count": 2,
-            "score": 12220.031746031746
+            "score": 6110.015873015873,
+            "normalized_score": 0.29221716853108276
         },
         {
             "source": "와나나",
             "target": "뷜랑",
             "count": 1,
-            "score": 3517.5555555555557
+            "score": 3517.5555555555557,
+            "normalized_score": 0.22172008770590346
         },
         {
             "source": "홍개",
             "target": "김재원",
             "count": 22,
-            "score": 123813.60000000005
+            "score": 5627.890909090911,
+            "normalized_score": 0.2804512592052305
         },
         {
             "source": "홍개",
             "target": "충전용",
             "count": 1,
-            "score": 5627.890909090909
+            "score": 5627.890909090909,
+            "normalized_score": 0.28045125920523045
         },
         {
             "source": "홍개",
             "target": "날게렌",
             "count": 2,
-            "score": 11255.781818181818
+            "score": 5627.890909090909,
+            "normalized_score": 0.28045125920523045
         },
         {
             "source": "소니쇼",
             "target": "짬타수아",
             "count": 1,
-            "score": 157.12121212121212
+            "score": 157.12121212121212,
+            "normalized_score": 0.04685996603524105
         },
         {
             "source": "케인",
             "target": "치킨쿤",
             "count": 1,
-            "score": 686.7727272727273
+            "score": 686.7727272727273,
+            "normalized_score": 0.09796954233436685
         },
         {
             "source": "피유",
             "target": "쌍베",
             "count": 2,
-            "score": 3513.769230769231
+            "score": 1756.8846153846155,
+            "normalized_score": 0.1566953753232424
         },
         {
             "source": "피유",
             "target": "초승달",
             "count": 2,
-            "score": 2837.969230769231
+            "score": 1418.9846153846156,
+            "normalized_score": 0.14082293854854439
         },
         {
             "source": "피유",
             "target": "침착맨",
             "count": 1,
-            "score": 1406.769230769231
+            "score": 1406.769230769231,
+            "normalized_score": 0.14021548851862461
         },
         {
             "source": "피유",
             "target": "동수칸",
             "count": 2,
-            "score": 3538.2
+            "score": 1769.1,
+            "normalized_score": 0.1572391727548271
         },
         {
             "source": "닥터준_라인하르트",
             "target": "눈쟁이",
             "count": 18,
-            "score": 12662.773522938003
+            "score": 703.4874179410002,
+            "normalized_score": 0.09915456788882297
         },
         {
             "source": "닥터준_라인하르트",
             "target": "홍개",
             "count": 18,
-            "score": 12662.773522938003
+            "score": 703.4874179410002,
+            "normalized_score": 0.09915456788882297
         },
         {
             "source": "닥터준_라인하르트",
             "target": "김재원",
             "count": 18,
-            "score": 12662.773522938003
+            "score": 703.4874179410002,
+            "normalized_score": 0.09915456788882297
         },
         {
             "source": "닥터준_라인하르트",
             "target": "치킨쿤",
             "count": 1,
-            "score": 1913.58
+            "score": 1913.58,
+            "normalized_score": 0.16353392885894297
         },
         {
             "source": "닥터준_라인하르트",
             "target": "미라지",
             "count": 5,
-            "score": 4543.921568627451
+            "score": 908.7843137254902,
+            "normalized_score": 0.11269767855244034
         },
         {
             "source": "닥터준_라인하르트",
             "target": "안산저격수",
             "count": 18,
-            "score": 12662.773522938003
+            "score": 703.4874179410002,
+            "normalized_score": 0.09915456788882297
         },
         {
             "source": "스틸로",
             "target": "얍얍",
             "count": 3,
-            "score": 1249.3500000000001
+            "score": 416.45000000000005,
+            "normalized_score": 0.07628971496246899
         },
         {
             "source": "스틸로",
             "target": "레니아워",
             "count": 1,
-            "score": 542.75
+            "score": 542.75,
+            "normalized_score": 0.08709324558619135
         },
         {
             "source": "스틸로",
             "target": "치킨쿤",
             "count": 3,
-            "score": 1249.3500000000001
+            "score": 416.45000000000005,
+            "normalized_score": 0.07628971496246899
         },
         {
             "source": "스틸로",
             "target": "공혁준",
             "count": 3,
-            "score": 1249.3500000000001
+            "score": 416.45000000000005,
+            "normalized_score": 0.07628971496246899
         },
         {
             "source": "액시스마이콜",
             "target": "김블루",
             "count": 1,
-            "score": 2596.9375
+            "score": 2596.9375,
+            "normalized_score": 0.19050891687970598
         },
         {
             "source": "탬탬버린",
             "target": "김진우",
             "count": 1,
-            "score": 5662.64705882353
+            "score": 5662.64705882353,
+            "normalized_score": 0.2813159173115561
         },
         {
             "source": "탬탬버린",
             "target": "김뚜띠",
             "count": 2,
-            "score": 11325.29411764706
+            "score": 5662.64705882353,
+            "normalized_score": 0.2813159173115561
         },
         {
             "source": "함군",
             "target": "우왁굳",
             "count": 1,
-            "score": 36.5
+            "score": 36.5,
+            "normalized_score": 0.022585566661483963
         },
         {
             "source": "삼식",
             "target": "다주",
             "count": 1,
-            "score": 1054.5454545454545
+            "score": 1054.5454545454545,
+            "normalized_score": 0.12139958750656599
         },
         {
             "source": "텔론_",
             "target": "테스터훈",
             "count": 40,
-            "score": 321779.7686954531
+            "score": 8044.494217386328,
+            "normalized_score": 0.3353002914852914
         },
         {
             "source": "텔론_",
             "target": "케인",
             "count": 2,
-            "score": 2657.2
+            "score": 1328.6,
+            "normalized_score": 0.1362641724728119
         },
         {
             "source": "텔론_",
             "target": "아빠킹",
             "count": 41,
-            "score": 334081.21869545314
+            "score": 8148.322407206174,
+            "normalized_score": 0.337457170955556
         },
         {
             "source": "오킹",
             "target": "우정잉",
             "count": 3,
-            "score": 7796.753030303031
+            "score": 2598.9176767676768,
+            "normalized_score": 0.19058153500135547
         },
         {
             "source": "오킹",
             "target": "김진우",
             "count": 1,
-            "score": 881.7
+            "score": 881.7,
+            "normalized_score": 0.11100562322499766
         },
         {
             "source": "오킹",
             "target": "탬탬버린",
             "count": 1,
-            "score": 2059.2307692307695
+            "score": 2059.2307692307695,
+            "normalized_score": 0.16964343924622755
         },
         {
             "source": "오킹",
             "target": "서새봄냥",
             "count": 1,
-            "score": 2541.3
+            "score": 2541.3,
+            "normalized_score": 0.18845711016550024
         },
         {
             "source": "오킹",
             "target": "김뚜띠",
             "count": 1,
-            "score": 2059.2307692307695
+            "score": 2059.2307692307695,
+            "normalized_score": 0.16964343924622755
         },
         {
             "source": "공혁준",
             "target": "기무기훈",
             "count": 1,
-            "score": 22181.5
+            "score": 22181.5,
+            "normalized_score": 0.5567753694962414
         },
         {
             "source": "날게렌",
             "target": "와나나",
             "count": 2,
-            "score": 1422.848484848485
+            "score": 711.4242424242425,
+            "normalized_score": 0.09971233561706096
         },
         {
             "source": "날게렌",
             "target": "닥터준_라인하르트",
             "count": 5,
-            "score": 6622.297297297298
+            "score": 1324.4594594594596,
+            "normalized_score": 0.13605167525758396
         },
         {
             "source": "날게렌",
             "target": "김재원",
             "count": 14,
-            "score": 52142.12987012985
+            "score": 3724.437847866418,
+            "normalized_score": 0.22814708525276195
         },
         {
             "source": "날게렌",
             "target": "오킹",
             "count": 2,
-            "score": 1422.848484848485
+            "score": 711.4242424242425,
+            "normalized_score": 0.09971233561706096
         },
         {
             "source": "날게렌",
             "target": "충전용",
             "count": 2,
-            "score": 256.0
+            "score": 128.0,
+            "normalized_score": 0.04229505011415622
         },
         {
             "source": "짬타수아",
             "target": "룩삼",
             "count": 1,
-            "score": 802.7407407407406
+            "score": 802.7407407407406,
+            "normalized_score": 0.10591859505656372
         },
         {
             "source": "짬타수아",
             "target": "갱생레바",
             "count": 1,
-            "score": 724.2692307692308
+            "score": 724.2692307692308,
+            "normalized_score": 0.10060847746484304
         },
         {
             "source": "짬타수아",
             "target": "이초홍",
             "count": 3,
-            "score": 1983.596866096866
+            "score": 661.198955365622,
+            "normalized_score": 0.09612816197438827
         },
         {
             "source": "짬타수아",
             "target": "초승달",
             "count": 3,
-            "score": 1905.1253561253561
+            "score": 635.0417853751187,
+            "normalized_score": 0.0942075501800151
         },
         {
             "source": "짬타수아",
             "target": "소니쇼",
             "count": 4,
-            "score": 2175.792022792023
+            "score": 543.9480056980058,
+            "normalized_score": 0.0871893125523847
         },
         {
             "source": "짬타수아",
             "target": "케인",
             "count": 5,
-            "score": 3857.283400809717
+            "score": 771.4566801619434,
+            "normalized_score": 0.10383417845164494
         },
         {
             "source": "짬타수아",
             "target": "피유",
             "count": 1,
-            "score": 802.7407407407406
+            "score": 802.7407407407406,
+            "normalized_score": 0.10591859505656372
         },
         {
             "source": "짬타수아",
             "target": "연두는말안드뤄",
             "count": 1,
-            "score": 724.2692307692308
+            "score": 724.2692307692308,
+            "normalized_score": 0.10060847746484304
         },
         {
             "source": "아빠킹",
             "target": "아구",
             "count": 1,
-            "score": 11246.5
+            "score": 11246.5,
+            "normalized_score": 0.39645440974069646
         },
         {
             "source": "뷜랑",
             "target": "테스터훈",
             "count": 6,
-            "score": 96687.5357142857
+            "score": 16114.589285714283,
+            "normalized_score": 0.47456333306046466
         },
         {
             "source": "뷜랑",
             "target": "악녀",
             "count": 1,
-            "score": 3429.875
+            "score": 3429.875,
+            "normalized_score": 0.21893929001475823
         },
         {
             "source": "뷜랑",
             "target": "텔론_",
             "count": 1,
-            "score": 1658.8125
+            "score": 1658.8125,
+            "normalized_score": 0.15225908259745868
         },
         {
             "source": "연두는말안드뤄",
             "target": "풍월량",
             "count": 10,
-            "score": 17707.569135295507
+            "score": 1770.7569135295507,
+            "normalized_score": 0.15731278949178448
         },
         {
             "source": "연두는말안드뤄",
             "target": "김나성",
             "count": 2,
-            "score": 3012.448695652174
+            "score": 1506.224347826087,
+            "normalized_score": 0.14508729735282158
         },
         {
             "source": "연두는말안드뤄",
             "target": "룩삼",
             "count": 6,
-            "score": 10689.02040204935
+            "score": 1781.5034003415583,
+            "normalized_score": 0.1577894225669268
         },
         {
             "source": "연두는말안드뤄",
             "target": "백설양",
             "count": 1,
-            "score": 2398.157894736842
+            "score": 2398.157894736842,
+            "normalized_score": 0.18307264065483395
         },
         {
             "source": "연두는말안드뤄",
             "target": "김용녀",
             "count": 5,
-            "score": 6476.343243243244
+            "score": 1295.2686486486487,
+            "normalized_score": 0.1345440467181429
         },
         {
             "source": "연두는말안드뤄",
             "target": "다주",
             "count": 1,
-            "score": 1913.7142857142856
+            "score": 1913.7142857142856,
+            "normalized_score": 0.1635396667651695
         },
         {
             "source": "연두는말안드뤄",
             "target": "쉐리",
             "count": 1,
-            "score": 2756.55
+            "score": 2756.55,
+            "normalized_score": 0.19627613447038422
         },
         {
             "source": "연두는말안드뤄",
             "target": "갱생레바",
             "count": 5,
-            "score": 6055.257894736842
+            "score": 1211.0515789473684,
+            "normalized_score": 0.13009657977925582
         },
         {
             "source": "연두는말안드뤄",
             "target": "머독",
             "count": 4,
-            "score": 7074.85966398209
+            "score": 1768.7149159955225,
+            "normalized_score": 0.157222058519992
         },
         {
             "source": "연두는말안드뤄",
             "target": "김도",
             "count": 13,
-            "score": 21442.851992438365
+            "score": 1649.4501532644897,
+            "normalized_score": 0.15182879906425137
         },
         {
             "source": "연두는말안드뤄",
             "target": "녹두로",
             "count": 3,
-            "score": 4453.2932432432435
+            "score": 1484.4310810810812,
+            "normalized_score": 0.1440338530240592
         },
         {
             "source": "연두는말안드뤄",
             "target": "초승달",
             "count": 8,
-            "score": 12422.463697788697
+            "score": 1552.807962223587,
+            "normalized_score": 0.14731380043918596
         },
         {
             "source": "연두는말안드뤄",
             "target": "소풍왔니",
             "count": 8,
-            "score": 12422.463697788697
+            "score": 1552.807962223587,
+            "normalized_score": 0.14731380043918596
         },
         {
             "source": "연두는말안드뤄",
             "target": "소니쇼",
             "count": 14,
-            "score": 23113.375801962175
+            "score": 1650.9554144258695,
+            "normalized_score": 0.15189806150204527
         },
         {
             "source": "연두는말안드뤄",
             "target": "케인",
             "count": 1,
-            "score": 1413.7083333333333
+            "score": 1413.7083333333333,
+            "normalized_score": 0.14056088019859528
         },
         {
             "source": "연두는말안드뤄",
             "target": "스피드소닉",
             "count": 2,
-            "score": 2791.2785714285715
+            "score": 1395.6392857142857,
+            "normalized_score": 0.13965971517142284
         },
         {
             "source": "연두는말안드뤄",
             "target": "짬타수아",
             "count": 2,
-            "score": 3234.421814671815
+            "score": 1617.2109073359075,
+            "normalized_score": 0.15033769591889012
         },
         {
             "source": "연두는말안드뤄",
             "target": "서새봄냥",
             "count": 14,
-            "score": 23297.812522609947
+            "score": 1664.1294659007106,
+            "normalized_score": 0.15250290420877088
         },
         {
             "source": "연두는말안드뤄",
             "target": "동수칸",
             "count": 5,
-            "score": 8290.862507312508
+            "score": 1658.1725014625015,
+            "normalized_score": 0.1522297076708033
         },
         {
             "source": "연두는말안드뤄",
             "target": "마스카",
             "count": 1,
-            "score": 1612.8846153846155
+            "score": 1612.8846153846155,
+            "normalized_score": 0.15013647283559364
         },
         {
             "source": "연두는말안드뤄",
             "target": "우왁굳",
             "count": 5,
-            "score": 9828.88585445828
+            "score": 1965.777170891656,
+            "normalized_score": 0.16574929988416975
         },
         {
             "source": "빡겜러",
             "target": "케인",
             "count": 1,
-            "score": 781.9642857142857
+            "score": 781.9642857142857,
+            "normalized_score": 0.10453892218903194
         },
         {
             "source": "코렛트",
             "target": "노돌리",
             "count": 2,
-            "score": 3506.785714285714
+            "score": 1753.392857142857,
+            "normalized_score": 0.1565395840745161
         },
         {
             "source": "코렛트",
             "target": "에렌디라",
             "count": 2,
-            "score": 3506.785714285714
+            "score": 1753.392857142857,
+            "normalized_score": 0.1565395840745161
         },
         {
             "source": "김뚜띠",
             "target": "삐부",
             "count": 7,
-            "score": 7440.865963341859
+            "score": 1062.98085190598,
+            "normalized_score": 0.12188416312751905
         },
         {
             "source": "김뚜띠",
             "target": "김진우",
             "count": 7,
-            "score": 7440.865963341859
+            "score": 1062.98085190598,
+            "normalized_score": 0.12188416312751905
         },
         {
             "source": "김뚜띠",
             "target": "탬탬버린",
             "count": 7,
-            "score": 7440.865963341859
+            "score": 1062.98085190598,
+            "normalized_score": 0.12188416312751905
         },
         {
             "source": "김뚜띠",
             "target": "코렛트",
             "count": 2,
-            "score": 1975.414705882353
+            "score": 987.7073529411765,
+            "normalized_score": 0.11748940447822732
         },
         {
             "source": "태상",
             "target": "룩삼",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "철면수심",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "얍얍",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "스틸로",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "침착맨",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "공혁준",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "기무기훈",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "태상",
             "target": "갓보기",
             "count": 5,
-            "score": 28.751196172248804
+            "score": 5.750239234449761,
+            "normalized_score": 0.008964529812225036
         },
         {
             "source": "동수칸",
             "target": "갱생레바",
             "count": 1,
-            "score": 2914.5
+            "score": 2914.5,
+            "normalized_score": 0.2018211092812024
         },
         {
             "source": "동수칸",
             "target": "텔론_",
             "count": 4,
-            "score": 18655.792307692307
+            "score": 4663.948076923077,
+            "normalized_score": 0.2553062299159282
         },
         {
             "source": "미라지",
             "target": "노돌리",
             "count": 6,
-            "score": 6544.758620689654
+            "score": 1090.7931034482756,
+            "normalized_score": 0.12346838024816251
         }
     ]
 }
