@@ -1,17 +1,20 @@
-from converter import *
+import twitch.daily_converter as dc
+import datetime as dt
 
-def readWeeklyFiles(base_dir, year = '18', month = '12', day = '10'):
+def readWeeklyFiles(data_dir, date):
+    base_time = dt.datetime(2000 + int(date[0:2]), int(date[2:4]), int(date[4:6]))
     weekly_data = []
     for i in range(0, 5) :
-        date = year + month + '%2d' %(int(day) + i)
-        daily_data = readDailyFiles(base_dir, date)
+        time = base_time - dt.timedelta(i)
+        date = '%2d%2d%2d' %(time.year - 2000, time.month, time.day)
+        daily_data = dc.readDailyFiles(data_dir, date)
         weekly_data.append({ 'data' : daily_data, 'date' : date })
     return weekly_data
 
 def getWeeklyInfluenceData(weekly_data):
     weekly_influence_data = []
     for daily_data in weekly_data :
-        weekly_influence_data.append(getInfluenceData(daily_data))
+        weekly_influence_data.append(dc.getInfluenceData(daily_data))
     return weekly_influence_data
 
 def getWeeklyLinkData(weekly_data, target_path = 'twitch-targets.json'):
@@ -19,7 +22,7 @@ def getWeeklyLinkData(weekly_data, target_path = 'twitch-targets.json'):
     for daily_data in weekly_data :
         data = daily_data['data']
         if len(data) > 0 :
-            weekly_link_data.append(getLinkData(data[0], target_path))
+            weekly_link_data.append(dc.getLinkData(data[0], target_path))
         else :
             weekly_link_data.append({})
     return weekly_link_data
@@ -45,7 +48,7 @@ def getWeeklyScoreSummary(weekly_users, weekly_influence_data, weekly_link_data)
     weekly_score = {}
 
     for i in range(0, len(weekly_users)) :
-        daily_score = getScore(weekly_users[i]['users'], \
+        daily_score = dc.getScore(weekly_users[i]['users'], \
                                   weekly_influence_data[i], \
                                   weekly_link_data[i])
         for user, value in daily_score.items() :
@@ -67,7 +70,7 @@ def getWeeklySummary(weekly_users, weekly_influence_data) :
     weekly_summary = []
     for i in range(0, len(weekly_users)) :
         weekly_summary.append({
-            'summary' : getSummary(weekly_users[i]['users'], weekly_influence_data[i]),
+            'summary' : dc.getSummary(weekly_users[i]['users'], weekly_influence_data[i]),
             'date' : weekly_users[i]['date']
         })
     return weekly_summary

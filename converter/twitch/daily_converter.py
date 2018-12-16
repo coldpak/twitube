@@ -15,12 +15,12 @@ def convertToListValue(target_with_dict_value, key_name, value_name) :
             })
     return converted
 
-def readDailyFiles(base_dir, date = '181210'):
+def readDailyFiles(data_dir, date = '181210'):
     try:
         daily_data = []
         for i in range(0, 48):
             time = date + '%02d%02d' % (i/2, (30 * i) % 60)
-            with open(os.path.join(base_dir, time + '.json'), encoding = 'utf-8') as f:
+            with open(os.path.join(data_dir, time + '.json'), encoding = 'utf-8') as f:
                 daily_data.append(json.load(f))
         return daily_data
     except:
@@ -58,9 +58,9 @@ def getInfluenceData(data_list):
                     if not key in games:
                         games[key] = {}
                     if not game in games[key]:
-                        games[key][game] = 1
+                        games[key][game] = 1/2
                     else :
-                        games[key][game] += 1
+                        games[key][game] += 1/2
 
                 # Get the number of followers
                 if 'channels' in value :
@@ -131,12 +131,12 @@ def getSRA(score_summary) :
             sra[target] += score_summary[user][target]
     return sra
 
-def createNode(influence_summary, SRA) :
+def createNode(influence_summary, SRA, alias) :
     nodes = []
     for user, data in influence_summary.items() :
         nodes.append({
             'id' : user,
-            'alias' : '',
+            'alias' : alias[user],
             'average_viewer' : data['averageViewers'],
             'games' : data['games'],
             'followers' : data['followers'],
