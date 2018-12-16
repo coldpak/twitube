@@ -5,6 +5,8 @@ import sys
 import os
 import math
 
+from youtube.youtube_to_twitch import keyMap
+
 def YoutubeConvert(date, data_dir, out_dir="data"):
     """
     This function converts raw json data of Youtube crawler to refined one.
@@ -27,6 +29,7 @@ def YoutubeConvert(date, data_dir, out_dir="data"):
     names["형독방송"] = '형독'
     names["날게렌"] = '게렌'
     names["흐쟁이덩"] = '흐쟁이'
+
     num = len(namesArray)
     # Park Rank Algorithm(PRA) for video tags
     invalidTags = ['샤이니', '더샤이', '게임']
@@ -74,8 +77,8 @@ def YoutubeConvert(date, data_dir, out_dir="data"):
         for j in range(num):
             if links[i][j][0] != 0:
                 link = {
-                    'source': namesArray[i],
-                    'target': namesArray[j],
+                    'source': keyMap(namesArray[i]),
+                    'target': keyMap(namesArray[j]),
                     'count' : links[i][j][0],
                     'score' : links[i][j][1] / links[i][j][0]
                 }
@@ -86,7 +89,7 @@ def YoutubeConvert(date, data_dir, out_dir="data"):
         _id = namesArray[i]
         channel_infos = raw_data['Channels'][_id]
         node = {
-            'id': _id,
+            'id': keyMap(_id),
             'alias': names[_id],
             'recent_average_view': recent_average_view_array[i],
             'subscriber_count': int(channel_infos['subscriberCount']),
