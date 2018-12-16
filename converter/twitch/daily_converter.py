@@ -1,6 +1,7 @@
 import json
 import sys
 import os
+import math
 
 not_streamer = ['top_game', 'live_streams', 'stream_summary']
 
@@ -28,11 +29,18 @@ def readDailyFiles(data_dir, date = '181210'):
 
 def getAverage(data, target = 'value'):
     average = {}
+    max_viewer = 0.0
     for key, value in data.items():
+        average_viewer = sum(value) / len(value)
+        if average_viewer > max_viewer :
+            max_viewer = average_viewer
         average[key] = {
-            target : sum(value) / len(value),
+            target : average_viewer,
             'duration' : len(value) / 2,
         }
+    if target == 'viewer' :
+        for key in data.keys():
+            average[key]['normalized_' + target] = math.sqrt(average[key][target] / max_viewer)
     return average
 
 def getInfluenceData(data_list): 
@@ -111,6 +119,22 @@ def getSummary(users, influence_data):
             }
     return summary
 
+def getNormalizedScore(scores) :
+    normalized_scores = {}
+
+    max_score = 0.0
+    for user, targets in scores.items() :
+        for target, score in targets.items() :
+            if scores[user][target] > max_score :
+                max_score = scores[user][target]
+
+    for user, targets in scores.items() :
+        normalized_scores[user] = {}
+        for target, score in targets.items() :
+            normalized_scores[user][target] = math.sqrt(scores[user][target] / max_score)
+
+    return normalized_scores
+
 def getScore(users, influence_data, link_data):
     average_viewers = influence_data['averageViewers']
     scores = {}
@@ -122,6 +146,15 @@ def getScore(users, influence_data, link_data):
                     scores[user][target] = average_viewers[user]['viewer'] / average_viewers[target]['viewer']
     return scores
 
+def getNormalizedSRA(SRA) :
+    normalized_SRA = {}
+    max_sra = max(SRA.values())
+
+    for target, sra in SRA.items() :
+        normalized_SRA[target] = math.sqrt(sra / max_sra)
+    
+    return normalized_SRA
+
 def getSRA(score_summary) :
     sra = {}
     for user, scores in score_summary.items() :
@@ -131,7 +164,10 @@ def getSRA(score_summary) :
             sra[target] += score_summary[user][target]
     return sra
 
-def createNode(influence_summary, SRA, alias) :
+def normalized_follower():
+    pass
+
+def createNode(influence_summary, SRA, normalized_SRA, alias) :
     nodes = []
     for user, data in influence_summary.items() :
         nodes.append({
@@ -140,18 +176,21 @@ def createNode(influence_summary, SRA, alias) :
             'average_viewer' : data['averageViewers'],
             'games' : data['games'],
             'followers' : data['followers'],
-            'sra_score' : SRA[user] if user in SRA else 0.0
+            'normalized_followers' : data['normalized_followers'],
+            'sra_score' : SRA[user] if user in SRA else 0.0,
+            'normalized_sra_score' : normalized_SRA[user] if user in normalized_SRA else 0.0
         })
     
     return nodes
 
-def createLink(score_summary) :
+def createLink(score_summary, normalized_score_summary) :
     links = []
     for user, targets in score_summary.items() :
         for target, score in targets.items() :
             links.append({
                 'source' : user,
                 'target' : target,
-                'score' : score
+                'score' : score,
+                'normalized_score' : normalized_score_summary[user][target]
             })
     return links
