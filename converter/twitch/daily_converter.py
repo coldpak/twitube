@@ -58,9 +58,9 @@ def getInfluenceData(data_list):
                     if not key in games:
                         games[key] = {}
                     if not game in games[key]:
-                        games[key][game] = 1
+                        games[key][game] = 1/2
                     else :
-                        games[key][game] += 1
+                        games[key][game] += 1/2
 
                 # Get the number of followers
                 if 'channels' in value :
