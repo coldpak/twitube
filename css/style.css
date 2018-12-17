@@ -15,10 +15,12 @@ body {
     display: flex;
     flex-wrap: wrap;
   }
-  .page_template .graph_view {
-    width: 1000px;
-    height: 600px;
-    /* background: rgb(240, 174, 174); */
+  .page_template #graph_view {
+    width: 960px;
+    height: 580px;
+    margin: 10px 20px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
   .infos {
     width: calc(100vw - 1000px);
