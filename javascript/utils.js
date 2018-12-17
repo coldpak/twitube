@@ -77,6 +77,7 @@ const Utils = () => {
         CreateAxis: createAxis,
         CreateYAxis: createYAxis,
         UpdateAxis: updateAxis,
+        UpdateYAxis : updateYAxis,
         ScaleBand: scaleBand,
         ScaleLinear: scaleLinear,
     }
@@ -95,9 +96,11 @@ function getLineChartData(summary, user, key) {
                          date.slice(4,6)); // month = 0 ~ 11
         var summary = data.summary[user]
         var value =  summary ? summary.averageViewers[key] : 0.0;
+        var duration =  summary ? summary.averageViewers["duration"] : 0.0;
         var week_index = d.getDay();
         lineChart_data[week_index] = {
             [key] : value ? value : 0.0,
+            "duration" : duration ? duration : 0.0,
             "date" : weekday[week_index]
         };
     });
