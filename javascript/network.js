@@ -245,7 +245,6 @@ function init() {
     // Add event listeners.
     function restart(alpha=0.5, dropout=0.1, scale_index=0) {
         graph = merge(alpha, dropout);
-        console.log(graph);
         // Create circles, General update pattern
         node = node.data(graph.nodes, d => d.id);
 
@@ -345,7 +344,6 @@ function init() {
                     }
                     // out-link
                     if (o.source === d) {
-                        document.getElementsByClassName('info_name')[0].innerHTML += o.target;
                         return outlinkExist(o.target, d) ? "#922" : "#292";
                     }
                     // in-link
