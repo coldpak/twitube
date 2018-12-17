@@ -77,6 +77,8 @@ function LineChart(id = 'line_chart',
             _select(target, key)
             _enter(target.enter(), key)
 
+            ////////////////////////////////////////////////////////////////////////////////
+            // Bar Chart
             maxValue = data.value.reduce((max, R) => max > R['duration'] ? max : R['duration'], 0)
             let y2Domain = [0 , 1.1 * maxValue]
             _y2Scale = _utils.ScaleLinear(y2Domain, [_height, 0])

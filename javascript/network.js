@@ -258,6 +258,7 @@ function init() {
     simulation.on("tick", () => tickActions(node, link, label));
     
     restart(); 
+    Legend('legend_container', gameColorMap)
 }
 function mouseUp() {
     label.style("opacity", 1);
