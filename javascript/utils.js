@@ -109,3 +109,15 @@ function getFavorite(games) {
         return R.duration > most.duration ? R : most
     }, { 'game' : '', 'duration' : 0.0 })
 }
+
+var gameKeyMap = [
+    "ALL",
+    "Lost Ark Online",
+    "League of Legends",
+    "Fortnite",
+    "PLAYERUNKNOWN'S BATTLEGROUNDS",
+    "Just Chatting",
+    "Hearthstone",
+    "Overwatch",
+    "Others"
+]
