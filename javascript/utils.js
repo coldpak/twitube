@@ -12,12 +12,15 @@ const Utils = () => {
 
     let _xAxisID, _yAxisID
     let _xTicks, _yTicks
+
+    let _y2AxisID, _y2Ticks;
+
     const createAxis = (svg, width, height,
                         xid, xScale,
                         yid, yScale,
                         xTicks = 10, yTicks = 10) => {
         _xAxisID = xid
-        _yAxisID = yid, yid
+        _yAxisID = yid
         _xTicks = xTicks
         _yTicks = yTicks
 
@@ -28,6 +31,13 @@ const Utils = () => {
         svg.append('g')
         .attr('id', _yAxisID)
         .call(d3.axisLeft(yScale).ticks(_yTicks))
+    }
+    const createYAxis = (svg, width, height, id, yScale, ticks) => {
+        _y2AxisID = id
+        svg.append('g')
+           .attr('id', _y2AxisID)
+           .attr('transform', translate(width, 0))
+           .call(d3.axisRight(yScale).ticks(ticks))
     }
 
     const updateAxis = (svg, xScale, yScale, duration = 0, xTicks = 1, yTicks = 10) => {
@@ -42,6 +52,12 @@ const Utils = () => {
             .call(d3.axisLeft(yScale).ticks(yTicks))
     }
 
+    const updateYAxis = (svg, yScale, duration = 0, ticks = 10) => {
+        svg.select('#' + _y2AxisID)
+           .transition()
+           .duration(duration)
+           .call(d3.axisRight(yScale).ticks(ticks))
+    }
     const scaleBand = (domain, range) => {
         return d3.scaleBand()
             .domain(domain)
@@ -59,6 +75,7 @@ const Utils = () => {
         Translate: translate,
         CreateSVG: createSVG,
         CreateAxis: createAxis,
+        CreateYAxis: createYAxis,
         UpdateAxis: updateAxis,
         ScaleBand: scaleBand,
         ScaleLinear: scaleLinear,
