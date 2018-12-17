@@ -74,6 +74,7 @@ Promise.all(promises).then(function(values) {
 
 var influenceScale = ['normalized_view', 'normalize_follower', 'normalized_score'];
 var colorMap = {}
+var favoriteGameMap = {}
 
 function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     var nodeMappingTable = {};
@@ -110,6 +111,7 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
                 }
                 return R.duration > most.duration ? R : most
             }, { 'game' : '', 'duration' : 0.0 })
+        favoriteGameMap[node.id] = target_node['favorite_game']['game']
     });
     return nodes;
 }
