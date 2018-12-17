@@ -30,13 +30,10 @@ function Legend(id, colorMap) {
             })
 
     legend.append('text')
-        .attr("x", 20)
-        .attr("y", 10)
-        //.attr("dy", ".35em")
-        .text(function (d) {
-            return d.key
-        })
-        .attr("class", "textselected")
-        .style("text-anchor", "start")
-        .style("font-size", 10)
+          .attr("x", 20)
+          .attr("y", 10)
+          .text(function (d) {
+                return d.key
+           })
+          .attr("class", "textselected")
 }

@@ -24,10 +24,15 @@ body {
   }
   .page_template #legend_container {
     position: absolute;
-    width: 220px;
+    width: 230px;
     height: 200px;
     top: calc(580px - 200px + 10px);
-    left: calc(960px - 220px + 20px);
+    left: calc(960px - 230px + 20px);
+  }
+  .legend {
+    font-size: 11px;
+    font-weight: bold;
+    text-anchor: start;
   }
   .infos {
     width: calc(100vw - 1000px);
@@ -176,6 +181,18 @@ body {
 /* dot */
 .dot {
   fill: black;
+}
+
+/* tooltip */
+div.tooltip {	
+  position: absolute;			
+  text-align: left;
+  padding: 2px;				
+  font: 12px sans-serif;		
+  background: lightsteelblue;	
+  border: 0px;		
+  border-radius: 8px;			
+  pointer-events: none;			
 }
 
 /* Span */

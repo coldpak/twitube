@@ -1,3 +1,9 @@
+// Define a div for a tooltip
+var div = d3.select('body')
+            .append('div')
+            .attr('class', 'tooltip')
+            .style('opacity', 0)
+
 function IntegratedChart(id = 'integrated_chart',
                    margin = { top: 40, right: 40, bottom: 40, left: 40 }) {
 
@@ -18,6 +24,7 @@ function IntegratedChart(id = 'integrated_chart',
     _chart.append('g')
           .attr("fill", "none")
           .attr('id', 'dots')
+
 
     let xDomain = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT']
     let _xScale = _utils.ScaleLinear([0, 1], [0, _width])
@@ -97,10 +104,19 @@ function IntegratedChart(id = 'integrated_chart',
                 .on('mouseover', function(d) {
                     d3.select(this)
                       .attr('r', 8)
+                    div.transition()
+                       .duration(300)
+                       .style('opacity', 0.9)
+                    div.html(`Average Viewer : ${d['viewer'].toFixed(0)}</br>`)	
+                       .style("left", (d3.event.pageX) + "px")		
+                       .style("top", (d3.event.pageY - 28) + "px");	
                 })
                 .on('mouseout', function(d) {
                     d3.select(this)
                       .attr('r', 5)
+                    div.transition()
+                       .duration(300)
+                       .style('opacity',  0)
                 })
                 .style('opacity', 0)
                 .transition()
@@ -134,6 +150,20 @@ function IntegratedChart(id = 'integrated_chart',
                 .attr('transform', (d) => _utils.Translate(_xScale(d['date']), _yScale(d['duration'])))
                 .attr('fill', (_, i) => colorScale(i))
                 .attr('opacity', 0.9)
+                .on('mouseover', function(d) {
+                    div.transition()
+                       .duration(300)
+                       .style('opacity', 0.9)
+                    div.html(`Day : ${d['date']} </br>
+                              Duration : ${d['duration']} %</br>`)	
+                       .style("left", (d3.event.pageX) + "px")		
+                       .style("top", (d3.event.pageY - 28) + "px");	
+                })
+                .on('mouseout', function(d) {
+                    div.transition()
+                       .duration(300)
+                       .style('opacity',  0)
+                })
             bars.exit()
                 .remove()
 
