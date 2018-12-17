@@ -5,7 +5,7 @@ import math
 def readWeeklyFiles(data_dir, date):
     base_time = dt.datetime(2000 + int(date[0:2]), int(date[2:4]), int(date[4:6]))
     weekly_data = []
-    for i in range(0, 5) :
+    for i in range(0, 7) :
         time = base_time - dt.timedelta(i)
         date = '%2d%2d%2d' %(time.year - 2000, time.month, time.day)
         daily_data = dc.readDailyFiles(data_dir, date)
