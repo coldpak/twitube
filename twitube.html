@@ -23,7 +23,7 @@
             <label class="label">dropout rate </label><br/>
             <input id="dropout_value" type="range" value="0.1" step="0.01" min="0.01" max="0.3" oninput="changeInputValue(this.value, this.id)"/>
             <output for=value id="dropout_output">0.1</output><br/>
-          </form>
+          </form><br/>
           <label class="label">Radius Value</label><br/>
           <label class="pure-material-checkbox">
             <input id="by_view" class="checkbox_radius" type="checkbox" checked onclick="clickRadiusCheckbox(0)">
@@ -36,7 +36,9 @@
           <label class="pure-material-checkbox">
             <input id="by_score" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(2)">
             <span>PSRA Score</span>
-          </label>
+          </label><br/><br/>
+          <label class="label">Search by Nickname</label>
+          <input id="search_bar" value="" onchange="changeInputValue(this.value, this.id)"/>
         </div>
       </div>
       <div class="filter_wrapper" id="game_filter">

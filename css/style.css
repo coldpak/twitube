@@ -98,12 +98,12 @@ body {
   }
   .link {
     pointer-events: none;
-    stroke: #777;
+    stroke: #ddd;
     stroke-opacity: .2;
   }
   #arrow {
     pointer-events: none;
-    fill: #777;
+    fill: #ddd;
     fill-opacity: 0;
   }
   #outArrow {

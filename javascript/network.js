@@ -23,7 +23,7 @@ var alpha_rate = 0.5,
     dropout_rate = 0.1,
     selected_index = 0;
 
-defs = svg.append("defs");
+var defs = svg.append("defs");
 
 function arrowFactory(defs, arrow_id) {
     defs.append("marker")
@@ -282,13 +282,14 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
         });
     node = node.enter().append("circle")
             .attr("class", ".node_circle")
+            .attr("id", d=>d.alias)
             .style("stroke", "black")
             .attr("r", function (node) {
                 return radius * node[influenceScale[scale_index]];
             })
             .attr("fill", function (d) {
                 if (d["favorite_game"]) {
-                    color = gameColorMap[d["favorite_game"]["game"]];
+                    let color = gameColorMap[d["favorite_game"]["game"]];
                     return color ? color : gameColorMap["Others"]
                 }
                 else {
@@ -420,6 +421,11 @@ function changeInputValue(value, id) {
         restart(alpha_rate, dropout_rate, selected_index);
         return;
     }
+    if (id === 'search_bar') {
+        searchNodeByAlias(value);
+        document.querySelector('#search_bar').value = '';
+        return;
+    }
     
     return null;
 }
@@ -446,7 +452,31 @@ function clickGameCheckbox(index) {
     restart(alpha_rate, dropout_rate, selected_index);
 }
 
-drag = function (simulation) {
+function searchNodeByAlias(str) {
+    label.style("opacity", function (o) {
+        thisOpacity = o.alias === str ? 1 : 0.2;
+        return thisOpacity;
+    });
+    node.style("stroke-opacity", function (o) {
+        thisOpacity = o.alias === str ? 1 : 0.2;
+        return thisOpacity;
+    });
+    node.style("fill-opacity", function (o) {
+        thisOpacity = o.alias === str ? 1 : 0.2;
+        return thisOpacity;
+    });
+    link.style("stroke-opacity", 0.2)
+        .style("stroke", "#ddd")
+        .style("fill", "#ddd")
+        .attr('marker-end', 'url(#arrow)');
+    try {
+        main.select(`#${str}`).dispatch('click');
+    } catch(e) {
+        return null;
+    }
+}
+
+var drag = function (simulation) {
 
     function dragstarted(d) {
         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
