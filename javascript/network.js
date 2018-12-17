@@ -72,8 +72,7 @@ var youtubeGraph, twitchGraph, graph, simulation;
 
 var chartContainer = document.getElementsByClassName("chart")[0];
 var pieChart = PieChart();
-var lineChart = LineChart();
-var lineChart_key = 'viewer';
+var integratedChart = IntegratedChart();
 
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
@@ -445,7 +444,7 @@ function changeInputValue(value, id) {
 
 function mouseClick(user) {
     pieChart.Update(twitchGraph.nodes, user)
-    lineChart.Update(twitchGraph.statistics["weekly_summary"], user, lineChart_key);
+    integratedChart.Update(twitchGraph.statistics["weekly_summary"], user);
 }
 
 function clickRadiusCheckbox(index) {

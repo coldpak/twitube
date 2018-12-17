@@ -86,8 +86,8 @@ const Utils = () => {
 function getPieChartData(nodes, user) {
     return nodes.filter((d) => d.id == user)[0]["games"]
 }
-function getLineChartData(summary, user, key) {
-    lineChart_data = new Array(7);
+function getIntegratedChartData(summary, user) {
+    let chart_data = new Array(7);
     summary.forEach(data => {
         var date = data["date"];
         var weekday = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
@@ -95,17 +95,18 @@ function getLineChartData(summary, user, key) {
                          date.slice(2,4) - 1,
                          date.slice(4,6)); // month = 0 ~ 11
         var summary = data.summary[user]
-        var value =  summary ? summary.averageViewers[key] : 0.0;
+        var viewer =  summary ? summary.averageViewers['viewer'] : 0.0;
         var duration =  summary ? summary.averageViewers["duration"] : 0.0;
         var week_index = d.getDay();
-        lineChart_data[week_index] = {
-            [key] : value ? value : 0.0,
+        
+        chart_data[week_index] = {
+            "viewer" : viewer ? viewer : 0.0,
             "duration" : duration ? duration : 0.0,
             "date" : weekday[week_index]
         };
     });
 
-    return lineChart_data;
+    return chart_data;
 }
 function getFavorite(games) {
     games.reduce((most, R) => {
