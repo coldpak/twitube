@@ -223,22 +223,6 @@ function createLinkForce(links) {
 }
 
 function init() {
-    /*
-    var kinds = ["averageView", "subscriberCount", "recent_average_view"]
-    var kind_max = {}
-    for (var i = 0; i < kinds.length; i++) {
-        kind_max[kinds[i]] = d3.max(graph.nodes, function (d) {
-            return d[kinds[i]];
-        });
-    };
-    var kind_to_color = function (d) {
-        return d3.rgb(
-            225 * d.averageView / kind_max.averageView,
-            225 * d.recent_average_view / kind_max.recent_average_view,
-            200
-        )
-    };
-    */
     // Create graph
     graph = merge(alpha_rate, dropout_rate);
     // Add mouseup event to graph_view
@@ -249,15 +233,7 @@ function init() {
     // Add tick instructions: 
     simulation.on("tick", () => tickActions(node, link, label));
     
-    restart();
-    // document.getElementById('alpha_value').addEventListener("change", function(e) {
-    //     alpha_rate = +e.target.value;
-    // });
-    // document.getElementById('alpha_btn').addEventListener("click", (e) => {
-    //     console.log(alpha_rate);
-    //     restart(alpha_rate, dropout_rate, selected_index);
-    // });
-    
+    restart(); 
 }
 function mouseUp() {
     label.style("opacity", 1);
@@ -438,11 +414,17 @@ function clickRadiusCheckbox(index) {
     restart(alpha_rate, dropout_rate, index);
 }
 
-function clickGameCheckbox(index) {
-    gameCheckedList = gameCheckedList.map((d, i) => ( i == index ));
-    for (var i = 0; i < gameCheckedList.length; i++) {
-        document.getElementsByClassName('checkbox_games')[i].checked = gameCheckedList[i];
+function clickAllGameCheckbox() {
+    var checkBoxes = document.getElementsByClassName('checkbox_games');
+    var setting = checkBoxes[0].checked
+    for (var i = 1 ; i < gameCheckedList.length ; i++) {
+        gameCheckedList[i] = checkBoxes[i].checked = setting;
     }
+}
+function clickGameCheckbox(index) {
+    var checkBoxes = document.getElementsByClassName('checkbox_games');
+    if (checkBoxes[0].checked) checkBoxes[0].checked = false; 
+    gameCheckedList[index] = checkBoxes[index].checked;
     restart(alpha_rate, dropout_rate, selected_index);
 }
 
