@@ -56,16 +56,12 @@ var youtubeGraph, twitchGraph;
 var chartContainer = document.getElementsByClassName("chart")[0];
 var pieChart = PieChart();
 var lineChart = LineChart();
+var lineChart_key = 'viewer';
 
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
     twitchGraph = values[1];
     init();
-
-    // testing chart
-    var user = '얍얍', key = 'viewer'
-    pieChart.Update(twitchGraph.nodes, user)
-    lineChart.Update(twitchGraph.statistics["weekly_summary"], user, key);
 });
 
 var nodeMappingTable = {};
@@ -196,6 +192,7 @@ function init() {
                 //     return kind_to_color(d).toString();
                 // })
                 .on("mousedown", mouseOver(0))
+                .on("click", (d) => mouseClick(d.id))
                 .call(drag(simulation));
     document.body.addEventListener("mouseup", mouseOut);
 
@@ -357,8 +354,9 @@ function init() {
         link.attr('marker-end', 'url(#arrow)');
     }
 
-    function mouseClick(id) {
-
+    function mouseClick(user) {
+        pieChart.Update(twitchGraph.nodes, user)
+        lineChart.Update(twitchGraph.statistics["weekly_summary"], user, lineChart_key);
     }
 }
 

@@ -76,8 +76,9 @@ function getLineChartData(summary, user, key) {
         var d = new Date(2000 + date.slice(0,2), 
                          date.slice(2,4) - 1,
                          date.slice(4,6)); // month = 0 ~ 11
+        var value =  data.summary[user].averageViewers[key]
         lineChart_data.push({
-            [key] : data.summary[user].averageViewers[key],
+            [key] : value ? value : 0.0,
             date : weekday[d.getDay()]
         });
     });

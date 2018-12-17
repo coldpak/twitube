@@ -38,14 +38,15 @@ function PieChart(id = 'pie_chart') {
     return {
         Update : (dataset, user) => {
             let data = getPieChartData(dataset, user)
+            chart.selectAll("path").remove()
+            chart.selectAll("text").remove()
+
             const path = chart.selectAll("path")
-                              .data(pie(data), d => d.data['game']);
+                              .data(pie(data), d => d.data["game"]);
             const text = chart.selectAll("text")
                               .remove()
-                                              
-            path.exit()
-                .remove();
 
+            path.exit().remove()
             path.transition()
                 .duration(200)
                 .attrTween("d", arcTween);
@@ -63,6 +64,22 @@ function PieChart(id = 'pie_chart') {
                 .attr("transform", function(d) {
                     return "translate(" + labelArc.centroid(d) + ")";
                 })
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("display", function(d) {
+                    if (d.endAngle - d.startAngle < 0.4 ) {
+                        return "none"
+                    }
+                    else {
+                        return 'block'
+                    }
+                })
+                .attr("font-size", "9px")
+                .text(function (d) {
+                    return d.data["game"];
+                });
+                
+            path.append("text")
                 .attr("text-anchor", "middle")
                 .attr("fill", "white")
                 .attr("display", function(d) {
