@@ -17,7 +17,8 @@ var radius = 35,
 
 var linkedByIndex = {};
 var radiusCheckedList = Array.apply(null, Array(3)).map(function (d, i) { return i != 0 ? false : true ;}),
-    gameCheckedList = Array.apply(null, Array(9)).map(function (d, i) { return i != 0 ? false : true ;});
+    gameCheckedList = Array.apply(null, Array(9)).map(function (d, i) { return true ;});
+var checkedGames = [];
 
 var alpha_rate = 0.5,
     dropout_rate = 0.1,
@@ -77,6 +78,7 @@ Promise.all(promises).then(function(values) {
     twitchGraph = values[1];
     init();
 });
+
 var influenceScale = ['normalized_view', 'normalized_follower', 'normalized_score'];
 var colorMap = {}
 var favoriteGameMap = {}
@@ -84,41 +86,53 @@ var favoriteGameMap = {}
 function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     var nodeMappingTable = {};
     var nodes = [];
-    _youtubeNodes.forEach((node, i) => {
+
+    _twitchNodes.forEach((node, i) => {
         let _id = node.id;
+
+        let favorite_game = node['games'].reduce((most, R) => {
+                return R.duration > most.duration ? R : most
+            }, { 'game' : '', 'duration' : 0.0 })
+        let game = favorite_game['game']
+        if ((checkedGames[game] != undefined && checkedGames[game] == false)
+         || (checkedGames[game] == undefined && gameCheckedList[8] == false)) return;
 
         nodes.push({
             'id' : _id,
             'alias' : node.alias,
-            'normalized_view' : alpha * node['normalized_average_view'],
-            'normalized_follower' : alpha * node['normalized_subscriber_count'],
-            'normalized_score' : alpha * node['normalized_pra_score']
+            'normalized_view' : (1 - alpha) * node['average_viewer']['normalized_viewer'],
+            'normalized_follower' : (1 - alpha) * node['normalized_followers'],
+            'normalized_score' : (1 - alpha) * node['normalized_sra_score'],
+            'games' : node['games'],
+            'favorite_game' : favorite_game
         });
 
-        if (!nodeMappingTable[_id]) nodeMappingTable[_id] = i;
+        favoriteGameMap[_id] = favorite_game
+        if (!nodeMappingTable[_id]) nodeMappingTable[_id] = nodes.length - 1;
     });
 
-    _twitchNodes.forEach((node, i) => {
+    _youtubeNodes.forEach((node, i) => {
         let index = nodeMappingTable[node.id];
         let target_node = nodes[index];
-        
-        target_node['normalized_view'] += (1 - alpha) * node['average_viewer']['normalized_viewer'];
-        target_node['normalized_follower'] += (1 - alpha) * node['normalized_followers'];
-        target_node['normalized_score'] += (1 - alpha) * node['normalized_sra_score'];
-        target_node['games'] = node['games'];
-        target_node['favorite_game'] = node['games'].reduce((most, R) => {
-                return R.duration > most.duration ? R : most
-            }, { 'game' : '', 'duration' : 0.0 })
-        favoriteGameMap[node.id] = target_node['favorite_game']['game']
+ 
+        if (!target_node) return;
+
+        target_node['normalized_view'] += alpha * node['normalized_average_view'];
+        target_node['normalized_follower'] += alpha * node['normalized_subscriber_count'];
+        target_node['normalized_score'] += alpha * node['normalized_pra_score'];
     });
+
     return nodes;
 }
 
 function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
     var linkMappingTable = {};
     var links = [];
+
     _youtubeLinks.forEach((link, i) => {
-        let source = link.source, target = link.target;
+        let source = link.source, target = link.target;   
+        if (!favoriteGameMap[source] || !favoriteGameMap[target]) return;
+
         let _id = source + target;
         links.push({
             'source': source,
@@ -131,6 +145,8 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
 
     _twitchLinks.forEach((link, i) => {
         let source = link.source, target = link.target;
+        if (!favoriteGameMap[source] || !favoriteGameMap[target]) return;
+
         let _id = source + target;
         let index = linkMappingTable[_id];
         let target_link =  links[index];
@@ -155,6 +171,11 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
 }
 
 function merge(alpha=0.5, dropout=0.1) {
+    favoriteGameMap = {}
+    checkedGames = {}
+    gameCheckedList.forEach((d, i) => {
+        checkedGames[gameKeyMap[i]] = d && i > 0 && i < 9 ? true : false;
+    })
     var _nodes = makeMergedNodes(youtubeGraph.nodes, twitchGraph.nodes, alpha);
     var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha, dropout);
 
@@ -223,22 +244,6 @@ function createLinkForce(links) {
 }
 
 function init() {
-    /*
-    var kinds = ["averageView", "subscriberCount", "recent_average_view"]
-    var kind_max = {}
-    for (var i = 0; i < kinds.length; i++) {
-        kind_max[kinds[i]] = d3.max(graph.nodes, function (d) {
-            return d[kinds[i]];
-        });
-    };
-    var kind_to_color = function (d) {
-        return d3.rgb(
-            225 * d.averageView / kind_max.averageView,
-            225 * d.recent_average_view / kind_max.recent_average_view,
-            200
-        )
-    };
-    */
     // Create graph
     graph = merge(alpha_rate, dropout_rate);
     // Add mouseup event to graph_view
@@ -249,15 +254,7 @@ function init() {
     // Add tick instructions: 
     simulation.on("tick", () => tickActions(node, link, label));
     
-    restart();
-    // document.getElementById('alpha_value').addEventListener("change", function(e) {
-    //     alpha_rate = +e.target.value;
-    // });
-    // document.getElementById('alpha_btn').addEventListener("click", (e) => {
-    //     console.log(alpha_rate);
-    //     restart(alpha_rate, dropout_rate, selected_index);
-    // });
-    
+    restart(); 
 }
 function mouseUp() {
     label.style("opacity", 1);
@@ -438,11 +435,17 @@ function clickRadiusCheckbox(index) {
     restart(alpha_rate, dropout_rate, index);
 }
 
-function clickGameCheckbox(index) {
-    gameCheckedList = gameCheckedList.map((d, i) => ( i == index ));
-    for (var i = 0; i < gameCheckedList.length; i++) {
-        document.getElementsByClassName('checkbox_games')[i].checked = gameCheckedList[i];
+function clickAllGameCheckbox() {
+    var checkBoxes = document.getElementsByClassName('checkbox_games');
+    var setting = checkBoxes[0].checked
+    for (var i = 1 ; i < gameCheckedList.length ; i++) {
+        gameCheckedList[i] = checkBoxes[i].checked = setting;
     }
+}
+function clickGameCheckbox(index) {
+    var checkBoxes = document.getElementsByClassName('checkbox_games');
+    if (checkBoxes[0].checked) checkBoxes[0].checked = false; 
+    gameCheckedList[index] = checkBoxes[index].checked;
     restart(alpha_rate, dropout_rate, selected_index);
 }
 
