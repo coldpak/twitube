@@ -1,6 +1,10 @@
-var svg = d3.select('svg'),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
+var width = 960,
+    height = 580;
+
+var svg = d3.select('#graph_view')
+            .append('svg')
+                .attr("width", width)
+                .attr("height", height);
 
 var main = svg.append("g").attr("id", "graph"),
     node = main.append("g").selectAll(".node_circle"),
