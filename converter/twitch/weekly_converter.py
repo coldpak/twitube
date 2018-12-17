@@ -5,7 +5,7 @@ import math
 def readWeeklyFiles(data_dir, date):
     base_time = dt.datetime(2000 + int(date[0:2]), int(date[2:4]), int(date[4:6]))
     weekly_data = []
-    for i in range(0, 5) :
+    for i in range(0, 7) :
         time = base_time - dt.timedelta(i)
         date = '%2d%2d%2d' %(time.year - 2000, time.month, time.day)
         daily_data = dc.readDailyFiles(data_dir, date)
@@ -18,12 +18,12 @@ def getWeeklyInfluenceData(weekly_data):
         weekly_influence_data.append(dc.getInfluenceData(daily_data))
     return weekly_influence_data
 
-def getWeeklyLinkData(weekly_data, target_path = 'twitch-targets.json'):
+def getWeeklyLinkData(weekly_data):
     weekly_link_data = []
     for daily_data in weekly_data :
         data = daily_data['data']
         if len(data) > 0 :
-            weekly_link_data.append(dc.getLinkData(data[0], target_path))
+            weekly_link_data.append(dc.getLinkData(data[0]))
         else :
             weekly_link_data.append({})
     return weekly_link_data

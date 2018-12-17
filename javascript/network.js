@@ -39,8 +39,8 @@ arrowFactory(defs, "outArrow");
 arrowFactory(defs, "bothArrow");
 
 var paths = [
-    'data/youtube-181214.json',
-    'data/twitch-181214.json'
+    'data/youtube-181216.json',
+    'data/twitch-181216.json'
 ];
 
 var promises = [];
@@ -59,21 +59,17 @@ paths.forEach(function(url) {
         })
     );
 });
-
 var youtubeGraph, twitchGraph, graph, simulation;
 
+var chartContainer = document.getElementsByClassName("chart")[0];
 var pieChart = PieChart();
 var lineChart = LineChart();
+var lineChart_key = 'viewer';
 
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
     twitchGraph = values[1];
     init();
-
-    // testing chart
-    var user = '얍얍', key = 'viewer'
-    pieChart.Update(twitchGraph.nodes, user)
-    lineChart.Update(twitchGraph.statistics["weekly_summary"], user, key);
 });
 
 
@@ -256,7 +252,6 @@ function init() {
     // });
     
 }
-
 function mouseUp() {
     label.style("opacity", 1);
     node.style("stroke-opacity", 1);
@@ -287,6 +282,7 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
             //     return kind_to_color(d).toString();
             // })
             .on("mousedown", mouseDown(0))
+            .on("click", (d) => mouseClick(d.id))
             .call(drag(simulation))
             .merge(node);
     
@@ -420,7 +416,13 @@ function changeInputValue(value, id) {
         dropout_rate = value;
         return console.log(dropout_rate);
     }
+    
     return null;
+}
+
+function mouseClick(user) {
+        pieChart.Update(twitchGraph.nodes, user)
+        lineChart.Update(twitchGraph.statistics["weekly_summary"], user, lineChart_key);
 }
 
 drag = function (simulation) {

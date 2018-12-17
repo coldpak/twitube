@@ -2,7 +2,7 @@ const Utils = () => {
     const translate = (x, y) => 'translate(' + x + ', ' + y + ')'
 
     const createSVG = (container, w, h, margin) => {
-        return d3.select('.' + container)
+        return d3.select('#' + container)
             .append('svg')
             .attr('width', w)
             .attr('height', h)
@@ -69,17 +69,20 @@ function getPieChartData(nodes, user) {
     return nodes.filter((d) => d.id == user)[0]["games"]
 }
 function getLineChartData(summary, user, key) {
-    lineChart_data = []
+    lineChart_data = new Array(7);
     summary.forEach(data => {
         var date = data["date"];
         var weekday = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
         var d = new Date(2000 + date.slice(0,2), 
                          date.slice(2,4) - 1,
                          date.slice(4,6)); // month = 0 ~ 11
-        lineChart_data.push({
-            [key] : data.summary[user].averageViewers[key],
-            date : weekday[d.getDay()]
-        });
+        var summary = data.summary[user]
+        var value =  summary ? summary.averageViewers[key] : 0.0;
+        var week_index = d.getDay();
+        lineChart_data[week_index] = {
+            [key] : value ? value : 0.0,
+            "date" : weekday[week_index]
+        };
     });
 
     return lineChart_data;
