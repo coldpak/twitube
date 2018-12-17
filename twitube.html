@@ -15,22 +15,71 @@
     </svg>
     <div class="control_panel">
       <div class="filter_wrapper" id="platform_filter">
-        <div class="filter_title">Platform Filter</div>
+        <div class="filter_title">Network Filter</div>
         <div class="filter">
           <form>
-            <label>alpha: </label>
-            <input id="alpha_value" value=0.5 onchange="changeInputValue(this.value, this.id)"/>
-            <input id="alpha_btn" type="button" onclick="onClickBtn(this.id)">제출</button><br/>
-            <label>dropout rate: </label>
-            <input id="dropout_value" value=0.1 onchange="changeInputValue(this.value, this.id)"/>
-            <button id="dropout_btn">제출</button>
+            <label class="label">alpha </label><br/>
+            <input id="alpha_value" type="range" value="0.5" step="0.1" min="0.0" max="1.0" oninput="changeInputValue(this.value, this.id)"/>
+            <output for=value id="alpha_output">0.5</output><br/>
+            <label class="label">dropout rate </label><br/>
+            <input id="dropout_value" type="range" value="0.1" step="0.01" min="0.01" max="0.3" oninput="changeInputValue(this.value, this.id)"/>
+            <output for=value id="dropout_output">0.1</output><br/>
           </form>
-          
+          <label class="label">Radius Value</label><br/>
+          <label class="pure-material-checkbox">
+            <input id="by_view" class="checkbox_radius" type="checkbox" checked onclick="clickRadiusCheckbox(0)">
+            <span>Recent Average View Count</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input id="by_follower" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(1)">
+            <span>Follower Count</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input id="by_score" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(2)">
+            <span>PSRA Score</span>
+          </label>
         </div>
       </div>
       <div class="filter_wrapper" id="game_filter">
         <div class="filter_title">Game Filter</div>
-
+        <div class="filter">
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(0)">
+            <span>All Games</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(1)">
+            <span>Lost Arks Online</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(2)">
+            <span>League of Legends</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(3)">
+            <span>Portnite</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(4)">
+            <span>Battle Ground</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(5)">
+            <span>Just Chatting</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(6)">
+            <span>Hearthstone</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(7)">
+            <span>Overwatch</span>
+          </label><br/>
+          <label class="pure-material-checkbox">
+            <input class="checkbox_games" type="checkbox" onclick="clickGameCheckbox(8)">
+            <span>Other games</span>
+          </label><br/>
+        </div>
       </div>
       <div class="filter_wrapper" id="other_filter">
         <div class="filter_title">Other Filter</div>

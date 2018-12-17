@@ -7,11 +7,13 @@ var main = svg.append("g").attr("id", "graph"),
     link = main.append("g").selectAll(".link"),
     label = main.append("g").selectAll(".node_label");
 
-var radius = 25,
+var radius = 30,
     distance = 30
     stroke = 20;
 
 var linkedByIndex = {};
+var radiusCheckedList = Array.apply(null, Array(3)).map(function (d, i) { return i != 0 ? false : true ;}),
+    gameCheckedList = Array.apply(null, Array(9)).map(function (d, i) { return i != 0 ? false : true ;});
 
 var alpha_rate = 0.5,
     dropout_rate = 0.1,
@@ -74,7 +76,7 @@ Promise.all(promises).then(function(values) {
 
 
 
-var influenceScale = ['normalized_view', 'normalize_follower', 'normalized_score'];
+var influenceScale = ['normalized_view', 'normalized_follower', 'normalized_score'];
 
 function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     var nodeMappingTable = {};
@@ -297,7 +299,6 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
         });
     link = link.enter().append("line")
         .attr("class", "link")
-        .attr("marker-end", "url(#arrow)")
         .attr("stroke-width", function (d) {
             return stroke * d.normalized_score;
         })
@@ -410,11 +411,15 @@ function onClickBtn(id) {
 function changeInputValue(value, id) {
     if (id === 'alpha_value') {
         alpha_rate = value;
-        return console.log(alpha_rate);
+        document.querySelector('#alpha_output').value = value;
+        restart(alpha_rate, dropout_rate, selected_index);
+        return;
     }
     if (id === 'dropout_value') {
         dropout_rate = value;
-        return console.log(dropout_rate);
+        document.querySelector('#dropout_output').value = value;
+        restart(alpha_rate, dropout_rate, selected_index);
+        return;
     }
     
     return null;
@@ -423,6 +428,23 @@ function changeInputValue(value, id) {
 function mouseClick(user) {
         pieChart.Update(twitchGraph.nodes, user)
         lineChart.Update(twitchGraph.statistics["weekly_summary"], user, lineChart_key);
+}
+
+function clickRadiusCheckbox(index) {
+    radiusCheckedList = radiusCheckedList.map((d, i) => ( i == index ));
+    document.getElementsByClassName('checkbox_radius')[0].checked = radiusCheckedList[0];
+    document.getElementsByClassName('checkbox_radius')[1].checked = radiusCheckedList[1];
+    document.getElementsByClassName('checkbox_radius')[2].checked = radiusCheckedList[2];
+    selected_index = index;
+    restart(alpha_rate, dropout_rate, index);
+}
+
+function clickGameCheckbox(index) {
+    gameCheckedList = gameCheckedList.map((d, i) => ( i == index ));
+    for (var i = 0; i < gameCheckedList.length; i++) {
+        document.getElementsByClassName('checkbox_games')[i].checked = gameCheckedList[i];
+    }
+    restart(alpha_rate, dropout_rate, selected_index);
 }
 
 drag = function (simulation) {
