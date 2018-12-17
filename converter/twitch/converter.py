@@ -36,6 +36,7 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = '../../da
     weekly_normalized_sra = getNormalizedSRA(weekly_SRA)
     weekly_normalized_score_summary = getNormalizedScore(weekly_score_summary)
 
+    generateRandomColor(weekly_summary)
     output = {
         'nodes' : weekly_nodes,
         'links' : weekly_links,

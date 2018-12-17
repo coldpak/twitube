@@ -87,3 +87,8 @@ function getLineChartData(summary, user, key) {
 
     return lineChart_data;
 }
+function getFavorite(games) {
+    games.reduce((most, R) => {
+        return R.duration > most.duration ? R : most
+    }, { 'game' : '', 'duration' : 0.0 })
+}
