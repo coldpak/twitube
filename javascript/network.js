@@ -62,12 +62,12 @@ Promise.all(promises).then(function(values) {
     pieChart.Update(pieChart_data)
 });
 
-var nodeMappingTable = {};
-var linkMappingTable = {};
+
 
 var influenceScale = ['normalized_view', 'normalize_follower', 'normalized_score'];
 
 function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
+    var nodeMappingTable = {};
     var nodes = [];
     _youtubeNodes.forEach((node, i) => {
         let _id = node.id;
@@ -95,6 +95,7 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
 }
 
 function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
+    var linkMappingTable = {};
     var links = [];
     _youtubeLinks.forEach((link, i) => {
         let source = link.source, target = link.target;
@@ -130,7 +131,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
             });
         }
     });
-    return links.filter(link => link.normalized_score != 0);
+    return links.filter(d => d.normalized_score >= dropout);
 }
 
 function merge(alpha=0.5, dropout=0.1) {
@@ -233,14 +234,18 @@ function init() {
 
     // Make force simulation
     var simulation = makeForceSimulation(graph.nodes);
+    // Add tick instructions: 
+    simulation.on("tick", () => tickActions(node, link, label));
+    var linkedByIndex = {};
     
-    restart();
+    restart(0.8);
     d3.timeout(function() {
-        restart(0.8);
+        restart(0.5);
       }, 2000);
     // Add event listeners.
     function restart(alpha=0.5, dropout=0.1, scale_index=0) {
-        graph = merge(alpha, dropout)
+        graph = merge(alpha, dropout);
+        console.log(graph);
         // Create circles, General update pattern
         node = node.data(graph.nodes, d => d.id);
 
@@ -297,13 +302,11 @@ function init() {
         simulation.nodes(graph.nodes);
         // Create Link Forces
         simulation.force("links", createLinkForce(graph.links));
-        // Add tick instructions: 
-        simulation.on("tick", () => tickActions(node, link, label));
+        simulation.alpha(1).restart();
         // build a dictionary of nodes that are linked
-        var linkedByIndex = {};
+        linkedByIndex = {};
         graph.links.forEach(function (d) {
-            if (d.normalized_score < 0.1) linkedByIndex[d.source.index + "," + d.target.index] = false; // TODO: dropout rate
-            else linkedByIndex[d.source.index + "," + d.target.index] = true;
+            linkedByIndex[d.source.index + "," + d.target.index] = 1;
         });
         
         // check the dictionary to see if nodes are linked
@@ -342,6 +345,7 @@ function init() {
                     }
                     // out-link
                     if (o.source === d) {
+                        document.getElementsByClassName('info_name')[0].innerHTML += o.target;
                         return outlinkExist(o.target, d) ? "#922" : "#292";
                     }
                     // in-link
