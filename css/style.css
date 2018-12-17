@@ -61,6 +61,26 @@ body {
     width: 1000px;
     height: calc(100vh - 600px);
     background: rgb(152, 243, 152);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+  .control_panel .filter_wrapper {
+    width: 32%;
+  }
+  #platform_filter {
+    background: #922;
+  }
+  #game_filter {
+    background: #292;
+  }
+  #other_filter {
+    background: #992;
+  }
+  .filter_wrapper .filter_title {
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 16px;
   }
   .node_circle {
     stroke: #777;
@@ -86,7 +106,7 @@ body {
   }
   #inArrow {
     pointer-events: none;
-    fill: #229;
+    fill: #992;
     fill-opacity: .5;
   }
   #bothArrow {

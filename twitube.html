@@ -14,6 +14,28 @@
     <svg id="graph_view" width="800" height="600">
     </svg>
     <div class="control_panel">
+      <div class="filter_wrapper" id="platform_filter">
+        <div class="filter_title">Platform Filter</div>
+        <div class="filter">
+          <form>
+            <label>alpha: </label>
+            <input id="alpha_value" value=0.5 onchange="changeInputValue(this.value, this.id)"/>
+            <input id="alpha_btn" type="button" onclick="onClickBtn(this.id)">제출</button><br/>
+            <label>dropout rate: </label>
+            <input id="dropout_value" value=0.1 onchange="changeInputValue(this.value, this.id)"/>
+            <button id="dropout_btn">제출</button>
+          </form>
+          
+        </div>
+      </div>
+      <div class="filter_wrapper" id="game_filter">
+        <div class="filter_title">Game Filter</div>
+
+      </div>
+      <div class="filter_wrapper" id="other_filter">
+        <div class="filter_title">Other Filter</div>
+
+      </div>
     </div>
   </div>
   <div class="infos">
