@@ -11,8 +11,8 @@ var main = svg.append("g").attr("id", "graph"),
     link = main.append("g").selectAll(".link"),
     label = main.append("g").selectAll(".node_label");
 
-var radius = 30,
-    distance = 30
+var radius = 35,
+    distance = 40,
     stroke = 20;
 
 var linkedByIndex = {};
@@ -77,7 +77,7 @@ Promise.all(promises).then(function(values) {
     twitchGraph = values[1];
     init();
 });
-var influenceScale = ['normalized_view', 'normalize_follower', 'normalized_score'];
+var influenceScale = ['normalized_view', 'normalized_follower', 'normalized_score'];
 var colorMap = {}
 var favoriteGameMap = {}
 
@@ -178,9 +178,6 @@ function makeForceSimulation(nodes) {
     simulation
         .force("charge_force", d3.forceManyBody().strength(-100))
         .force("center_force", d3.forceCenter(width / 2, height / 2))
-        .force("collide", d3.forceCollide().radius(function (d) {
-            return radius * d.normalized_average_view + 0.5;
-        }).iterations(2))
         .force("x", d3.forceX())
         .force("y", d3.forceY());
 
@@ -259,7 +256,7 @@ function init() {
     // Add tick instructions: 
     simulation.on("tick", () => tickActions(node, link, label));
     
-    restart(1);
+    restart();
     // document.getElementById('alpha_value').addEventListener("change", function(e) {
     //     alpha_rate = +e.target.value;
     // });
@@ -292,6 +289,7 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
         });
     node = node.enter().append("circle")
             .attr("class", ".node_circle")
+            .style("stroke", "black")
             .attr("r", function (node) {
                 return radius * node[influenceScale[scale_index]];
             })
@@ -303,7 +301,6 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
                 else {
                     return d3.rgb(0, 0, 0);
                 }
-                
             })
             .on("mousedown", mouseDown(0))
             .on("click", (d) => mouseClick(d.id))
@@ -415,19 +412,6 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
             });
         };
     }
-} 
-
-function onClickBtn(id) {
-    mouseUp();
-    if (id === 'alpha_btn') {
-        if (isNaN(alpha_rate) || alpha_rate < 0 || alpha_rate > 1) {
-            return console.error('Invalid alpha input');
-        }
-        if (isNaN(dropout_rate) || dropout_rate < 0 || dropout_rate > 1) {
-            return console.error('Invalid dropout input');
-        }
-        return restart(alpha_rate, dropout_rate, selected_index);
-    }
 }
 
 function changeInputValue(value, id) {
@@ -448,8 +432,8 @@ function changeInputValue(value, id) {
 }
 
 function mouseClick(user) {
-        pieChart.Update(twitchGraph.nodes, user)
-        lineChart.Update(twitchGraph.statistics["weekly_summary"], user, lineChart_key);
+    pieChart.Update(twitchGraph.nodes, user)
+    lineChart.Update(twitchGraph.statistics["weekly_summary"], user, lineChart_key);
 }
 
 function clickRadiusCheckbox(index) {

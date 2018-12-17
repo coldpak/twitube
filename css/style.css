@@ -90,8 +90,8 @@ body {
     font-weight: 500;
   }
   .node_circle {
-    stroke: #777;
-    stroke-width: 1.0px;
+    stroke: black;
+    stroke-width: 3.0px;
   }
   .node_label {
     pointer-events: none;
