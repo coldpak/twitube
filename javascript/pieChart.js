@@ -53,7 +53,16 @@ function PieChart(id = 'pie_chart') {
 
             path.enter()
                 .append("path")
-                .attr("fill", (d, i) => colorScale(i))
+                .attr("fill", (d, i) => {
+                    let game = d.data["game"]
+                    if (game) {
+                        let color = gameColorMap[game];
+                        return color ? color : gameColorMap["Others"]
+                    }
+                    else {
+                        return d3.rgb(0, 0, 0);
+                    }
+                })
                 .attr("d", arc)
                 .attr("stroke", "black")
                 .attr("stroke-width", "2px")

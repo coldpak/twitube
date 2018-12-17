@@ -124,3 +124,14 @@ var gameKeyMap = [
     "Overwatch",
     "Others"
 ]
+
+var gameColorMap = {
+    "Lost Ark Online" : "#C5AE87",
+    "League of Legends" : "#0072C6",
+    "Fortnite" : "#A947C9",
+    "PLAYERUNKNOWN'S BATTLEGROUNDS" : "#87CEEB",
+    "Just Chatting" : "#F97976",
+    "Hearthstone" : "#00D044",
+    "Overwatch" : "#FADA5E",
+    "Others" : "#AAAAAA"
+}

@@ -13,7 +13,7 @@ var main = svg.append("g").attr("id", "graph"),
 
 var radius = 35,
     distance = 40,
-    stroke = 20;
+    stroke = 15;
 
 var linkedByIndex = {};
 var radiusCheckedList = Array.apply(null, Array(3)).map(function (d, i) { return i != 0 ? false : true ;}),
@@ -107,13 +107,6 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
         target_node['normalized_score'] += (1 - alpha) * node['normalized_sra_score'];
         target_node['games'] = node['games'];
         target_node['favorite_game'] = node['games'].reduce((most, R) => {
-                if (!colorMap[R.game]) {
-                    colorMap[R.game] = {
-                        'r' : Math.floor(Math.random() * 256),
-                        'g' : Math.floor(Math.random() * 256),
-                        'b' : Math.floor(Math.random() * 256),                        
-                    }
-                }
                 return R.duration > most.duration ? R : most
             }, { 'game' : '', 'duration' : 0.0 })
         favoriteGameMap[node.id] = target_node['favorite_game']['game']
@@ -295,8 +288,8 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
             })
             .attr("fill", function (d) {
                 if (d["favorite_game"]) {
-                    color = colorMap[d["favorite_game"]["game"]];
-                    return d3.rgb(color.r, color.g, color.b);
+                    color = gameColorMap[d["favorite_game"]["game"]];
+                    return color ? color : gameColorMap["Others"]
                 }
                 else {
                     return d3.rgb(0, 0, 0);
