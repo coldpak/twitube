@@ -102,7 +102,7 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
             'alias' : node.alias,
             'normalized_view' : (1 - alpha) * node['average_viewer']['normalized_viewer'],
             'normalized_follower' : (1 - alpha) * node['normalized_followers'],
-            'normalized_score' : (1 - alpha) * node['normalized_sra_score'],
+            'normalized_score' : 0.75 * (1 - alpha) * node['normalized_sra_score'],
             'games' : node['games'],
             'favorite_game' : favorite_game
         });
@@ -119,7 +119,8 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
 
         target_node['normalized_view'] += alpha * node['normalized_average_view'];
         target_node['normalized_follower'] += alpha * node['normalized_subscriber_count'];
-        target_node['normalized_score'] += alpha * node['normalized_pra_score'];
+        let potential_score = node['normalized_average_view'] / node['normalized_subscriber_count'];
+        target_node['normalized_score'] += 1.5 * potential_score * alpha * node['normalized_pra_score'];
     });
 
     return nodes;
@@ -441,6 +442,7 @@ function clickAllGameCheckbox() {
     for (var i = 1 ; i < gameCheckedList.length ; i++) {
         gameCheckedList[i] = checkBoxes[i].checked = setting;
     }
+    restart(alpha_rate, dropout_rate, selected_index);
 }
 function clickGameCheckbox(index) {
     var checkBoxes = document.getElementsByClassName('checkbox_games');
