@@ -22,7 +22,9 @@ var checkedGames = [];
 
 var alpha_rate = 0.5,
     dropout_rate = 0.1,
-    selected_index = 0;
+    selected_index = 0,
+    youtube_beta = 1.0,
+    twitch_beta = 0.5;
 
 var defs = svg.append("defs");
 
@@ -102,7 +104,7 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
             'alias' : node.alias,
             'normalized_view' : (1 - alpha) * node['average_viewer']['normalized_viewer'],
             'normalized_follower' : (1 - alpha) * node['normalized_followers'],
-            'normalized_score' : 0.75 * (1 - alpha) * node['normalized_sra_score'],
+            'normalized_score' : (1 - alpha) * twitch_beta * node['normalized_sra_score'],
             'games' : node['games'],
             'favorite_game' : favorite_game
         });
@@ -119,8 +121,8 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
 
         target_node['normalized_view'] += alpha * node['normalized_average_view'];
         target_node['normalized_follower'] += alpha * node['normalized_subscriber_count'];
-        let potential_score = node['normalized_average_view'] / node['normalized_subscriber_count'];
-        target_node['normalized_score'] += 1.5 * potential_score * alpha * node['normalized_pra_score'];
+        target_node['potential_score'] = node['normalized_average_view'] / node['normalized_subscriber_count'];
+        target_node['normalized_score'] += alpha * youtube_beta * target_node['potential_score'] * node['normalized_pra_score'];
     });
 
     return nodes;
@@ -422,6 +424,18 @@ function changeInputValue(value, id) {
     if (id === 'search_bar') {
         searchNodeByAlias(value);
         document.querySelector('#search_bar').value = '';
+        return;
+    }
+    if (id === 'youtube_beta') {
+        youtube_beta = value;
+        document.querySelector('#youtube_beta_output').value = value;
+        restart(alpha_rate, dropout_rate, selected_index);
+        return;
+    }
+    if (id === 'twitch_beta') {
+        twitch_beta = value;
+        document.querySelector('#twitch_beta_output').value = value;
+        restart(alpha_rate, dropout_rate, selected_index);
         return;
     }
     

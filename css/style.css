@@ -89,6 +89,11 @@ body {
   .filter .label {
     font-weight: 500;
   }
+  .filter .form_wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
   .node_circle {
     stroke: black;
     stroke-width: 3.0px;
