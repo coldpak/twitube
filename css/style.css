@@ -173,6 +173,11 @@ body {
   transition: opacity 0.3s, transform 0.2s;
 }
 
+/* dot */
+.dot {
+  fill: black;
+}
+
 /* Span */
 .pure-material-checkbox > span {
   display: inline-block;

@@ -15,11 +15,13 @@ function IntegratedChart(id = 'integrated_chart',
     _chart.append('g')
           .attr("fill", "none")
           .attr('id', 'lines')
+    _chart.append('g')
+          .attr("fill", "none")
+          .attr('id', 'dots')
 
     let xDomain = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT']
     let _xScale = _utils.ScaleLinear([0, 1], [0, _width])
     let _yScale = _utils.ScaleLinear([1, 0], [0, _height])
-    let _y2Scale = _utils.ScaleLinear([1, 0], [0, _height])
 
     let _line = d3.line()
                   .x(function(d){ return _xScale(d['date']) + _xScale.bandwidth() / 2; })
@@ -41,6 +43,7 @@ function IntegratedChart(id = 'integrated_chart',
         enter.append('path')
             .style("mix-blend-mode", "multiply")
             .attr("stroke", 'black')
+            .attr('stroke-width', 1.0)
             .attr('class', d => 'line ' + d.key)
             .attr('d', d => _line(d.value))
             .style('opacity', 0)
@@ -82,6 +85,28 @@ function IntegratedChart(id = 'integrated_chart',
             _select(target)
             _enter(target.enter())
 
+            let dots = _chart.select('#dots')
+                             .selectAll('.dot')
+                             .data(data.value)
+            dots.enter()
+                .append('circle')
+                .attr('class', 'dot')
+                .attr('cx', (d) => _xScale(d['date']) + _xScale.bandwidth() / 2)
+                .attr('cy', (d) => _yScale(d['viewer']))
+                .attr('r', 5)
+                .on('mouseover', function(d) {
+                    d3.select(this)
+                      .attr('r', 8)
+                })
+                .on('mouseout', function(d) {
+                    d3.select(this)
+                      .attr('r', 5)
+                })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
             ////////////////////////////////////////////////////////////////////////////////
             // Bar Chart
 
