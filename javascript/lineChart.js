@@ -7,19 +7,26 @@ function LineChart(id = 'line_chart',
     const _width = dom.clientWidth - margin.left - margin.right
     const _height = dom.clientHeight - margin.top - margin.bottom
     const _chart = _utils.CreateSVG('line_chart', dom.clientWidth, dom.clientHeight, margin)
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
+
     _chart.append('g')
           .attr("fill", "none")
           .attr('id', 'lines')
+    _chart.append('g')
+          .attr("fill", "none")
+          .attr('id', 'bars')
     
           let xDomain = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT']
     let _xScale = _utils.ScaleLinear([0, 1], [0, _width])
     let _yScale = _utils.ScaleLinear([1, 0], [0, _height])
+    let _y2Scale = _utils.ScaleLinear([1, 0], [0, _height])
+
     let _line = d3.line()
                   .x(function(d){ return _xScale(d['date']) + _xScale.bandwidth() / 2; })
                   .y(function(d){ return _yScale(d[_key]); })
 
     _utils.CreateAxis(_chart, _width, _height, 'xline', _xScale, 'yline', _yScale, 10, 10)
-
+    _utils.CreateYAxis(_chart, _width, _height, 'y2axis', _y2Scale, 10)
     let _key
 
     const _select = (select, key) => {
@@ -69,6 +76,25 @@ function LineChart(id = 'line_chart',
             _exit(target.exit())
             _select(target, key)
             _enter(target.enter(), key)
+
+            maxValue = data.value.reduce((max, R) => max > R['duration'] ? max : R['duration'], 0)
+            let y2Domain = [0 , 1.1 * maxValue]
+            _y2Scale = _utils.ScaleLinear(y2Domain, [_height, 0])
+
+            let bars = _chart.select('#bars')
+                               .selectAll('rect')
+                               .data(data.value)
+            _utils.UpdateYAxis(_chart, _y2Scale, 500, 10)
+            bars.enter()
+                .append('rect')
+                .merge(bars)
+                .attr('width', _xScale.bandwidth())
+                .attr('height', (d) => _height - _y2Scale(d['duration']))
+                .attr('transform', (d) => _utils.Translate(_xScale(d['date']), _y2Scale(d['duration'])))
+                .attr('fill', (_, i) => colorScale(i))
+                .attr('opacity', 0.7)
+            bars.exit().remove()
+
         }
     }
 }
