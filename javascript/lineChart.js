@@ -11,12 +11,12 @@ function LineChart(id = 'line_chart',
 
     _chart.append('g')
           .attr("fill", "none")
-          .attr('id', 'lines')
+          .attr('id', 'bars')
     _chart.append('g')
           .attr("fill", "none")
-          .attr('id', 'bars')
-    
-          let xDomain = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT']
+          .attr('id', 'lines')
+
+    let xDomain = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT']
     let _xScale = _utils.ScaleLinear([0, 1], [0, _width])
     let _yScale = _utils.ScaleLinear([1, 0], [0, _height])
     let _y2Scale = _utils.ScaleLinear([1, 0], [0, _height])
@@ -92,7 +92,7 @@ function LineChart(id = 'line_chart',
                 .attr('height', (d) => _height - _y2Scale(d['duration']))
                 .attr('transform', (d) => _utils.Translate(_xScale(d['date']), _y2Scale(d['duration'])))
                 .attr('fill', (_, i) => colorScale(i))
-                .attr('opacity', 0.7)
+                .attr('opacity', 0.9)
             bars.exit().remove()
 
         }
