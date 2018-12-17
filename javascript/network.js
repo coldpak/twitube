@@ -107,15 +107,6 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
         target_node['normalized_score'] += (1 - alpha) * node['normalized_sra_score'];
         target_node['games'] = node['games'];
         target_node['favorite_game'] = node['games'].reduce((most, R) => {
-                /*
-                if (!colorMap[R.game]) {
-                    colorMap[R.game] = {
-                        'r' : Math.floor(Math.random() * 256),
-                        'g' : Math.floor(Math.random() * 256),
-                        'b' : Math.floor(Math.random() * 256),      
-                    }
-                }
-                */
                 return R.duration > most.duration ? R : most
             }, { 'game' : '', 'duration' : 0.0 })
         favoriteGameMap[node.id] = target_node['favorite_game']['game']
@@ -304,8 +295,7 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
                 }
                 else {
                     return d3.rgb(0, 0, 0);
-                }
-                
+                }       
             })
             .on("mousedown", mouseDown(0))
             .on("click", (d) => mouseClick(d.id))
