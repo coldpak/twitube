@@ -9,7 +9,7 @@ def TwitchConvert(date = '181210', data_dir = 'twitch_data', out_dir = '../../da
 
     weekly_users = wc.getWeeklyUsers(weekly_data)
     weekly_influence_data = wc.getWeeklyInfluenceData(weekly_data)
-    weekly_link_data = wc.getWeeklyLinkData(weekly_data, os.path.join(data_dir, 'twitch-targets.json'))
+    weekly_link_data = wc.getWeeklyLinkData(weekly_data)
     weekly_score_summary = wc.getWeeklyScoreSummary(weekly_users, weekly_influence_data, weekly_link_data)
     weekly_SRA = getSRA(weekly_score_summary)
     weekly_summary = wc.getWeeklySummary(weekly_users, weekly_influence_data)

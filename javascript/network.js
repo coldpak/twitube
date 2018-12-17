@@ -53,7 +53,7 @@ paths.forEach(function(url) {
 });
 
 var youtubeGraph, twitchGraph;
-
+var chartContainer = document.getElementsByClassName("chart")[0];
 var pieChart = PieChart();
 var lineChart = LineChart();
 
@@ -355,6 +355,10 @@ function init() {
         link.style("stroke-opacity", .2);
         link.style("stroke", "#ddd");
         link.attr('marker-end', 'url(#arrow)');
+    }
+
+    function mouseClick(id) {
+
     }
 }
 

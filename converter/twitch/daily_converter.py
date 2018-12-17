@@ -98,14 +98,12 @@ def getInfluenceData(data_list):
         'averageShare' : getAverage(shares, 'share'),
     }
 
-def getLinkData(data, target_path = 'twitch-targets.json'):
+def getLinkData(data):
     link_data = {}
-    with open(target_path, encoding='utf-8') as f:
-        targets =  json.load(f).keys()
 
     for key, value in data.items():
         if key not in not_streamer :
-            link_data[key] = list(filter(lambda x : x in targets, value['follows']))
+            link_data[key] = list(filter(lambda x : x in data.keys(), value['follows']))
     return link_data
     
 def getSummary(users, influence_data):

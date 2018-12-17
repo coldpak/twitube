@@ -2,7 +2,7 @@ const Utils = () => {
     const translate = (x, y) => 'translate(' + x + ', ' + y + ')'
 
     const createSVG = (container, w, h, margin) => {
-        return d3.select('.' + container)
+        return d3.select('#' + container)
             .append('svg')
             .attr('width', w)
             .attr('height', h)

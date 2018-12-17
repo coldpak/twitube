@@ -1,10 +1,12 @@
-function LineChart(w = 500, h = 500,
-                   margin = { top: 30, right: 30, bottom: 30, left: 30 }) {
+function LineChart(id = 'line_chart',
+                   margin = { top: 40, right: 40, bottom: 40, left: 40 }) {
+
+    const dom = document.getElementById(id)
 
     const _utils = Utils()
-    const _width = w - margin.left - margin.right
-    const _height = h - margin.top - margin.bottom
-    const _chart = _utils.CreateSVG('line_chart', w, h, margin)
+    const _width = dom.clientWidth - margin.left - margin.right
+    const _height = dom.clientHeight - margin.top - margin.bottom
+    const _chart = _utils.CreateSVG('line_chart', dom.clientWidth, dom.clientHeight, margin)
     _chart.append('g')
           .attr("fill", "none")
           .attr('id', 'lines')

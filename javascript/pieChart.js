@@ -1,9 +1,14 @@
-function PieChart(width = 500, height =500, radius=100) {
+function PieChart(id = 'pie_chart') {
     const translate = (x, y) => 'translate(' + x + ', ' + y + ')';
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
     /* Create chart */
-    const chart = d3.select(".pie_chart")
+    const dom = document.getElementById(id)
+    const width = dom.clientWidth;
+    const height = dom.clientHeight;
+    const radius = Math.min(width, height) / 2.5;
+
+    const chart = d3.select("#" + id)
                     .append("svg")
                         .attr("width", width)
                         .attr("height", height)
