@@ -2,9 +2,20 @@ var svg = d3.select('svg'),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
+var main = svg.append("g").attr("id", "graph"),
+    node = main.append("g").selectAll(".node_circle"),
+    link = main.append("g").selectAll(".link"),
+    label = main.append("g").selectAll(".node_label");
+
 var radius = 25,
     distance = 30
-    stroke = 15;
+    stroke = 20;
+
+var linkedByIndex = {};
+
+var alpha_rate = 0.5,
+    dropout_rate = 0.1,
+    selected_index = 0;
 
 defs = svg.append("defs");
 
@@ -49,7 +60,7 @@ paths.forEach(function(url) {
     );
 });
 
-var youtubeGraph, twitchGraph, graph;
+var youtubeGraph, twitchGraph, graph, simulation;
 
 var pieChart = PieChart();
 var lineChart = LineChart();
@@ -226,170 +237,191 @@ function init() {
     };
     */
     // Create graph
-    graph = merge();
-    var main = svg.append("g").attr("id", "graph"),
-        node = main.append("g").selectAll(".node_circle"),
-        link = main.append("g").selectAll(".link"),
-        label = main.append("g").selectAll(".node_label");
-
+    graph = merge(alpha_rate, dropout_rate);
     // Add mouseup event to graph_view
     document.getElementById('graph_view').addEventListener("mouseup", mouseUp);
 
     // Make force simulation
-    var simulation = makeForceSimulation(graph.nodes);
+    simulation = makeForceSimulation(graph.nodes);
     // Add tick instructions: 
     simulation.on("tick", () => tickActions(node, link, label));
-    var linkedByIndex = {};
     
-    restart(0.8);
-    d3.timeout(function() {
-        restart(0.5);
-      }, 2000);
-    // Add event listeners.
-    function restart(alpha=0.5, dropout=0.1, scale_index=0) {
-        graph = merge(alpha, dropout);
-        // Create circles, General update pattern
-        node = node.data(graph.nodes, d => d.id);
+    restart(1);
+    // document.getElementById('alpha_value').addEventListener("change", function(e) {
+    //     alpha_rate = +e.target.value;
+    // });
+    // document.getElementById('alpha_btn').addEventListener("click", (e) => {
+    //     console.log(alpha_rate);
+    //     restart(alpha_rate, dropout_rate, selected_index);
+    // });
+    
+}
 
-        node.exit().transition()
-            .attr("r", 0).remove();
-        node.transition()
-            .duration(1000)
+function mouseUp() {
+    label.style("opacity", 1);
+    node.style("stroke-opacity", 1);
+    node.style("fill-opacity", 1);
+    link.style("stroke-opacity", .2);
+    link.style("stroke", "#ddd");
+    link.attr('marker-end', 'url(#arrow)');
+}
+
+function restart(alpha=0.5, dropout=0.1, scale_index=0) {
+    graph = merge(alpha, dropout);
+    // Create circles, General update pattern
+    node = node.data(graph.nodes, d => d.id);
+
+    node.exit().transition()
+        .attr("r", 0).remove();
+    node.transition()
+        .duration(1000)
+        .attr("r", function (node) {
+            return radius * node[influenceScale[scale_index]];
+        });
+    node = node.enter().append("circle")
+            .attr("class", ".node_circle")
             .attr("r", function (node) {
                 return radius * node[influenceScale[scale_index]];
-            });
-        node = node.enter().append("circle")
-                .attr("class", ".node_circle")
-                .attr("r", function (node) {
-                    return radius * node[influenceScale[scale_index]];
-                })
-                // .attr("fill", function (d) {
-                //     return kind_to_color(d).toString();
-                // })
-                .on("mousedown", mouseDown(0))
-                .call(drag(simulation))
-                .merge(node);
-        
-        //draw lines for the links 
-        link = link.data(graph.links, d => d.source + "-" + d.target);
-        link.exit().transition()
-            .attr("stroke-width", 0).remove();
-        link.transition()
-            .duration(1000)
-            .attr("stroke-width", function(d) {
-                return stroke * d.normalized_score;
-            });
-        link = link.enter().append("line")
-            .attr("class", "link")
-            .attr("marker-end", "url(#arrow)")
-            .attr("stroke-width", function (d) {
-                return stroke * d.normalized_score;
             })
-            .merge(link);
-        // label nodes with alias
-        label = label.data(graph.nodes, d => d.id)
-        label.exit().remove();
-
-        label = label.enter().append("text")
-                    .attr("class", "node_label")
-                    .attr("dx", ".4em")
-                    .attr("dy", ".4em")
-                    .attr("font-family", "Verdana")
-                    .attr("font-size", 10)
-                    .style("fill", "#000000")
-                    .text(function (d) {
-                        return d.alias;
-                    })
-                    .merge(label);
-        simulation.nodes(graph.nodes);
-        // Create Link Forces
-        simulation.force("links", createLinkForce(graph.links));
-        simulation.alpha(1).restart();
-        // build a dictionary of nodes that are linked
-        linkedByIndex = {};
-        graph.links.forEach(function (d) {
-            linkedByIndex[d.source.index + "," + d.target.index] = 1;
+            // .attr("fill", function (d) {
+            //     return kind_to_color(d).toString();
+            // })
+            .on("mousedown", mouseDown(0))
+            .call(drag(simulation))
+            .merge(node);
+    
+    //draw lines for the links 
+    link = link.data(graph.links, d => d.source + "-" + d.target);
+    link.exit().transition()
+        .attr("stroke-width", 0).remove();
+    link.transition()
+        .duration(1000)
+        .attr("stroke-width", function(d) {
+            return stroke * d.normalized_score;
         });
-        
-        // check the dictionary to see if nodes are linked
-        function isConnected(a, b) {
-            return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
-        }
+    link = link.enter().append("line")
+        .attr("class", "link")
+        .attr("marker-end", "url(#arrow)")
+        .attr("stroke-width", function (d) {
+            return stroke * d.normalized_score;
+        })
+        .merge(link);
+    // label nodes with alias
+    label = label.data(graph.nodes, d => d.id)
+    label.exit().remove();
 
-        function outlinkExist(a, b) {
-            return linkedByIndex[a.index + "," + b.index];
-        }
+    label = label.enter().append("text")
+                .attr("class", "node_label")
+                .attr("dx", ".4em")
+                .attr("dy", ".4em")
+                .attr("font-family", "Verdana")
+                .attr("font-size", 10)
+                .style("fill", "#000000")
+                .text(function (d) {
+                    return d.alias;
+                })
+                .merge(label);
+    simulation.nodes(graph.nodes);
+    // Create Link Forces
+    simulation.force("links", createLinkForce(graph.links));
+    simulation.alpha(1).restart();
+    // build a dictionary of nodes that are linked
+    linkedByIndex = {};
+    graph.links.forEach(function (d) {
+        linkedByIndex[d.source.index + "," + d.target.index] = 1;
+    });
+    
+    // check the dictionary to see if nodes are linked
+    function isConnected(a, b) {
+        return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
+    }
 
-        function mouseDown(opacity) {
-            return function (d) {
-                // check all other nodes to see if they're connected
-                // to this one. if so, keep the opacity at 1, otherwise
-                // fade
-                label.style("opacity", function (o) {
-                    thisOpacity = isConnected(d, o) ? 1 : 0.2;
-                    return thisOpacity;
-                });
-                node.style("stroke-opacity", function (o) {
-                    thisOpacity = isConnected(d, o) ? 1 : 0.2;
-                    return thisOpacity;
-                });
-                node.style("fill-opacity", function (o) {
-                    thisOpacity = isConnected(d, o) ? 1 : 0.2;
-                    return thisOpacity;
-                });
-                // also style link accordingly
-                link.style("stroke-opacity", function (o) {
-                    return o.source === d || o.target === d ? .5 : opacity;
-                });
-                link.style("stroke", function (o) {
-                    if (o.normalized_score < 0.1) {
-                        return "#ddd";
-                    }
-                    // out-link
-                    if (o.source === d) {
-                        return outlinkExist(o.target, d) ? "#922" : "#292";
-                    }
-                    // in-link
-                    if (o.target === d) {
-                        return outlinkExist(d, o.source) ? "#922" : "#992";
-                    }
-                    return "#ddd";
-                });
-                link.style("fill", function (o) {
-                    // out-link
-                    if (o.source === d) {
-                        return outlinkExist(o.target, d) ? "#922" : "#292";
-                    }
-                    // in-link
-                    if (o.target === d) {
-                        return outlinkExist(d, o.source) ? "#922" : "#992";
-                    }
-                    return "#ddd";
-                });
-                link.attr('marker-end', function (o) {
-                    // out-link
-                    if (o.source === d) {
-                        return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
-                    }
-                    // in-link
-                    if (o.target === d) {
-                        return outlinkExist(d, o.source) ? 'url(#bothArrow)' : 'url(#inArrow)';
-                    }
-                    return 'url(#arrow)';
-                });
-            };
+    function outlinkExist(a, b) {
+        return linkedByIndex[a.index + "," + b.index];
+    }
+
+    function mouseDown(opacity) {
+        return function (d) {
+            // check all other nodes to see if they're connected
+            // to this one. if so, keep the opacity at 1, otherwise
+            // fade
+            label.style("opacity", function (o) {
+                thisOpacity = isConnected(d, o) ? 1 : 0.2;
+                return thisOpacity;
+            });
+            node.style("stroke-opacity", function (o) {
+                thisOpacity = isConnected(d, o) ? 1 : 0.2;
+                return thisOpacity;
+            });
+            node.style("fill-opacity", function (o) {
+                thisOpacity = isConnected(d, o) ? 1 : 0.2;
+                return thisOpacity;
+            });
+            // also style link accordingly
+            link.style("stroke-opacity", function (o) {
+                return o.source === d || o.target === d ? .5 : opacity;
+            });
+            link.style("stroke", function (o) {
+                // out-link
+                if (o.source === d) {
+                    return outlinkExist(o.target, d) ? "#922" : "#292";
+                }
+                // in-link
+                if (o.target === d) {
+                    return outlinkExist(d, o.source) ? "#922" : "#992";
+                }
+                return "#ddd";
+            });
+            link.style("fill", function (o) {
+                // out-link
+                if (o.source === d) {
+                    return outlinkExist(o.target, d) ? "#922" : "#292";
+                }
+                // in-link
+                if (o.target === d) {
+                    return outlinkExist(d, o.source) ? "#922" : "#992";
+                }
+                return "#ddd";
+            });
+            link.attr('marker-end', function (o) {
+                // out-link
+                if (o.source === d) {
+                    return outlinkExist(o.target, d) ? 'url(#bothArrow)' : 'url(#outArrow)';
+                }
+                // in-link
+                if (o.target === d) {
+                    return outlinkExist(d, o.source) ? 'url(#bothArrow)' : 'url(#inArrow)';
+                }
+                return 'url(#arrow)';
+            });
+        };
+    }
+} 
+
+function onClickBtn(id) {
+    mouseUp();
+    if (id === 'alpha_btn') {
+        if (isNaN(alpha_rate) || alpha_rate < 0 || alpha_rate > 1) {
+            return console.error('Invalid alpha input');
         }
-    } 
-    function mouseUp() {
-        label.style("opacity", 1);
-        node.style("stroke-opacity", 1);
-        node.style("fill-opacity", 1);
-        link.style("stroke-opacity", .2);
-        link.style("stroke", "#ddd");
-        link.attr('marker-end', 'url(#arrow)');
+        if (isNaN(dropout_rate) || dropout_rate < 0 || dropout_rate > 1) {
+            return console.error('Invalid dropout input');
+        }
+        return restart(alpha_rate, dropout_rate, selected_index);
     }
 }
 
+function changeInputValue(value, id) {
+    if (id === 'alpha_value') {
+        alpha_rate = value;
+        return console.log(alpha_rate);
+    }
+    if (id === 'dropout_value') {
+        dropout_rate = value;
+        return console.log(dropout_rate);
+    }
+    return null;
+}
 
 drag = function (simulation) {
 
