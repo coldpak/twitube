@@ -46,7 +46,9 @@ function PieChart(id = 'pie_chart') {
             const text = chart.selectAll("text")
                               .remove()
 
-            path.exit().remove()
+            path.exit()
+                .remove()
+                
             path.transition()
                 .duration(200)
                 .attrTween("d", arcTween);
@@ -82,6 +84,11 @@ function PieChart(id = 'pie_chart') {
                        .style('opacity',  0)
                 })
                 .each(function(d) { this._current = d; })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
             
             path.enter()
                 .append("text")
@@ -101,7 +108,13 @@ function PieChart(id = 'pie_chart') {
                 .attr("font-size", "9px")
                 .text(function (d) {
                     return d.data["game"];
-                });
+                })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
+
                 
             path.append("text")
                 .attr("text-anchor", "middle")
@@ -117,7 +130,12 @@ function PieChart(id = 'pie_chart') {
                 .attr("font-size", "9px")
                 .text(function (d) {
                     return d.data["game"];
-                });
+                })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
 
         }
     };
