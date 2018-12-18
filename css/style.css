@@ -41,7 +41,7 @@ body {
   .infos .info_basic {
     width: calc(100vw - 1020px);
     margin: 10px 20px 10px 0px;
-    height: 30vh;
+    height: 24vh;
     background: white;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);  
     display: flex;

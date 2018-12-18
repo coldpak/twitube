@@ -90,6 +90,7 @@ function getTableData(nodes, user, platform) {
         let keys = ['recent_average_view', 'subscriber_count', 'pra_score'];
         return keys.map((d) => {
             return {
+                'id': user,
                 'subject': d.replace("_", " "),
                 'value': userNode[d].toFixed(2)
             }
@@ -99,13 +100,17 @@ function getTableData(nodes, user, platform) {
         let userNode = nodes.filter((d) => d.id == user)[0];
         if (!userNode) return;
         return [
-            { 'subject': 'recent average view',
+            { 'id': user,
+              'subject': 'recent average view',
               'value': userNode['average_viewer']['viewer'].toFixed(2)},
-            { 'subject': 'total stream duration',
+            { 'id': user,
+              'subject': 'total stream duration',
               'value': userNode['average_viewer']['duration'].toFixed(2)},
-            { 'subject': 'follower count',
+            { 'id': user,
+              'subject': 'follower count',
               'value': userNode['followers']},
-            { 'subject': 'sra score',
+            { 'id': user,
+              'subject': 'sra score',
               'value': userNode['sra_score'].toFixed(2)},
         ];
     }

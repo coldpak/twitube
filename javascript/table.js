@@ -29,7 +29,7 @@ function Table(id) {
             const data = getTableData(dataset, user, platform)
             if (!data) return;
             const rows = tbody.selectAll('tr')
-                              .data(data);
+                              .data(data, d=>d.id);
             rows.exit()
                 .remove();
             const row = rows.enter()
