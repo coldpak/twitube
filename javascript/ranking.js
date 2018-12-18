@@ -8,7 +8,7 @@ function getRank(obj_arr, key) {
                             'rank' : i,
                             'score' : element[key]
                         }
-                    });
+                    })
     } 
     else {
         obj_arr.sort((a, b) => {
@@ -18,7 +18,7 @@ function getRank(obj_arr, key) {
                 'rank' : i,
                 'score' : element[key]['viewer']
             }
-        });
+        })
     }
     return ranking
 }

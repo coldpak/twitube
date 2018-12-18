@@ -12,15 +12,15 @@ function Legend(id, colorMap) {
         }
     })
 
-    var legend = svg.selectAll('.legend')
+    var legend = svg.selectAll(".legend")
                     .data(data)
-                    .enter().append('g')
+                    .enter().append("g")
                     .attr("class", "legend")
                     .attr("transform", function (d, i) {
                         return "translate(10," + i * 20 + ")"
                     })
 
-    legend.append('rect')
+    legend.append("rect")
           .attr("x", 0)
           .attr("y", 0)
           .attr("width", 10)
@@ -29,7 +29,7 @@ function Legend(id, colorMap) {
                 return d.value
             })
 
-    legend.append('text')
+    legend.append("text")
           .attr("x", 20)
           .attr("y", 10)
           .text(function (d) {

@@ -13,7 +13,7 @@ const Utils = () => {
     let _xAxisID, _yAxisID
     let _xTicks, _yTicks
 
-    let _y2AxisID, _y2Ticks;
+    let _y2AxisID, _y2Ticks
 
     const createAxis = (svg, width, height,
                         xid, xScale,
@@ -85,8 +85,8 @@ const Utils = () => {
 
 function getTableData(nodes, user, platform) {
     if (platform == 'youtube') {
-        let userNode = nodes.filter((d) => d.id == user)[0];
-        if (!userNode) return;
+        let userNode = nodes.filter((d) => d.id == user)[0]
+        if (!userNode) return
 
         return [
             { 'subject': 'Recent Average View',
@@ -106,8 +106,8 @@ function getTableData(nodes, user, platform) {
         ]
     }
     if (platform == 'twitch') {
-        let userNode = nodes.filter((d) => d.id == user)[0];
-        if (!userNode) return;
+        let userNode = nodes.filter((d) => d.id == user)[0]
+        if (!userNode) return
 
         return [
             { 'subject': 'Recent Average Viewer',
@@ -124,36 +124,36 @@ function getTableData(nodes, user, platform) {
                         (${(100 - 100 * allScoreRankMap['twitch_potential'][user]['rank'] / Object.keys(allScoreRankMap['twitch_potential']).length).toFixed(2)} %)`},
             { 'subject': 'Total Stream Duration',
               'value': userNode['average_viewer']['duration'].toFixed(2)},
-        ];
+        ]
     }
-    return null;
+    return null
 }
 
 function getPieChartData(nodes, user) {
-    return nodes.filter((d) => d.id == user)[0]["games"]
+    return nodes.filter((d) => d.id == user)[0]['games']
 }
 function getIntegratedChartData(summary, user) {
-    let chart_data = new Array(7);
+    let chart_data = new Array(7)
     summary.forEach(data => {
-        var date = data["date"];
-        var weekday = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
+        var date = data['date']
+        var weekday = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT']
         var d = new Date(2000 + date.slice(0,2), 
                          date.slice(2,4) - 1,
-                         date.slice(4,6)); // month = 0 ~ ///11
+                         date.slice(4,6)) // month = 0 ~ ///11
         var summary = data.summary[user]
-        var viewer =  summary ? summary.averageViewers['viewer'] : 0.0;
-        var duration =  summary ? summary.averageViewers["duration"] : 0.0;
-        var week_index = d.getDay();
-        var mostPlayedGame = summary ? getMostPlayedGame(summary['games']) : "";  
+        var viewer =  summary ? summary.averageViewers['viewer'] : 0.0
+        var duration =  summary ? summary.averageViewers['duration'] : 0.0
+        var week_index = d.getDay()
+        var mostPlayedGame = summary ? getMostPlayedGame(summary['games']) : ""  
         chart_data[week_index] = {
-            "viewer" : viewer ? viewer : 0.0,
-            "duration" : duration ? duration : 0.0,
-            "date" : weekday[week_index],
-            "game" : mostPlayedGame['game']
-        };
-    });
+            'viewer' : viewer ? viewer : 0.0,
+            'duration' : duration ? duration : 0.0,
+            'date' : weekday[week_index],
+            'game' : mostPlayedGame['game']
+        }
+    })
 
-    return chart_data;
+    return chart_data
 }
 function getMostPlayedGame(games) {
     if (games[0]) {
@@ -162,7 +162,7 @@ function getMostPlayedGame(games) {
             }, { 'game' : '', 'duration' : 0.0 })
     }
     else {
-        return "Not in Game List"
+        return 'Not in Game List'
     }
 }
 

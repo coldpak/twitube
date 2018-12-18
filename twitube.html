@@ -1,147 +1,147 @@
 <!DOCTYPE html>
 <head>
   <title>Twitube</title>
-  <meta name="description" content="Visualization of Korean Game streamers.">
-  <meta name="keywords" content="twitch,youtube,streamer,game,influence,power">
-  <meta name="author" content="Over Engineering">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <meta name='description' content='Visualization of Korean Game streamers.'>
+  <meta name='keywords' content='twitch,youtube,streamer,game,influence,power'>
+  <meta name='author' content='Over Engineering'>
+  <meta charset='utf-8'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'>
+  <link rel='stylesheet' type='text/css' href='./css/style.css'>
 </head>
 <body>
-  <div class="page_template">
-    <div id="graph_view">
+  <div class='page_template'>
+    <div id='graph_view'>
     </div>
-    <div id="legend_container"></div>
-    <div class="control_panel">
-      <div class="filter_wrapper" id="platform_filter">
-        <div class="filter_title">Network Filter</div>
-        <div class="filter">
-          <div class="form_wrapper">
-            <form style="display:inline-block">
-              <label class="label" id="alpha_label">alpha </label>
-              <output for=value id="alpha_output">0.5</output><br/>
-              <input id="alpha_value" type="range" value="0.5" step="0.1" min="0.0" max="1.0" oninput="changeInputValue(this.value, this.id)"/><br/>
-              <label class="label" id="dropout_label">dropout rate </label>
-              <output for=value id="dropout_output">0.1</output><br/>
-              <input id="dropout_value" type="range" value="0.1" step="0.01" min="0.01" max="0.3" oninput="changeInputValue(this.value, this.id)"/><br/>
+    <div id='legend_container'></div>
+    <div class='control_panel'>
+      <div class='filter_wrapper' id='platform_filter'>
+        <div class='filter_title'>Network Filter</div>
+        <div class='filter'>
+          <div class='form_wrapper'>
+            <form style='display:inline-block'>
+              <label class='label' id='alpha_label'>alpha </label>
+              <output for=value id='alpha_output'>0.5</output><br/>
+              <input id='alpha_value' type='range' value='0.5' step='0.1' min='0.0' max='1.0' oninput='changeInputValue(this.value, this.id)'/><br/>
+              <label class='label' id='dropout_label'>dropout rate </label>
+              <output for=value id='dropout_output'>0.1</output><br/>
+              <input id='dropout_value' type='range' value='0.1' step='0.01' min='0.01' max='0.3' oninput='changeInputValue(this.value, this.id)'/><br/>
             </form><br/>
-            <form style="display:inline-block">
-              <label class="label" id="youtube_beta_label">youtube beta </label>
-              <output for=value id="youtube_beta_output">1.0</output><br/>
-              <input id="youtube_beta" type="range" value="1.0" step="0.1" min="0.1" max="2.5" oninput="changeInputValue(this.value, this.id)"/><br/>
-              <label class="label" id="twitch_beta_label">twitch beta </label>
-              <output for=value id="twitch_beta_output">0.5</output><br/>
-              <input id="twitch_beta" type="range" value="0.5" step="0.1" min="0.1" max="2.5" oninput="changeInputValue(this.value, this.id)"/><br/>
+            <form style='display:inline-block'>
+              <label class='label' id='youtube_beta_label'>youtube beta </label>
+              <output for=value id='youtube_beta_output'>1.0</output><br/>
+              <input id='youtube_beta' type='range' value='1.0' step='0.1' min='0.1' max='2.5' oninput='changeInputValue(this.value, this.id)'/><br/>
+              <label class='label' id='twitch_beta_label'>twitch beta </label>
+              <output for=value id='twitch_beta_output'>0.5</output><br/>
+              <input id='twitch_beta' type='range' value='0.5' step='0.1' min='0.1' max='2.5' oninput='changeInputValue(this.value, this.id)'/><br/>
             </form>
           </div>
-          <label class="label">Radius Value</label><br/>
-          <label class="pure-material-checkbox">
-            <input id="by_view" class="checkbox_radius" type="checkbox" checked onclick="clickRadiusCheckbox(0)">
+          <label class='label'>Radius Value</label><br/>
+          <label class='pure-material-checkbox'>
+            <input id='by_view' class='checkbox_radius' type='checkbox' checked onclick='clickRadiusCheckbox(0)'>
             <span id='view_span'>Recent Average View Count</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input id="by_follower" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(1)">
+          <label class='pure-material-checkbox'>
+            <input id='by_follower' class='checkbox_radius' type='checkbox' onclick='clickRadiusCheckbox(1)'>
             <span id='follower_span'>Follower Count</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input id="by_score" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(2)">
+          <label class='pure-material-checkbox'>
+            <input id='by_score' class='checkbox_radius' type='checkbox' onclick='clickRadiusCheckbox(2)'>
             <span id='score_span'>PSRA Score</span>
           </label><br/>
-          <label class="label">Search by Nickname</label>
-          <input id="search_bar" value="" onchange="changeInputValue(this.value, this.id)"/>
+          <label class='label'>Search by Nickname</label>
+          <input id='search_bar' value='' onchange='changeInputValue(this.value, this.id)'/>
         </div>
       </div>
-      <div class="filter_wrapper" id="game_filter">
-        <div class="filter_title">Game Filter</div>
-        <div class="filter">
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickAllGameCheckbox()">
+      <div class='filter_wrapper' id='game_filter'>
+        <div class='filter_title'>Game Filter</div>
+        <div class='filter'>
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickAllGameCheckbox()'>
             <span>All Games</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(1)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(1)'>
             <span>Lost Arks Online</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(2)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(2)'>
             <span>League of Legends</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(3)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(3)'>
             <span>Fortnite</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(4)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(4)'>
             <span>Battle Ground</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(5)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(5)'>
             <span>Just Chatting</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(6)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(6)'>
             <span>Hearthstone</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(7)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(7)'>
             <span>Overwatch</span>
           </label><br/>
-          <label class="pure-material-checkbox">
-            <input class="checkbox_games" type="checkbox" checked onclick="clickGameCheckbox(8)">
+          <label class='pure-material-checkbox'>
+            <input class='checkbox_games' type='checkbox' checked onclick='clickGameCheckbox(8)'>
             <span>Other games</span>
           </label><br/>
         </div>
       </div>
-      <div class="filter_wrapper" id="other_filter">
-        <div class="filter_title">Other Filter</div>
+      <div class='filter_wrapper' id='other_filter'>
+        <div class='filter_title'>Other Filter</div>
 
       </div>
     </div>
   </div>
-  <div class="infos">
-    <div class="info_basic">
-      <div class="common_info">
-        <div class="name"></div>
+  <div class='infos'>
+    <div class='info_basic'>
+      <div class='common_info'>
+        <div class='name'></div>
       </div>
-      <div class="platform_info">
-        <div id="youtube_basic_info" class="basic_info_form">
-          <img src="image/yt_logo_rgb_light.png" alt="youtube_logo" />
-          <div class="table" id="youtube_table"></div>
+      <div class='platform_info'>
+        <div id='youtube_basic_info' class='basic_info_form'>
+          <img src='image/yt_logo_rgb_light.png' alt='youtube_logo' />
+          <div class='table' id='youtube_table'></div>
         </div>
-        <div id="twitch_basic_info" class="basic_info_form">
-          <img src="image/Twitch_Purple_RGB.png" alt="twitch_logo" />
-          <div class="table" id="twitch_table"></div>
+        <div id='twitch_basic_info' class='basic_info_form'>
+          <img src='image/Twitch_Purple_RGB.png' alt='twitch_logo' />
+          <div class='table' id='twitch_table'></div>
         </div>
       </div>
-      <div class="score_info">
-        <div class="mra_score"></div>
+      <div class='score_info'>
+        <div class='mra_score'></div>
       </div>
     </div>
-    <div class="info_graphs">
-      <div class="chart_container">
-        <div class="chart_title">
+    <div class='info_graphs'>
+      <div class='chart_container'>
+        <div class='chart_title'>
             <p>Game Statistics</p>
         </div>
-        <div class="chart" id="pie_chart"></div>
+        <div class='chart' id='pie_chart'></div>
       </div>
-      <div class="chart_container">
-        <div class="chart_title">
+      <div class='chart_container'>
+        <div class='chart_title'>
             <p>Weekly Statistics</p>
         </div>
-        <div class="chart" id="integrated_chart"></div>
+        <div class='chart' id='integrated_chart'></div>
       </div>
     </div>
-    <div class="info_recommend">
+    <div class='info_recommend'>
     </div>
   </div>
-<script src="./lib/d3/d3.min.js"></script>
-<script src="./javascript/utils.js"></script>
-<script src="./javascript/ranking.js"></script>
-<script src="./javascript/tooltip.js"></script>
-<script src="./javascript/legend.js"></script>
-<script src="./javascript/integratedChart.js"></script>
-<script src="./javascript/pieChart.js"></script>
-<script src="./javascript/table.js"></script>
-<script src="./javascript/network.js"></script>
+<script src='./lib/d3/d3.min.js'></script>
+<script src='./javascript/utils.js'></script>
+<script src='./javascript/ranking.js'></script>
+<script src='./javascript/tooltip.js'></script>
+<script src='./javascript/legend.js'></script>
+<script src='./javascript/integratedChart.js'></script>
+<script src='./javascript/pieChart.js'></script>
+<script src='./javascript/table.js'></script>
+<script src='./javascript/network.js'></script>
 </body>
