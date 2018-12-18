@@ -592,6 +592,11 @@ function clickGameCheckbox(index) {
     if (checkBoxes[0].checked) checkBoxes[0].checked = false; 
     gameCheckedList[index] = checkBoxes[index].checked;
     restart(alpha_rate, dropout_rate, selected_index);
+    var a = getSummaryTemplate(cur_user,
+                               checkedGames,
+                               youtubeRankMap,
+                               twitchRankMap,
+                               scoreRankMap)
 }
 
 function searchNodeByAlias(str) {
