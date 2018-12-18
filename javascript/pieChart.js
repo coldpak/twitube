@@ -46,7 +46,9 @@ function PieChart(id = 'pie_chart') {
             const text = chart.selectAll("text")
                               .remove()
 
-            path.exit().remove()
+            path.exit()
+                .remove()
+                
             path.transition()
                 .duration(200)
                 .attrTween("d", arcTween);
@@ -66,7 +68,27 @@ function PieChart(id = 'pie_chart') {
                 .attr("d", arc)
                 .attr("stroke", "black")
                 .attr("stroke-width", "2px")
+                .on('mouseover', function(d) {
+                    let ratio = (d.endAngle - d.startAngle) / (2 * Math.PI) * 100
+                    tooltip.transition()
+                       .duration(300)
+                       .style('opacity', 0.9)
+                    tooltip.html(`Game : ${d.data['game']} </br>
+                              Ratio : ${ratio.toFixed(1)} %</br>`)	
+                       .style("left", (d3.event.pageX) + "px")		
+                       .style("top", (d3.event.pageY - 28) + "px");	
+                })
+                .on('mouseout', function(d) {
+                    tooltip.transition()
+                       .duration(300)
+                       .style('opacity',  0)
+                })
                 .each(function(d) { this._current = d; })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
             
             path.enter()
                 .append("text")
@@ -86,7 +108,13 @@ function PieChart(id = 'pie_chart') {
                 .attr("font-size", "9px")
                 .text(function (d) {
                     return d.data["game"];
-                });
+                })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
+
                 
             path.append("text")
                 .attr("text-anchor", "middle")
@@ -102,7 +130,12 @@ function PieChart(id = 'pie_chart') {
                 .attr("font-size", "9px")
                 .text(function (d) {
                     return d.data["game"];
-                });
+                })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
 
         }
     };
