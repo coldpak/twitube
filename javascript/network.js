@@ -333,10 +333,11 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
 
     label = label.enter().append("text")
                 .attr("class", "node_label")
-                .attr("dx", ".4em")
-                .attr("dy", ".4em")
+                .attr("dx", ".5em")
+                .attr("dy", ".5em")
                 .attr("font-family", "Verdana")
-                .attr("font-size", 10)
+                .attr("font-size", 12)
+                .attr("font-weight", 'bold')
                 .style("fill", "#000000")
                 .text(function (d) {
                     return d.alias;

@@ -32,8 +32,8 @@ function PieChart(id = 'pie_chart') {
     }
 
     const labelArc = d3.arc()
-                       .outerRadius(radius - 30)
-                       .innerRadius(radius - 30);
+                       .outerRadius(radius - 20)
+                       .innerRadius(radius - 20);
 
     return {
         Update : (dataset, user) => {
@@ -96,7 +96,7 @@ function PieChart(id = 'pie_chart') {
                     return "translate(" + labelArc.centroid(d) + ")";
                 })
                 .attr("text-anchor", "middle")
-                .attr("fill", "white")
+                .attr("fill", "black")
                 .attr("display", function(d) {
                     if (d.endAngle - d.startAngle < 0.4 ) {
                         return "none"
@@ -105,7 +105,7 @@ function PieChart(id = 'pie_chart') {
                         return 'block'
                     }
                 })
-                .attr("font-size", "9px")
+                .attr("font-size", "11px")
                 .text(function (d) {
                     return d.data["game"];
                 })
