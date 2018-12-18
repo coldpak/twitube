@@ -30,7 +30,9 @@ def readDailyFiles(data_dir, date = '181210'):
 def getAverage(data, target = 'value'):
     average = {}
     max_viewer = 0.0
+    sum_viewer = 0
     for key, value in data.items():
+        sum_viewer += sum(value)
         average_viewer = sum(value) / len(value)
         if average_viewer > max_viewer :
             max_viewer = average_viewer
@@ -41,6 +43,7 @@ def getAverage(data, target = 'value'):
     if target == 'viewer' :
         for key in data.keys():
             average[key]['normalized_' + target] = math.sqrt(average[key][target] / max_viewer)
+            average[key]['sum_viewer'] = sum_viewer
     return average
 
 def getInfluenceData(data_list): 

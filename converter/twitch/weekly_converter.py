@@ -95,7 +95,7 @@ def getWeeklyInfluenceSummary(weekly_summary) :
                         'games' : {},
                     }
                 if len(value['averageViewers']) > 0 :
-                    weekly_influence[user]['averageViewers']['viewer'].append(value['averageViewers']['viewer'])
+                    weekly_influence[user]['averageViewers']['viewer'].append(value['averageViewers']['sum_viewer'])
                     weekly_influence[user]['averageViewers']['normalized_viewer'].append(value['averageViewers']['normalized_viewer'])
                     weekly_influence[user]['averageViewers']['duration'].append(value['averageViewers']['duration'])
                 weekly_influence[user]['followers'].append(value['followers'])
@@ -116,7 +116,7 @@ def getWeeklyInfluenceSummary(weekly_summary) :
         followers = value['followers'].pop()
         weekly_influence_summary[user] = {
             'averageViewers' : {
-                'viewer' : sum(value['averageViewers']['viewer']) / len(value['averageViewers']['viewer']) if len(value['averageViewers']['viewer']) > 0 else 0.0 ,
+                'viewer' : sum(value['averageViewers']['viewer']) / sum(value['averageViewers']['duration']) if len(value['averageViewers']['viewer']) > 0 else 0.0 ,
                 'normalized_viewer' : sum(value['averageViewers']['normalized_viewer']) / len(value['averageViewers']['normalized_viewer']) if len(value['averageViewers']['normalized_viewer']) > 0 else 0.0 ,
                 'duration' : sum(value['averageViewers']['duration'])
             },
