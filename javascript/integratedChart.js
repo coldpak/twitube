@@ -59,7 +59,7 @@ function IntegratedChart(id = 'integrated_chart',
     return {
         Update: (dataset, user) => {
             // Get data
-            data = {
+            let data = {
                 'key' : user,
                 'value' : getIntegratedChartData(dataset, user)
             }
@@ -88,12 +88,30 @@ function IntegratedChart(id = 'integrated_chart',
 
             let dots = _chart.select('#dots')
                              .selectAll('.dot')
-                             .data(data.value)
+                             .data(data.value, d => d['date'])
+
+            dots.exit().remove()
+            dots.attr('cx', function(d) {
+                    return _xScale(d['date']) + _xScale.bandwidth() / 2
+                })
+                .attr('cy', function(d) {
+                    return _yScale(d['viewer'])
+                })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
+                
             dots.enter()
                 .append('circle')
                 .attr('class', 'dot')
-                .attr('cx', (d) => _xScale(d['date']) + _xScale.bandwidth() / 2)
-                .attr('cy', (d) => _yScale(d['viewer']))
+                .attr('cx', function(d) {
+                    return _xScale(d['date']) + _xScale.bandwidth() / 2
+                })
+                .attr('cy', function(d) {
+                    return _yScale(d['viewer'])
+                })
                 .attr('r', 5)
                 .on('mouseover', function(d) {
                     d3.select(this)
@@ -117,6 +135,7 @@ function IntegratedChart(id = 'integrated_chart',
                 .duration(500)
                 .delay(500)
                 .style('opacity', 1)
+
             ////////////////////////////////////////////////////////////////////////////////
             // Bar Chart
 
@@ -149,7 +168,7 @@ function IntegratedChart(id = 'integrated_chart',
                        .duration(300)
                        .style('opacity', 0.9)
                     tooltip.html(`Day : ${d['date']} </br>
-                              Duration : ${d['duration']} %</br>`)	
+                              Duration : ${d['duration']}</br>`)	
                        .style("left", (d3.event.pageX) + "px")		
                        .style("top", (d3.event.pageY - 28) + "px");	
                 })
@@ -158,6 +177,11 @@ function IntegratedChart(id = 'integrated_chart',
                        .duration(300)
                        .style('opacity',  0)
                 })
+                .style('opacity', 0)
+                .transition()
+                .duration(500)
+                .delay(500)
+                .style('opacity', 1)
             bars.exit()
                 .remove()
 
