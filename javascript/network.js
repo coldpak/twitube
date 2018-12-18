@@ -100,9 +100,11 @@ var youtubeRankMap = {}
 var twitchRankMap = {}
 var scoreRankMap = {}
 
-var AllYoutubeRankMap = {}
-var AllTwitchRankMap = {}
-var AllScoreRankMap = {}
+var allYoutubeRankMap = {}
+var allTwitchRankMap = {}
+var allScoreRankMap = {}
+var all_youtube_max_potential = -1.0
+var all_twitch_max_potential = -1.0
 
 var linkScoreMap = {
     'StoT': {},
@@ -169,10 +171,13 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
             'twitch_potential_score' : target_node['twitch_potential_score'],
         });
 
+
         twitch_max_potential = Math.max(twitch_max_potential, target_node['twitch_potential_score'])
         youtube_max_potential = Math.max(youtube_max_potential, target_node['youtube_potential_score'])
-        if (!isFinite(twitch_max_potential) || !isFinite(youtube_max_potential)){
-            console.log('S')
+
+        if (all_twitch_max_potential < 0) {
+            all_youtube_max_potential = youtube_max_potential;
+            all_twitch_max_potential = twitch_max_potential;
         }
     });
 
@@ -264,10 +269,10 @@ function merge(alpha=0.5, dropout=0.1) {
         'twitch_potential' : getRank(scoreMap, 'twitch_potential_score'),
     }
 
-    if (Object.keys(AllScoreRankMap).length == 0) {
-        AllScoreRankMap = scoreRankMap
-        AllYoutubeRankMap = youtubeRankMap
-        AllTwitchRankMap = twitchRankMap
+    if (Object.keys(allScoreRankMap).length == 0) {
+        allScoreRankMap = scoreRankMap
+        allYoutubeRankMap = youtubeRankMap
+        allTwitchRankMap = twitchRankMap
     }
 
     return { 
