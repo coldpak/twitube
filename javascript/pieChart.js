@@ -74,6 +74,7 @@ function PieChart(id = 'pie_chart') {
                        .duration(300)
                        .style('opacity', 0.9)
                     tooltip.html(`Game : ${d.data['game']} </br>
+                              Duration : ${d.data['duration']} h</br>
                               Ratio : ${ratio.toFixed(1)} %</br>`)	
                        .style("left", (d3.event.pageX) + "px")		
                        .style("top", (d3.event.pageY - 28) + "px");	

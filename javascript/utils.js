@@ -122,25 +122,31 @@ function getIntegratedChartData(summary, user) {
         var weekday = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
         var d = new Date(2000 + date.slice(0,2), 
                          date.slice(2,4) - 1,
-                         date.slice(4,6)); // month = 0 ~ 11
+                         date.slice(4,6)); // month = 0 ~ ///11
         var summary = data.summary[user]
         var viewer =  summary ? summary.averageViewers['viewer'] : 0.0;
         var duration =  summary ? summary.averageViewers["duration"] : 0.0;
         var week_index = d.getDay();
-        
+        var mostPlayedGame = summary ? getMostPlayedGame(summary['games']) : "";  
         chart_data[week_index] = {
             "viewer" : viewer ? viewer : 0.0,
             "duration" : duration ? duration : 0.0,
-            "date" : weekday[week_index]
+            "date" : weekday[week_index],
+            "game" : mostPlayedGame['game']
         };
     });
 
     return chart_data;
 }
-function getFavorite(games) {
-    games.reduce((most, R) => {
-        return R.duration > most.duration ? R : most
-    }, { 'game' : '', 'duration' : 0.0 })
+function getMostPlayedGame(games) {
+    if (games[0]) {
+        return games.reduce((most, R) => {
+                return R.duration > most.duration ? R : most
+            }, { 'game' : '', 'duration' : 0.0 })
+    }
+    else {
+        return "Not in Game List"
+    }
 }
 
 var gameKeyMap = [
