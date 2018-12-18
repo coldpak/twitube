@@ -88,25 +88,29 @@ function getTableData(nodes, user, platform) {
         let userNode = nodes.filter((d) => d.id == user)[0];
         if (!userNode) return;
         let keys = ['recent_average_view', 'subscriber_count', 'pra_score'];
-        return keys.map((d) => {
-            return {
-                'subject': d.replace("_", " "),
-                'value': userNode[d].toFixed(2)
-            }
-        });
+        return [
+            { 'subject': 'Recent Average View',
+              'value': userNode['recent_average_view'].toFixed(2)},
+            { 'subject': 'Subscriber Count',
+              'value': userNode['subscriber_count']},
+            { 'subject': 'PRA score',
+              'value': userNode['pra_score'].toFixed(2)},
+            { 'subject': 'Total Stream Duration',
+              'value': '-'},
+        ]
     }
     if (platform == 'twitch') {
         let userNode = nodes.filter((d) => d.id == user)[0];
         if (!userNode) return;
         return [
-            { 'subject': 'recent average view',
+            { 'subject': 'Recent Average Viewer',
               'value': userNode['average_viewer']['viewer'].toFixed(2)},
-            { 'subject': 'total stream duration',
-              'value': userNode['average_viewer']['duration'].toFixed(2)},
-            { 'subject': 'follower count',
+            { 'subject': 'Follower Count',
               'value': userNode['followers']},
-            { 'subject': 'sra score',
+            { 'subject': 'SRA score',
               'value': userNode['sra_score'].toFixed(2)},
+            { 'subject': 'Total Stream Duration',
+              'value': userNode['average_viewer']['duration'].toFixed(2)},
         ];
     }
     return null;

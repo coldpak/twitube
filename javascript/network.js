@@ -85,7 +85,7 @@ Promise.all(promises).then(function(values) {
 
 var influenceScale = ['normalized_view', 'normalized_follower', 'normalized_score'];
 var colorMap = {}
-var favoriteGameMap = {}
+var mostPlayedGameMap = {}
 
 function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     var nodeMappingTable = {};
@@ -94,10 +94,8 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
     _twitchNodes.forEach((node, i) => {
         let _id = node.id;
 
-        let favorite_game = node['games'].reduce((most, R) => {
-                return R.duration > most.duration ? R : most
-            }, { 'game' : '', 'duration' : 0.0 })
-        let game = favorite_game['game']
+        let most_played_game = getMostPlayedGame(node['games'])
+        let game = most_played_game['game']
         if ((checkedGames[game] != undefined && checkedGames[game] == false)
          || (checkedGames[game] == undefined && gameCheckedList[8] == false)) return;
 
@@ -108,10 +106,10 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
             'normalized_follower' : (1 - alpha) * node['normalized_followers'],
             'normalized_score' : (1 - alpha) * twitch_beta * node['normalized_sra_score'],
             'games' : node['games'],
-            'favorite_game' : favorite_game
+            'most_played_game' : most_played_game
         });
 
-        favoriteGameMap[_id] = favorite_game
+        mostPlayedGameMap[_id] = most_played_game
         if (!nodeMappingTable[_id]) nodeMappingTable[_id] = nodes.length - 1;
     });
 
@@ -124,7 +122,7 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
         target_node['normalized_view'] += alpha * node['normalized_average_view'];
         target_node['normalized_follower'] += alpha * node['normalized_subscriber_count'];
         target_node['potential_score'] = node['normalized_average_view'] / node['normalized_subscriber_count'];
-        target_node['normalized_score'] += alpha * youtube_beta * target_node['potential_score'] * node['normalized_pra_score'];
+        target_node['normalized_score'] += alpha * youtube_beta * node['normalized_pra_score'];
     });
 
     return nodes;
@@ -136,7 +134,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
 
     _youtubeLinks.forEach((link, i) => {
         let source = link.source, target = link.target;   
-        if (!favoriteGameMap[source] || !favoriteGameMap[target]) return;
+        if (!mostPlayedGameMap[source] || !mostPlayedGameMap[target]) return;
 
         let _id = source + target;
         links.push({
@@ -150,7 +148,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
 
     _twitchLinks.forEach((link, i) => {
         let source = link.source, target = link.target;
-        if (!favoriteGameMap[source] || !favoriteGameMap[target]) return;
+        if (!mostPlayedGameMap[source] || !mostPlayedGameMap[target]) return;
 
         let _id = source + target;
         let index = linkMappingTable[_id];
@@ -176,7 +174,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
 }
 
 function merge(alpha=0.5, dropout=0.1) {
-    favoriteGameMap = {}
+    mostPlayedGameMap = {}
     checkedGames = {}
     gameCheckedList.forEach((d, i) => {
         checkedGames[gameKeyMap[i]] = d && i > 0 && i < 9 ? true : false;
@@ -301,8 +299,8 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
                 return radius * node[influenceScale[scale_index]];
             })
             .attr("fill", function (d) {
-                if (d["favorite_game"]) {
-                    let color = gameColorMap[d["favorite_game"]["game"]];
+                if (d["most_played_game"]) {
+                    let color = gameColorMap[d["most_played_game"]["game"]];
                     return color ? color : gameColorMap["Others"]
                 }
                 else {

@@ -29,17 +29,17 @@ function Table(id) {
             const data = getTableData(dataset, user, platform)
             if (!data) return;
             const rows = tbody.selectAll('tr')
-                              .data(data);
+                              .data(data, d => d.value);
             rows.exit()
                 .remove();
-            const row = rows.enter()
-                            .append('tr');
+            const enter = rows.enter()
+                           .append('tr');
 
-            row.append('th')
+            enter.append('th')
                     .text(d => d.subject);
                     
-            row.append('td')
-                    .text(d => d.value);
+            enter.append('td')
+                 .text(d => d.value);
         } 
     }
 }
