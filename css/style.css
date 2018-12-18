@@ -25,30 +25,60 @@ body {
   .infos {
     width: calc(100vw - 1000px);
     height: 100vh;
-    background: rgb(169, 169, 247);
   }
   .infos .info_basic {
-    width: calc(100vw - 1000px);
-    height: 35vh;
-    background: rgb(169, 169, 247);
+    width: calc(100vw - 1020px);
+    margin: 10px 20px 10px 0px;
+    height: 30vh;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);  
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
+  .info_basic .common_info {
+    height: 20%;
+  }
+  .info_basic .platform_info {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    height: 80%;
+  }
+  .platform_info .basic_info_form {
+    width: 45%;
+    height: 90%;
+  }
+  .basic_info_form img {
+    width: 20%;
+    height: auto;
+  }
+  
   .infos .info_graphs {
-    width: calc(100vw - 1000px);
+    width: calc(100vw - 1020px);
+    margin: 10px 20px 10px 0px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     height: 35vh;
-    background: rgb(169, 169, 247);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
   .infos .info_graphs .chart_container {
-    float : left;
     width: 50%;
     height: 100%;
-    background: rgb(255, 169, 247);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
   }
   .infos .info_graphs .chart_container .chart_title {
-    width : 100%; 
-    height: 10%;
+    margin: 0;
     text-align: center;
-    margin-top: 3%;
     font-weight: bold;
+    font-size: 20px;
+    font-weight: 600;
   }
   .infos .info_graphs .chart_container .chart {
     width : 100%; 
