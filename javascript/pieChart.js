@@ -68,16 +68,16 @@ function PieChart(id = 'pie_chart') {
                 .attr("stroke-width", "2px")
                 .on('mouseover', function(d) {
                     let ratio = (d.endAngle - d.startAngle) / (2 * Math.PI) * 100
-                    div.transition()
+                    tooltip.transition()
                        .duration(300)
                        .style('opacity', 0.9)
-                    div.html(`Game : ${d.data['game']} </br>
+                    tooltip.html(`Game : ${d.data['game']} </br>
                               Ratio : ${ratio.toFixed(1)} %</br>`)	
                        .style("left", (d3.event.pageX) + "px")		
                        .style("top", (d3.event.pageY - 28) + "px");	
                 })
                 .on('mouseout', function(d) {
-                    div.transition()
+                    tooltip.transition()
                        .duration(300)
                        .style('opacity',  0)
                 })

@@ -73,6 +73,7 @@ var youtubeGraph, twitchGraph, graph, simulation;
 var chartContainer = document.getElementsByClassName("chart")[0];
 var pieChart = PieChart();
 var integratedChart = IntegratedChart();
+var tooltip = Tooltip();
 
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
