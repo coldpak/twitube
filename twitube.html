@@ -19,18 +19,18 @@
         <div class="filter">
           <div class="form_wrapper">
             <form style="display:inline-block">
-              <label class="label">alpha </label>
+              <label class="label" id="alpha_label">alpha </label>
               <output for=value id="alpha_output">0.5</output><br/>
               <input id="alpha_value" type="range" value="0.5" step="0.1" min="0.0" max="1.0" oninput="changeInputValue(this.value, this.id)"/><br/>
-              <label class="label">dropout rate </label>
+              <label class="label" id="dropout_label">dropout rate </label>
               <output for=value id="dropout_output">0.1</output><br/>
               <input id="dropout_value" type="range" value="0.1" step="0.01" min="0.01" max="0.3" oninput="changeInputValue(this.value, this.id)"/><br/>
             </form><br/>
             <form style="display:inline-block">
-              <label class="label">youtube beta </label>
+              <label class="label" id="youtube_beta_label">youtube beta </label>
               <output for=value id="youtube_beta_output">1.0</output><br/>
               <input id="youtube_beta" type="range" value="1.0" step="0.1" min="0.1" max="2.5" oninput="changeInputValue(this.value, this.id)"/><br/>
-              <label class="label">twitch beta </label>
+              <label class="label" id="twitch_beta_label">twitch beta </label>
               <output for=value id="twitch_beta_output">0.5</output><br/>
               <input id="twitch_beta" type="range" value="0.5" step="0.1" min="0.1" max="2.5" oninput="changeInputValue(this.value, this.id)"/><br/>
             </form>
@@ -38,15 +38,15 @@
           <label class="label">Radius Value</label><br/>
           <label class="pure-material-checkbox">
             <input id="by_view" class="checkbox_radius" type="checkbox" checked onclick="clickRadiusCheckbox(0)">
-            <span>Recent Average View Count</span>
+            <span id='view_span'>Recent Average View Count</span>
           </label><br/>
           <label class="pure-material-checkbox">
             <input id="by_follower" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(1)">
-            <span>Follower Count</span>
+            <span id='follower_span'>Follower Count</span>
           </label><br/>
           <label class="pure-material-checkbox">
             <input id="by_score" class="checkbox_radius" type="checkbox" onclick="clickRadiusCheckbox(2)">
-            <span>PSRA Score</span>
+            <span id='score_span'>PSRA Score</span>
           </label><br/>
           <label class="label">Search by Nickname</label>
           <input id="search_bar" value="" onchange="changeInputValue(this.value, this.id)"/>

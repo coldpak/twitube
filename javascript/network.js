@@ -259,6 +259,16 @@ function init() {
     
     restart(); 
     Legend('legend_container', gameColorMap)
+
+    var alphaTargets = ['alpha_label', 'alpha_output'],
+        betaTargets = ['youtube_beta_label', 'youtube_beta_output', 'twitch_beta_label', 'twitch_beta_output'],
+        dropoutTargets = ['dropout_label', 'dropout_output'];
+    AddTooltipEvent(tooltip, alphaTargets, tooltipMessages['alpha'])
+    AddTooltipEvent(tooltip, betaTargets, tooltipMessages['beta'])
+    AddTooltipEvent(tooltip, dropoutTargets, tooltipMessages['dropout'])
+    AddTooltipEvent(tooltip, ['view_span'], tooltipMessages['view'])
+    AddTooltipEvent(tooltip, ['follower_span'], tooltipMessages['follower'])
+    AddTooltipEvent(tooltip, ['score_span'], tooltipMessages['score'])
 }
 function mouseUp() {
     label.style("opacity", 1);
