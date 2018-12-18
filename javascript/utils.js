@@ -83,6 +83,35 @@ const Utils = () => {
     }
 }
 
+function getTableData(nodes, user, platform) {
+    if (platform == 'youtube') {
+        let userNode = nodes.filter((d) => d.id == user)[0];
+        if (!userNode) return;
+        let keys = ['recent_average_view', 'subscriber_count', 'pra_score'];
+        return keys.map((d) => {
+            return {
+                'subject': d.replace("_", " "),
+                'value': userNode[d].toFixed(2)
+            }
+        });
+    }
+    if (platform == 'twitch') {
+        let userNode = nodes.filter((d) => d.id == user)[0];
+        if (!userNode) return;
+        return [
+            { 'subject': 'recent average view',
+              'value': userNode['average_viewer']['viewer'].toFixed(2)},
+            { 'subject': 'total stream duration',
+              'value': userNode['average_viewer']['duration'].toFixed(2)},
+            { 'subject': 'follower count',
+              'value': userNode['followers']},
+            { 'subject': 'sra score',
+              'value': userNode['sra_score'].toFixed(2)},
+        ];
+    }
+    return null;
+}
+
 function getPieChartData(nodes, user) {
     return nodes.filter((d) => d.id == user)[0]["games"]
 }

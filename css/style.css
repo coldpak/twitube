@@ -51,6 +51,13 @@ body {
   }
   .info_basic .common_info {
     height: 20%;
+    display: flex;
+    align-items: center;
+  }
+  .common_info .name {
+    padding: 1rem;
+    font-size: 20px;
+    font-weight: 600;
   }
   .info_basic .platform_info {
     display: flex;
@@ -63,8 +70,8 @@ body {
     height: 90%;
   }
   .basic_info_form img {
-    width: 20%;
-    height: auto;
+    height: 20%;
+    width: auto;
   }
   
   .infos .info_graphs {

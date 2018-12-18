@@ -71,6 +71,8 @@ paths.forEach(function(url) {
 var youtubeGraph, twitchGraph, graph, simulation;
 
 var chartContainer = document.getElementsByClassName("chart")[0];
+var youtubeTable = Table('youtube_table');
+var twitchTable = Table('twitch_table');
 var pieChart = PieChart();
 var integratedChart = IntegratedChart();
 var tooltip = Tooltip();
@@ -308,7 +310,7 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
                 }
             })
             .on("mousedown", mouseDown(0))
-            .on("click", (d) => mouseClick(d.id))
+            .on("click", (d) => mouseClick(d))
             .call(drag(simulation))
             .merge(node);
     
@@ -454,9 +456,12 @@ function changeInputValue(value, id) {
     return null;
 }
 
-function mouseClick(user) {
-    pieChart.Update(twitchGraph.nodes, user)
-    integratedChart.Update(twitchGraph.statistics["weekly_summary"], user);
+function mouseClick(node) {
+    pieChart.Update(twitchGraph.nodes, node.id)
+    integratedChart.Update(twitchGraph.statistics["weekly_summary"], node.id);
+    youtubeTable.Update(youtubeGraph.nodes, node.id, 'youtube');
+    twitchTable.Update(twitchGraph.nodes, node.id, 'twitch');
+    document.querySelector('.common_info .name').innerHTML = 'Name: ' + node.alias;
 }
 
 function clickRadiusCheckbox(index) {
