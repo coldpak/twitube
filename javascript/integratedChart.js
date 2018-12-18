@@ -119,7 +119,10 @@ function IntegratedChart(id = 'integrated_chart',
                     tooltip.transition()
                        .duration(300)
                        .style('opacity', 0.9)
-                    tooltip.html(`Average Viewer : ${d['viewer'].toFixed(0)}</br>`)	
+                    tooltip.html(`Day : ${d['date']} </br>
+                                  Most Played Game : ${d['game']}</br>
+                                  Average Viewer : ${d['viewer'].toFixed(0)}</br>
+                                  Duration : ${d['duration']} h</br>`)	
                        .style("left", (d3.event.pageX) + "px")		
                        .style("top", (d3.event.pageY - 28) + "px");	
                 })
@@ -168,7 +171,9 @@ function IntegratedChart(id = 'integrated_chart',
                        .duration(300)
                        .style('opacity', 0.9)
                     tooltip.html(`Day : ${d['date']} </br>
-                              Duration : ${d['duration']}</br>`)	
+                                  Most Played Game : ${d['game']}</br>
+                                  Average Viewer : ${d['viewer'].toFixed(0)}</br>
+                                  Duration : ${d['duration']} h</br>`)	
                        .style("left", (d3.event.pageX) + "px")		
                        .style("top", (d3.event.pageY - 28) + "px");	
                 })
