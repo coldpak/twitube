@@ -87,14 +87,20 @@ function getTableData(nodes, user, platform) {
     if (platform == 'youtube') {
         let userNode = nodes.filter((d) => d.id == user)[0];
         if (!userNode) return;
-        let keys = ['recent_average_view', 'subscriber_count', 'pra_score'];
+
         return [
             { 'subject': 'Recent Average View',
-              'value': userNode['recent_average_view'].toFixed(2)},
+              'value': `${userNode['recent_average_view'].toFixed(0)} \
+                       (${(100 - 100 * AllYoutubeRankMap['recent_average_view'][user]['rank'] / Object.keys(youtubeRankMap['recent_average_view']).length ).toFixed(2)} %)`},
             { 'subject': 'Subscriber Count',
-              'value': userNode['subscriber_count']},
+              'value': `${userNode['subscriber_count']} \
+                       (${(100 - 100 * AllYoutubeRankMap['subscriber_count'][user]['rank'] / Object.keys(youtubeRankMap['subscriber_count']).length ).toFixed(2)} %)`},
             { 'subject': 'PRA score',
-              'value': userNode['pra_score'].toFixed(2)},
+              'value': `${userNode['pra_score'].toFixed(2)} \
+                       (${(100 - 100 * AllYoutubeRankMap['pra_score'][user]['rank'] / Object.keys(youtubeRankMap['pra_score']).length ).toFixed(2)} %)`},
+            { 'subject': 'Potential',
+              'value': `${(scoreRankMap['youtube_potential'][user]['score'] / youtube_max_potential).toFixed(2)}\
+                        (${(100 - 100 * AllScoreRankMap['youtube_potential'][user]['rank'] / Object.keys(scoreRankMap['youtube_potential']).length).toFixed(2)} %)`},
             { 'subject': 'Total Stream Duration',
               'value': '-'},
         ]
@@ -102,13 +108,20 @@ function getTableData(nodes, user, platform) {
     if (platform == 'twitch') {
         let userNode = nodes.filter((d) => d.id == user)[0];
         if (!userNode) return;
+
         return [
             { 'subject': 'Recent Average Viewer',
-              'value': userNode['average_viewer']['viewer'].toFixed(2)},
+              'value': `${userNode['average_viewer']['viewer'].toFixed(0)} \
+                       (${(100 - 100 * AllTwitchRankMap['average_viewer'][user]['rank'] / Object.keys(twitchRankMap['average_viewer']).length ).toFixed(2)} %)`},
             { 'subject': 'Follower Count',
-              'value': userNode['followers']},
+              'value': `${userNode['followers']} \
+                       (${(100 - 100 * AllTwitchRankMap['followers'][user]['rank'] / Object.keys(twitchRankMap['followers']).length ).toFixed(2)} %)`},
             { 'subject': 'SRA score',
-              'value': userNode['sra_score'].toFixed(2)},
+              'value': `${userNode['sra_score'].toFixed(2)} \
+                       (${(100 - 100 * AllTwitchRankMap['sra_score'][user]['rank'] / Object.keys(twitchRankMap['sra_score']).length ).toFixed(2)} %)`},
+              { 'subject': 'Potential',
+              'value': `${(scoreRankMap['twitch_potential'][user]['score'] / twitch_max_potential).toFixed(2)}\
+                        (${(100 - 100 * AllScoreRankMap['twitch_potential'][user]['rank'] / Object.keys(scoreRankMap['twitch_potential']).length).toFixed(2)} %)`},
             { 'subject': 'Total Stream Duration',
               'value': userNode['average_viewer']['duration'].toFixed(2)},
         ];
@@ -150,6 +163,20 @@ function getMostPlayedGame(games) {
     }
     else {
         return "Not in Game List"
+    }
+}
+
+function initScoreMap() {
+    return {
+        'youtube' : {
+            'pra' : [],
+            'link' : {} 
+        },
+        'twitch' : {
+            'sra' : [],
+            'link' : {} 
+        },
+        'score' : []
     }
 }
 

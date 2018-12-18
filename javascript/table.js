@@ -39,7 +39,8 @@ function Table(id) {
                     .text(d => d.subject);
                     
             enter.append('td')
-                 .text(d => d.value);
+                 .text(d => d.value)
+                 .attr('text-align', 'center');
         } 
     }
 }

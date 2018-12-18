@@ -77,6 +77,43 @@ var pieChart = PieChart();
 var integratedChart = IntegratedChart();
 var tooltip = Tooltip();
 
+/* 
+var rankMap = {
+    // youtube
+    'pra' : {},
+    'subscriber' : {},
+    'view' : {},
+    'youtube_potential' : {},
+    // twitch
+    'sra' : {},
+    'follower' : {},
+    'viewer' : {},
+    'twitch_potential' : {},
+    // merge
+    'score' : {},
+}
+*/
+
+var youtube_target_rank = ['pra_score', 'subscriber_count', 'recent_average_view']
+var twitch_target_rank = ['sra_score', 'followers', 'average_viewer']
+var youtubeRankMap = {}
+var twitchRankMap = {}
+var scoreRankMap = {}
+
+var AllYoutubeRankMap = {}
+var AllTwitchRankMap = {}
+var AllScoreRankMap = {}
+
+var linkScoreMap = {
+    'StoT': {},
+    'TtoS' : {}
+}
+var scoreMap = []
+var youtube_max_potential = 0.0
+var twitch_max_potential = 0.0
+
+var cur_user = ''
+
 Promise.all(promises).then(function(values) {
     youtubeGraph = values[0];
     twitchGraph = values[1];
@@ -106,6 +143,7 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
             'normalized_follower' : (1 - alpha) * node['normalized_followers'],
             'normalized_score' : (1 - alpha) * twitch_beta * node['normalized_sra_score'],
             'games' : node['games'],
+            'twitch_potential_score' : node['average_viewer']['normalized_viewer'] / node['normalized_followers'],
             'most_played_game' : most_played_game
         });
 
@@ -121,8 +159,21 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
 
         target_node['normalized_view'] += alpha * node['normalized_average_view'];
         target_node['normalized_follower'] += alpha * node['normalized_subscriber_count'];
-        target_node['potential_score'] = node['normalized_average_view'] / node['normalized_subscriber_count'];
+        target_node['youtube_potential_score'] = node['normalized_subscriber_count'] > 0 ? node['normalized_average_view'] / node['normalized_subscriber_count'] : 0.0;
         target_node['normalized_score'] += alpha * youtube_beta * node['normalized_pra_score'];
+    
+        scoreMap.push({
+            'id' : node.id,
+            'score' : target_node['normalized_score'],
+            'youtube_potential_score' : target_node['youtube_potential_score'],
+            'twitch_potential_score' : target_node['twitch_potential_score'],
+        });
+
+        twitch_max_potential = Math.max(twitch_max_potential, target_node['twitch_potential_score'])
+        youtube_max_potential = Math.max(youtube_max_potential, target_node['youtube_potential_score'])
+        if (!isFinite(twitch_max_potential) || !isFinite(youtube_max_potential)){
+            console.log('S')
+        }
     });
 
     return nodes;
@@ -142,7 +193,7 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
             'target': target,
             'normalized_score': alpha * link['normalized_score']
         });
-
+        
         if (!linkMappingTable[_id]) linkMappingTable[_id] = i;
     });
 
@@ -154,9 +205,13 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
         let index = linkMappingTable[_id];
         let target_link =  links[index];
 
+        if (!linkScoreMap.StoT[source]) linkScoreMap.StoT[source] = {}
+        if (!linkScoreMap.TtoS[target]) linkScoreMap.TtoS[target] = {}
+
         if (target_link){
             target_link['normalized_score'] += (1 - alpha) * link['normalized_score'];
             if (target_link['normalized_score'] < dropout) target_link['normalized_score'] = 0;
+            linkScoreMap.StoT[source][target] = linkScoreMap.TtoS[target][source] = target_link['normalized_score']
         }
         else {
             let score = (1 - alpha) * link['normalized_score']
@@ -168,19 +223,52 @@ function makeMergedLinks(_youtubeLinks, _twitchLinks, alpha, dropout) {
                 'target': target,
                 'normalized_score': score
             });
+            linkScoreMap.StoT[source][target] = linkScoreMap.TtoS[target][source] = score
         }
+
+
+        
     });
     return links.filter(d => d.normalized_score >= dropout);
 }
 
 function merge(alpha=0.5, dropout=0.1) {
+    /* initialize global variables */
+    youtubeRankMap = {}
+    twitchRankMap = {}
+    scoreRankMap = {}
+    linkScoreMap = {
+        'StoT': {},
+        'TtoS' : {}
+    }
+    scoreMap = []
+    twitch_max_potential = 0.0
+    youtube_max_potential = 0.0
+    
     mostPlayedGameMap = {}
     checkedGames = {}
+
+    /* Merge */
     gameCheckedList.forEach((d, i) => {
         checkedGames[gameKeyMap[i]] = d && i > 0 && i < 9 ? true : false;
     })
     var _nodes = makeMergedNodes(youtubeGraph.nodes, twitchGraph.nodes, alpha);
     var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha, dropout);
+
+    /* Create Rank Map */
+    youtubeRankMap = getRankMap(youtubeGraph.nodes, youtube_target_rank);
+    twitchRankMap = getRankMap(twitchGraph.nodes, twitch_target_rank);
+    scoreRankMap = {
+        'mra_score' : getRank(scoreMap, 'score'),
+        'youtube_potential' : getRank(scoreMap, 'youtube_potential_score'),
+        'twitch_potential' : getRank(scoreMap, 'twitch_potential_score'),
+    }
+
+    if (Object.keys(AllScoreRankMap).length == 0) {
+        AllScoreRankMap = scoreRankMap
+        AllYoutubeRankMap = youtubeRankMap
+        AllTwitchRankMap = twitchRankMap
+    }
 
     return { 
         'nodes': _nodes,
@@ -281,6 +369,7 @@ function mouseUp() {
 
 function restart(alpha=0.5, dropout=0.1, scale_index=0) {
     graph = merge(alpha, dropout);
+    
     // Create circles, General update pattern
     node = node.data(graph.nodes, d => d.id);
 
@@ -352,7 +441,7 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
     graph.links.forEach(function (d) {
         linkedByIndex[d.source.index + "," + d.target.index] = 1;
     });
-    
+
     // check the dictionary to see if nodes are linked
     function isConnected(a, b) {
         return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
@@ -425,29 +514,39 @@ function changeInputValue(value, id) {
         alpha_rate = value;
         document.querySelector('#alpha_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
+        document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
+        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         return;
     }
     if (id === 'dropout_value') {
         dropout_rate = value;
         document.querySelector('#dropout_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
+        document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
+        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         return;
     }
     if (id === 'search_bar') {
         searchNodeByAlias(value);
         document.querySelector('#search_bar').value = '';
+        document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
+        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         return;
     }
     if (id === 'youtube_beta') {
         youtube_beta = value;
         document.querySelector('#youtube_beta_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
+        document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
+        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         return;
     }
     if (id === 'twitch_beta') {
         twitch_beta = value;
         document.querySelector('#twitch_beta_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
+        document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
+        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         return;
     }
     
@@ -455,10 +554,13 @@ function changeInputValue(value, id) {
 }
 
 function mouseClick(node) {
+    cur_user = node.id
     pieChart.Update(twitchGraph.nodes, node.id)
     integratedChart.Update(twitchGraph.statistics["weekly_summary"], node.id);
     youtubeTable.Update(youtubeGraph.nodes, node.id, 'youtube');
     twitchTable.Update(twitchGraph.nodes, node.id, 'twitch');
+    document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][node.id]['score'].toFixed(2)} \
+                                                              (${(100 - 100 * scoreRankMap['mra_score'][node.id]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
     document.querySelector('.common_info .name').innerHTML = 'Name: ' + node.alias;
 }
 
@@ -469,6 +571,7 @@ function clickRadiusCheckbox(index) {
     document.getElementsByClassName('checkbox_radius')[2].checked = radiusCheckedList[2];
     selected_index = index;
     restart(alpha_rate, dropout_rate, index);
+    
 }
 
 function clickAllGameCheckbox() {
