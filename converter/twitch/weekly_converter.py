@@ -116,7 +116,7 @@ def getWeeklyInfluenceSummary(weekly_summary) :
         followers = value['followers'].pop()
         weekly_influence_summary[user] = {
             'averageViewers' : {
-                'viewer' : sum(value['averageViewers']['viewer']) / sum(value['averageViewers']['duration']) if len(value['averageViewers']['viewer']) > 0 else 0.0 ,
+                'viewer' : sum(value['averageViewers']['viewer']) / sum(value['averageViewers']['duration']) / 2 if len(value['averageViewers']['viewer']) > 0 else 0.0 ,
                 'normalized_viewer' : sum(value['averageViewers']['normalized_viewer']) / len(value['averageViewers']['normalized_viewer']) if len(value['averageViewers']['normalized_viewer']) > 0 else 0.0 ,
                 'duration' : sum(value['averageViewers']['duration'])
             },
