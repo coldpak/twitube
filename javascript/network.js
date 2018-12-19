@@ -48,8 +48,8 @@ arrowFactory(defs, "outArrow");
 arrowFactory(defs, "bothArrow");
 
 var paths = [
-    'data/youtube-181216.json',
-    'data/twitch-181216.json'
+    'data/youtube-181218.json',
+    'data/twitch-181218.json'
 ];
 
 var promises = [];

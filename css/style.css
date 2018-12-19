@@ -152,6 +152,12 @@ body {
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
+  #game_filter {
+    width: 26%;
+  }
+  #other_filter {
+    width: 36%;
+  }
   .filter_wrapper .filter_title {
     margin: 1.5rem 0;
     text-align: center;
@@ -160,6 +166,7 @@ body {
   }
   .intro_body {
     font-size : 12px;
+    padding: 0 1rem;
   }
   .filter_wrapper .filter {
     margin: 1rem;

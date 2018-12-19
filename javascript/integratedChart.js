@@ -164,7 +164,10 @@ function IntegratedChart(id = "integrated_chart",
                 .attr("width", _xScale.bandwidth())
                 .attr("height", (d) => _height - _yScale(d['duration']))
                 .attr("transform", (d) => _utils.Translate(_xScale(d['date']), _yScale(d['duration'])))
-                .attr("fill", (_, i) => colorScale(i))
+                .attr("fill", (d) => {
+                    let color = gameColorMap[d['game']]
+                    return color ? color : gameColorMap['Others']
+                })
                 .attr("opacity", 0.9)
                 .on("mouseover", function(d) {
                     tooltip.transition()
