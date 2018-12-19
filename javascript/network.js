@@ -358,6 +358,7 @@ function init() {
     
     restart(); 
     Legend('legend_container', gameColorMap)
+    InitIntroduction('intro')
 
     var alphaTargets = ['alpha_label', 'alpha_output'],
         betaTargets = ['youtube_beta_label', 'youtube_beta_output', 'twitch_beta_label', 'twitch_beta_output'],
