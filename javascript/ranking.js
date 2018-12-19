@@ -5,7 +5,7 @@ function getRank(obj_arr, key) {
                         return b[key] - a[key]
                     }).forEach((element, i) => {
                         ranking[element.id] = {
-                            'rank' : i,
+                            'rank' : Object.keys(ranking).length,
                             'score' : element[key]
                         }
                     })
@@ -15,7 +15,7 @@ function getRank(obj_arr, key) {
             return b[key]['viewer'] - a[key]['viewer']
         }).forEach((element, i) => {
             ranking[element.id] = {
-                'rank' : i,
+                'rank' : Object.keys(ranking).length,
                 'score' : element[key]['viewer']
             }
         })

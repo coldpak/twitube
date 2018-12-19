@@ -39,7 +39,8 @@ function getSummaryTemplate(_user, _checkedGames, _youtubeRankMap, _twitchRankMa
         twitchTarget = _twitchRankMap['followers']
     }
     else if (checkbox_radius[2].checked){
-        summary += 'PRA/SRA Score를'
+        //summary += ' PRA/SRA Score를'
+        summary += ' CRA/SRA Score를'
         youtubeTarget = _youtubeRankMap['pra_score']
         twitchTarget = _twitchRankMap['sra_score']
     }
@@ -97,7 +98,7 @@ function getFilterSummary(obj) {
 
 function getPlatformSummary(user, obj, key) {
     let summary = '', keyword = '',
-        rank = (100 - 100 * obj[key][user]['rank'] / Object.keys(obj[key]).length).toFixed(2)
+        rank = (100 * obj[key][user]['rank'] / Object.keys(obj[key]).length).toFixed(2)
     
     switch (key) {
         /* YouTube Text */
@@ -108,7 +109,8 @@ function getPlatformSummary(user, obj, key) {
             keyword = '구독자수'
             break
         case 'pra_score':
-            keyword = 'PRA Score'
+            //keyword = 'PRA Score'
+            keyword = 'CRA Score'
             break
         /* TwitchTV Text */
         case 'average_viewer':
@@ -122,10 +124,10 @@ function getPlatformSummary(user, obj, key) {
             break
     }
 
-    if (rank >  70) summary += '<strong>'
+    if (rank < 30) summary += '<strong>'
     summary += ` ${keyword} 에서`
     summary += ` 상위 ${rank} %`
-    if (rank >  70) summary += '</strong>'
+    if (rank < 30) summary += '</strong>'
 
     return summary
 }
@@ -133,17 +135,17 @@ function getPlatformSummary(user, obj, key) {
 function getScoreSummary(user, obj, key) {
     let summary = '', keyword = '',
         score = obj[key][user] ? obj[key][user]['score'] : 0.0,
-        rank = (100 - 100 * obj[key][user]['rank'] / Object.keys(obj[key]).length).toFixed(2)
+        rank = (100 * obj[key][user]['rank'] / Object.keys(obj[key]).length).toFixed(2)
     switch (key) {
         case 'mra_score' :
             keyword = '총점(MRA Score) '
             break;
     }
 
-    if (rank >  70) summary += '<strong>'
+    if (rank < 30) summary += '<strong>'
     summary += ` ${score.toFixed(2)}`
     summary += ` 으로 (상위 ${rank} %) 의 영향력을 보여주고 있다.`
-    if (rank >  70) summary += '</strong>'
+    if (rank < 30) summary += '</strong>'
 
     return summary
 }

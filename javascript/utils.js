@@ -92,16 +92,16 @@ function getTableData(nodes, user, platform) {
         return [
             { 'subject': 'Recent Average View',
               'value': `${userNode['recent_average_view'].toFixed(0)} \
-                       (${(100 - 100 * allYoutubeRankMap['recent_average_view'][user]['rank'] / Object.keys(allYoutubeRankMap['recent_average_view']).length ).toFixed(2)} %)`},
+                       (${(100 * allYoutubeRankMap['recent_average_view'][user]['rank'] / Object.keys(allYoutubeRankMap['recent_average_view']).length ).toFixed(2)} %)`},
             { 'subject': 'Subscriber Count',
               'value': `${userNode['subscriber_count']} \
-                       (${(100 - 100 * allYoutubeRankMap['subscriber_count'][user]['rank'] / Object.keys(allYoutubeRankMap['subscriber_count']).length ).toFixed(2)} %)`},
-            { 'subject': 'PRA score',
+                       (${(100 * allYoutubeRankMap['subscriber_count'][user]['rank'] / Object.keys(allYoutubeRankMap['subscriber_count']).length ).toFixed(2)} %)`},
+            { 'subject': 'CRA score',
               'value': `${userNode['pra_score'].toFixed(2)} \
-                       (${(100 - 100 * allYoutubeRankMap['pra_score'][user]['rank'] / Object.keys(allYoutubeRankMap['pra_score']).length ).toFixed(2)} %)`},
+                       (${(100 * allYoutubeRankMap['pra_score'][user]['rank'] / Object.keys(allYoutubeRankMap['pra_score']).length ).toFixed(2)} %)`},
             { 'subject': 'Potential',
               'value': `${(scoreRankMap['youtube_potential'][user]['score'] / all_youtube_max_potential).toFixed(2)}\
-                        (${(100 - 100 * allScoreRankMap['youtube_potential'][user]['rank'] / Object.keys(allScoreRankMap['youtube_potential']).length).toFixed(2)} %)`},
+                        (${(100 * allScoreRankMap['youtube_potential'][user]['rank'] / Object.keys(allScoreRankMap['youtube_potential']).length).toFixed(2)} %)`},
             { 'subject': 'Total Stream Duration',
               'value': '-'},
         ]
@@ -113,16 +113,16 @@ function getTableData(nodes, user, platform) {
         return [
             { 'subject': 'Recent Average Viewer',
               'value': `${userNode['average_viewer']['viewer'].toFixed(0)} \
-                       (${(100 - 100 * allTwitchRankMap['average_viewer'][user]['rank'] / Object.keys(allTwitchRankMap['average_viewer']).length ).toFixed(2)} %)`},
+                       (${(100 * allTwitchRankMap['average_viewer'][user]['rank'] / Object.keys(allTwitchRankMap['average_viewer']).length ).toFixed(2)} %)`},
             { 'subject': 'Follower Count',
               'value': `${userNode['followers']} \
-                       (${(100 - 100 * allTwitchRankMap['followers'][user]['rank'] / Object.keys(allTwitchRankMap['followers']).length ).toFixed(2)} %)`},
+                       (${(100 * allTwitchRankMap['followers'][user]['rank'] / Object.keys(allTwitchRankMap['followers']).length ).toFixed(2)} %)`},
             { 'subject': 'SRA score',
               'value': `${userNode['sra_score'].toFixed(2)} \
-                       (${(100 - 100 * allTwitchRankMap['sra_score'][user]['rank'] / Object.keys(allTwitchRankMap['sra_score']).length ).toFixed(2)} %)`},
+                       (${(100 * allTwitchRankMap['sra_score'][user]['rank'] / Object.keys(allTwitchRankMap['sra_score']).length ).toFixed(2)} %)`},
               { 'subject': 'Potential',
               'value': `${(scoreRankMap['twitch_potential'][user]['score'] / all_twitch_max_potential).toFixed(2)}\
-                        (${(100 - 100 * allScoreRankMap['twitch_potential'][user]['rank'] / Object.keys(allScoreRankMap['twitch_potential']).length).toFixed(2)} %)`},
+                        (${(100 * allScoreRankMap['twitch_potential'][user]['rank'] / Object.keys(allScoreRankMap['twitch_potential']).length).toFixed(2)} %)`},
             { 'subject': 'Total Stream Duration',
               'value': userNode['average_viewer']['duration'].toFixed(2)},
         ]

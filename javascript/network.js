@@ -146,7 +146,10 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
             'normalized_score' : (1 - alpha) * twitch_beta * node['normalized_sra_score'],
             'games' : node['games'],
             'twitch_potential_score' : node['average_viewer']['normalized_viewer'] / node['normalized_followers'],
-            'most_played_game' : most_played_game
+            'most_played_game' : most_played_game,
+            'average_viewer' : node['average_viewer'],
+            'followers' : node['followers'],
+            'sra_score' : node['sra_score']
         });
 
         mostPlayedGameMap[_id] = most_played_game
@@ -163,6 +166,9 @@ function makeMergedNodes(_youtubeNodes, _twitchNodes, alpha) {
         target_node['normalized_follower'] += alpha * node['normalized_subscriber_count'];
         target_node['youtube_potential_score'] = node['normalized_subscriber_count'] > 0 ? node['normalized_average_view'] / node['normalized_subscriber_count'] : 0.0;
         target_node['normalized_score'] += alpha * youtube_beta * node['normalized_pra_score'];
+        target_node['subscriber_count'] =  node['subscriber_count'];
+        target_node['recent_average_view'] = node['recent_average_view'];
+        target_node['pra_score'] = node['pra_score'];
     
         scoreMap.push({
             'id' : node.id,
@@ -261,8 +267,8 @@ function merge(alpha=0.5, dropout=0.1) {
     var _links = makeMergedLinks(youtubeGraph.links, twitchGraph.links, alpha, dropout);
 
     /* Create Rank Map */
-    youtubeRankMap = getRankMap(youtubeGraph.nodes, youtube_target_rank);
-    twitchRankMap = getRankMap(twitchGraph.nodes, twitch_target_rank);
+    youtubeRankMap = getRankMap(_nodes, youtube_target_rank);
+    twitchRankMap = getRankMap(_nodes, twitch_target_rank);
     scoreRankMap = {
         'mra_score' : getRank(scoreMap, 'score'),
         'youtube_potential' : getRank(scoreMap, 'youtube_potential_score'),
@@ -520,7 +526,7 @@ function changeInputValue(value, id) {
         document.querySelector('#alpha_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
         document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
-        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
+        (${( 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         showSummary(cur_user);
         return;
     }
@@ -529,7 +535,7 @@ function changeInputValue(value, id) {
         document.querySelector('#dropout_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
         document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
-        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
+        (${( 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         showSummary(cur_user);
         return;
     }
@@ -537,7 +543,7 @@ function changeInputValue(value, id) {
         searchNodeByAlias(value);
         document.querySelector('#search_bar').value = '';
         document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
-        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
+        (${( 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         showSummary(cur_user);
         return;
     }
@@ -546,7 +552,7 @@ function changeInputValue(value, id) {
         document.querySelector('#youtube_beta_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
         document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
-        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
+        (${( 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         showSummary(cur_user);
         return;
     }
@@ -555,7 +561,7 @@ function changeInputValue(value, id) {
         document.querySelector('#twitch_beta_output').value = value;
         restart(alpha_rate, dropout_rate, selected_index);
         document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][cur_user]['score'].toFixed(2)} \
-        (${(100 - 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
+        (${( 100 * scoreRankMap['mra_score'][cur_user]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
         showSummary(cur_user);
         return;
     }
@@ -570,7 +576,7 @@ function mouseClick(node) {
     youtubeTable.Update(youtubeGraph.nodes, node.id, 'youtube');
     twitchTable.Update(twitchGraph.nodes, node.id, 'twitch');
     document.querySelector('.score_info .mra_score').innerHTML = `MRA score : ${scoreRankMap['mra_score'][node.id]['score'].toFixed(2)} \
-                                                              (${(100 - 100 * scoreRankMap['mra_score'][node.id]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
+                                                              (${( 100 * scoreRankMap['mra_score'][node.id]['rank'] / Object.keys(scoreRankMap['mra_score']).length).toFixed(2)} %)`;
     document.querySelector('.common_info .name').innerHTML = 'Name: ' + node.alias;
     showSummary(node.id);
 }
@@ -582,6 +588,7 @@ function clickRadiusCheckbox(index) {
     document.getElementsByClassName('checkbox_radius')[2].checked = radiusCheckedList[2];
     selected_index = index;
     restart(alpha_rate, dropout_rate, index);
+    searchNodeById(cur_user);
     showSummary(cur_user);
 }
 
@@ -592,13 +599,16 @@ function clickAllGameCheckbox() {
         gameCheckedList[i] = checkBoxes[i].checked = setting;
     }
     restart(alpha_rate, dropout_rate, selected_index);
+    searchNodeById(cur_user);
+    showSummary(cur_user);
 }
 function clickGameCheckbox(index) {
     var checkBoxes = document.getElementsByClassName('checkbox_games');
     if (checkBoxes[0].checked) checkBoxes[0].checked = false; 
     gameCheckedList[index] = checkBoxes[index].checked;
     restart(alpha_rate, dropout_rate, selected_index);
-   
+    searchNodeById(cur_user);
+    showSummary(cur_user);
 }
 
 function searchNodeByAlias(str) {
@@ -612,6 +622,30 @@ function searchNodeByAlias(str) {
     });
     node.style("fill-opacity", function (o) {
         thisOpacity = o.alias === str ? 1 : 0.2;
+        return thisOpacity;
+    });
+    link.style("stroke-opacity", 0.2)
+        .style("stroke", "#ddd")
+        .style("fill", "#ddd")
+        .attr('marker-end', 'url(#arrow)');
+    try {
+        main.select(`#${str}`).dispatch('click');
+    } catch(e) {
+        return null;
+    }
+}
+
+function searchNodeById(str) {
+    label.style("opacity", function (o) {
+        thisOpacity = o.id === str ? 1 : 0.2;
+        return thisOpacity;
+    });
+    node.style("stroke-opacity", function (o) {
+        thisOpacity = o.id === str ? 1 : 0.2;
+        return thisOpacity;
+    });
+    node.style("fill-opacity", function (o) {
+        thisOpacity = o.id === str ? 1 : 0.2;
         return thisOpacity;
     });
     link.style("stroke-opacity", 0.2)
