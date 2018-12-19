@@ -15,8 +15,6 @@ function PieChart(id = 'pie_chart') {
                     .append("g")
                         .attr("transform" , translate(width / 2, height / 2))
 
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
-
     const pie = d3.pie()
                   .value(d => d["duration"])
                   .sort(null)
@@ -67,7 +65,7 @@ function PieChart(id = 'pie_chart') {
                 })
                 .attr("d", arc)
                 .attr("stroke", "black")
-                .attr("stroke-width", "2px")
+                .attr("stroke-width", "1px")
                 .on('mouseover', function(d) {
                     let ratio = (d.endAngle - d.startAngle) / (2 * Math.PI) * 100
                     tooltip.transition()
@@ -107,6 +105,7 @@ function PieChart(id = 'pie_chart') {
                     }
                 })
                 .attr("font-size", "11px")
+                .attr("font-weight", "bold")
                 .text(function (d) {
                     return d.data["game"]
                 })
