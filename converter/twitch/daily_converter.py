@@ -143,6 +143,8 @@ def getScore(users, influence_data, link_data):
             scores[user] = {}
             for target in link_data[user] :
                 if user in average_viewers and target in average_viewers :
+                    if average_viewers[target]['viewer'] == 0 :
+                        continue
                     scores[user][target] = average_viewers[user]['viewer'] / average_viewers[target]['viewer']
     return scores
 
