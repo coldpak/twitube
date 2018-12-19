@@ -30,6 +30,7 @@ function Table(id) {
             if (!data) return
             const rows = tbody.selectAll('tr')
                               .data(data, d => d.value)
+
             rows.exit()
                 .remove()
             const enter = rows.enter()

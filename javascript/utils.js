@@ -85,6 +85,7 @@ const Utils = () => {
 
 function getTableData(nodes, user, platform) {
     if (platform == 'youtube') {
+
         let userNode = nodes.filter((d) => d.id == user)[0]
         if (!userNode) return
 
