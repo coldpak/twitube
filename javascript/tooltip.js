@@ -36,6 +36,6 @@ var tooltipMessages = {
               Youtube : The number of subscribers</br>\
               TwitchTV : The number of followers',
     'score' : 'Custom score summary</br>\
-              PRA : Sum of view weight of user about videos that an user is tagged in YouTube platform</br>\
+              CRA : Sum of view weight of user about videos that an user is tagged in YouTube platform</br>\
               SRA : Sum of viewer weight of user about streamers that an user is followed in TwitchTV platform'
 }

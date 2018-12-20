@@ -397,7 +397,9 @@ function restart(alpha=0.5, dropout=0.1, scale_index=0) {
             .attr("id", d=>d.alias)
             .style("stroke", "black")
             .attr("r", function (node) {
-                return radius * node[influenceScale[scale_index]];
+                let c = 1.0
+                if (document.getElementsByClassName('checkbox_radius')[2].checked) c = 5.0;
+                return c * radius * node[influenceScale[scale_index]];
             })
             .attr("fill", function (d) {
                 if (d["most_played_game"]) {
